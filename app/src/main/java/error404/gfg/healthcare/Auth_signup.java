@@ -30,6 +30,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.Calendar;
 import java.util.HashMap;
@@ -442,7 +443,6 @@ public class Auth_signup extends AppCompatActivity {
         user.put("BloodGroup",Str_BloodGroup);
         user.put("Gender",Str_Gender);
 
-
         dbRef.child(key).setValue(user)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
@@ -461,6 +461,19 @@ public class Auth_signup extends AppCompatActivity {
                         Toast.makeText(Auth_signup.this,e.getMessage(),Toast.LENGTH_LONG).show();
                     }
                 });
+
+        FirebaseFirestore.getInstance().collection("users").document(key).set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                //data updated successfully in FirebaseFirestore
+                //Toast.makeText(Auth_signup.this, "yeee lol !", Toast.LENGTH_SHORT).show();
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(Auth_signup.this, "Error !!" + e, Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     public void Dailog()
