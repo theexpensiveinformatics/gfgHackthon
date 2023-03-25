@@ -1,0 +1,940 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Auth_signup">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:id="@+id/bg"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/bg"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/containerTop"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="bottom"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:id="@+id/containerTopLeft"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="20sp"
+                        android:gravity="bottom"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/hi3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/bold"
+                            android:gravity="center_vertical"
+                            android:text="@string/app_name"
+                            android:textColor="@color/text_primary"
+                            android:textSize="22sp" />
+
+                        <TextView
+                            android:id="@+id/hi4"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/regular"
+                            android:text="@string/slogan"
+                            android:textColor="@color/text_secondary"
+                            android:textSize="14sp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/containerTopRight"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="bottom"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/imageTopside"
+                            android:layout_width="200sp"
+                            android:layout_height="100dp"
+                            android:layout_gravity="bottom"
+                            android:layout_marginRight="15sp"
+                            android:scaleType="fitCenter"
+                            android:translationY="10sp"
+                            app:srcCompat="@drawable/img_illustration3" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/containerMiddle"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:id="@+id/containerName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15sp"
+                        android:layout_marginTop="15sp"
+                        android:layout_marginRight="15sp"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:id="@+id/firstNameBg"
+                            android:layout_width="match_parent"
+                            android:layout_height="55dp"
+                            android:layout_marginRight="5sp"
+                            android:layout_weight="1"
+                            android:background="@drawable/cud_noti"
+                            android:gravity="center_vertical"
+
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:id="@+id/imageView11"
+                                android:layout_width="23dp"
+                                android:layout_height="23dp"
+                                android:layout_marginLeft="20sp"
+                                app:srcCompat="@drawable/ic_user_icon" />
+
+                            <LinearLayout
+                                android:layout_width="1.5dp"
+                                android:layout_height="20dp"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginRight="10dp"
+                                android:background="@color/light_gray"
+                                android:orientation="vertical"></LinearLayout>
+
+                            <EditText
+                                android:id="@+id/FirstNameEdit"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="10sp"
+                                android:layout_weight="1"
+                                android:background="#ffffff"
+                                android:ems="10"
+                                android:fontFamily="@font/regular"
+                                android:hint="First Name"
+                                android:inputType="textEmailAddress"
+                                android:textColor="@color/text_primary"
+                                android:textColorHint="@color/hintColor"
+                                android:textSize="14dp" />
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/secondNameBG"
+                            android:layout_width="match_parent"
+                            android:layout_height="55dp"
+                            android:layout_marginRight="0sp"
+                            android:layout_weight="1"
+                            android:background="@drawable/cud_noti"
+                            android:gravity="center_vertical"
+
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:id="@+id/imageView12"
+                                android:layout_width="23dp"
+                                android:layout_height="23dp"
+                                android:layout_marginLeft="20dp"
+                                app:srcCompat="@drawable/ic_user_icon" />
+
+                            <LinearLayout
+                                android:layout_width="1.5dp"
+                                android:layout_height="20dp"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginRight="10dp"
+                                android:background="@color/light_gray"
+                                android:orientation="vertical"></LinearLayout>
+
+                            <EditText
+                                android:id="@+id/LastnameEditText"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="10sp"
+                                android:layout_weight="1"
+                                android:background="#ffffff"
+                                android:ems="10"
+                                android:fontFamily="@font/regular"
+                                android:hint="Last Name"
+                                android:inputType="textEmailAddress"
+                                android:textColor="@color/text_primary"
+                                android:textColorHint="@color/hintColor"
+                                android:textSize="14dp" />
+
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/BirthDateBG"
+                        android:layout_width="match_parent"
+                        android:layout_height="55dp"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="15dp"
+                        android:background="@drawable/cud_noti"
+                        android:gravity="center_vertical"
+
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:id="@+id/imageView20"
+                            android:layout_width="23dp"
+                            android:layout_height="23dp"
+                            android:layout_marginLeft="20dp"
+                            app:srcCompat="@drawable/ic_calander_icon" />
+
+                        <LinearLayout
+                            android:layout_width="1.5dp"
+                            android:layout_height="20dp"
+                            android:layout_marginLeft="15dp"
+                            android:layout_marginRight="15dp"
+                            android:background="@color/light_gray"
+                            android:orientation="vertical"></LinearLayout>
+
+                        <TextView
+                            android:id="@+id/BirthDateText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="10sp"
+                            android:layout_weight="1"
+                            android:background="#ffffff"
+                            android:ems="10"
+                            android:fontFamily="@font/regular"
+                            android:text="DD/MM/YYYY"
+                            android:textColor="@color/text_secondary"
+                            android:textSize="14dp" />
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/BooldGroupBg"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="15dp"
+                        android:background="@drawable/cud_noti"
+                        android:gravity="center_vertical"
+                        android:orientation="vertical"
+                        android:paddingTop="15sp"
+
+                        android:paddingBottom="15sp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical">
+
+                            <ImageView
+                                android:id="@+id/imageView18"
+                                android:layout_width="23dp"
+                                android:layout_height="23dp"
+                                android:layout_marginLeft="20dp"
+                                app:srcCompat="@drawable/ic_hand_heart" />
+
+                            <LinearLayout
+                                android:layout_width="1.5dp"
+                                android:layout_height="20dp"
+                                android:layout_marginLeft="15dp"
+                                android:layout_marginRight="15dp"
+                                android:background="@color/light_gray"
+                                android:orientation="vertical"></LinearLayout>
+
+                            <TextView
+                                android:id="@+id/BloodGroupText"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginRight="10sp"
+                                android:layout_weight="1"
+                                android:background="#ffffff"
+                                android:ems="10"
+                                android:fontFamily="@font/regular"
+                                android:gravity="center_vertical"
+                                android:text="Blood Group"
+                                android:textColor="@color/text_primary"
+                                android:textSize="14dp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+
+                            android:layout_marginLeft="10sp"
+                            android:layout_marginTop="10sp"
+                            android:layout_marginRight="15sp">
+
+                            <LinearLayout
+                                android:id="@+id/ContainerAPositive"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/blood_bg_disable"
+                                android:gravity="center">
+
+                                <TextView
+                                    android:id="@+id/txt_Apositive"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:fontFamily="@font/regular"
+                                    android:gravity="center"
+                                    android:text="A+"
+                                    android:textColor="@color/hintColor"
+                                    android:textSize="12sp" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/ContainerANegative"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/blood_bg_disable"
+                                android:gravity="center">
+
+                                <TextView
+                                    android:id="@+id/txt_Anegative"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:fontFamily="@font/regular"
+                                    android:gravity="center"
+                                    android:text="A-"
+                                    android:textColor="@color/text_secondary"
+                                    android:textSize="12sp" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/ContainerBPositive"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/blood_bg_disable"
+                                android:gravity="center">
+
+                                <TextView
+                                    android:id="@+id/txt_Bpositive"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:fontFamily="@font/regular"
+                                    android:gravity="center"
+                                    android:text="B+"
+                                    android:textColor="@color/text_secondary"
+                                    android:textSize="12sp" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/ContainerBNegative"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/blood_bg_disable"
+                                android:gravity="center">
+
+                                <TextView
+                                    android:id="@+id/txt_Bnegative"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:fontFamily="@font/regular"
+                                    android:gravity="center"
+                                    android:text="B-"
+                                    android:textColor="@color/text_secondary"
+                                    android:textSize="12sp" />
+                            </LinearLayout>
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+
+                            android:layout_marginLeft="10sp"
+                            android:layout_marginTop="8sp"
+                            android:layout_marginRight="15sp">
+
+                            <LinearLayout
+                                android:id="@+id/ContainerABPositive"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/blood_bg_disable"
+                                android:gravity="center">
+
+                                <TextView
+                                    android:id="@+id/txt_ABpositive"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:fontFamily="@font/regular"
+                                    android:gravity="center"
+                                    android:text="AB+"
+                                    android:textColor="@color/text_secondary"
+                                    android:textSize="12sp" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/ContainerABNegative"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/blood_bg_disable"
+                                android:gravity="center">
+
+                                <TextView
+                                    android:id="@+id/txt_ABnegative"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:fontFamily="@font/regular"
+                                    android:gravity="center"
+                                    android:text="AB-"
+                                    android:textColor="@color/text_secondary"
+                                    android:textSize="12sp" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/ContainerOPositive"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/blood_bg_disable"
+                                android:gravity="center">
+
+                                <TextView
+                                    android:id="@+id/txtOpositive"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:fontFamily="@font/regular"
+                                    android:gravity="center"
+                                    android:text="O+"
+                                    android:textColor="@color/text_secondary"
+                                    android:textSize="12sp" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/ContainerONegative"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/blood_bg_disable"
+                                android:gravity="center">
+
+                                <TextView
+                                    android:id="@+id/txt_Onegative"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:fontFamily="@font/regular"
+                                    android:gravity="center"
+                                    android:text="O-"
+                                    android:textColor="@color/text_secondary"
+                                    android:textSize="12sp" />
+                            </LinearLayout>
+
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/GenderBG"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="15dp"
+                        android:background="@drawable/cud_noti"
+                        android:gravity="center_vertical"
+                        android:orientation="vertical"
+                        android:paddingTop="15sp"
+
+                        android:paddingBottom="15sp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical">
+
+                            <ImageView
+                                android:id="@+id/imageView19"
+                                android:layout_width="23dp"
+                                android:layout_height="23dp"
+                                android:layout_marginLeft="20dp"
+                                app:srcCompat="@drawable/ic_men" />
+
+                            <LinearLayout
+                                android:layout_width="1.5dp"
+                                android:layout_height="20dp"
+                                android:layout_marginLeft="15dp"
+                                android:layout_marginRight="15dp"
+                                android:background="@color/light_gray"
+                                android:orientation="vertical"></LinearLayout>
+
+                            <TextView
+                                android:id="@+id/GenderText"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginRight="10sp"
+                                android:layout_weight="1"
+                                android:background="#ffffff"
+                                android:ems="10"
+                                android:fontFamily="@font/regular"
+                                android:gravity="center_vertical"
+                                android:text="Gender"
+                                android:textColor="@color/text_primary"
+                                android:textSize="14dp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+
+                            android:layout_marginLeft="10sp"
+                            android:layout_marginTop="10sp"
+                            android:layout_marginRight="15sp">
+
+                            <LinearLayout
+                                android:id="@+id/ContainerMale"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/blood_bg_disable"
+                                android:gravity="center">
+
+                                <TextView
+                                    android:id="@+id/txtMale"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:fontFamily="@font/regular"
+                                    android:gravity="center"
+                                    android:text="Male"
+                                    android:textColor="@color/text_secondary"
+                                    android:textSize="12sp" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/ContainerFemale"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/blood_bg_disable"
+                                android:gravity="center">
+
+                                <TextView
+                                    android:id="@+id/txtFemale"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:fontFamily="@font/regular"
+                                    android:gravity="center"
+                                    android:text="Female"
+                                    android:textColor="@color/text_secondary"
+                                    android:textSize="12sp" />
+                            </LinearLayout>
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+
+                            android:layout_marginLeft="10sp"
+                            android:layout_marginTop="8sp"
+                            android:layout_marginRight="15sp">
+
+                            <LinearLayout
+                                android:id="@+id/ContainerOther"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/blood_bg_disable"
+                                android:gravity="center">
+
+                                <TextView
+                                    android:id="@+id/txtOther"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:fontFamily="@font/regular"
+                                    android:gravity="center"
+                                    android:text="Other"
+                                    android:textColor="@color/text_secondary"
+                                    android:textSize="12sp" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/ContainerPreferNotASay"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/blood_bg_disable"
+                                android:gravity="center">
+
+                                <TextView
+                                    android:id="@+id/txtPrefernotSay"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:fontFamily="@font/regular"
+                                    android:gravity="center"
+                                    android:text="Prefer not a say"
+                                    android:textColor="@color/text_secondary"
+                                    android:textSize="12sp" />
+                            </LinearLayout>
+
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/signupEmailbg"
+                        android:layout_width="match_parent"
+                        android:layout_height="55dp"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="15dp"
+                        android:background="@drawable/cud_noti"
+                        android:gravity="center_vertical"
+
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:id="@+id/imageView13"
+                            android:layout_width="23dp"
+                            android:layout_height="23dp"
+                            android:layout_marginLeft="20dp"
+                            app:srcCompat="@drawable/ic_letter" />
+
+                        <LinearLayout
+                            android:layout_width="1.5dp"
+                            android:layout_height="20dp"
+                            android:layout_marginLeft="15dp"
+                            android:layout_marginRight="15dp"
+                            android:background="@color/light_gray"
+                            android:orientation="vertical"></LinearLayout>
+
+                        <EditText
+                            android:id="@+id/emailSignupEdit"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="10sp"
+                            android:layout_weight="1"
+                            android:background="#ffffff"
+                            android:ems="10"
+                            android:fontFamily="@font/regular"
+                            android:hint="Email"
+                            android:inputType="textEmailAddress"
+                            android:textColor="@color/text_primary"
+                            android:textColorHint="@color/hintColor"
+                            android:textSize="14dp" />
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/numberBg"
+                        android:layout_width="match_parent"
+                        android:layout_height="55dp"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="15dp"
+                        android:background="@drawable/cud_noti"
+                        android:gravity="center_vertical"
+
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:id="@+id/imageView16"
+                            android:layout_width="23dp"
+                            android:layout_height="23dp"
+                            android:layout_marginLeft="20dp"
+                            app:srcCompat="@drawable/ic_calling" />
+
+                        <LinearLayout
+                            android:layout_width="1.5dp"
+                            android:layout_height="20dp"
+                            android:layout_marginLeft="15dp"
+                            android:layout_marginRight="15dp"
+                            android:background="@color/light_gray"
+                            android:orientation="vertical"></LinearLayout>
+
+                        <EditText
+                            android:id="@+id/NumberEdit"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="10sp"
+                            android:layout_weight="1"
+                            android:background="#ffffff"
+                            android:ems="10"
+                            android:fontFamily="@font/regular"
+                            android:hint="Mobile Number"
+                            android:inputType="textEmailAddress"
+                            android:textColor="@color/text_primary"
+                            android:textColorHint="@color/hintColor"
+                            android:textSize="14dp" />
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/AddressBg"
+                        android:layout_width="match_parent"
+                        android:layout_height="55dp"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="15dp"
+                        android:background="@drawable/cud_noti"
+                        android:gravity="center_vertical"
+
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:id="@+id/imageView17"
+                            android:layout_width="23dp"
+                            android:layout_height="23dp"
+                            android:layout_marginLeft="20dp"
+                            app:srcCompat="@drawable/ic_map" />
+
+                        <LinearLayout
+                            android:layout_width="1.5dp"
+                            android:layout_height="20dp"
+                            android:layout_marginLeft="15dp"
+                            android:layout_marginRight="15dp"
+                            android:background="@color/light_gray"
+                            android:orientation="vertical"></LinearLayout>
+
+                        <EditText
+                            android:id="@+id/addressEdit"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="10sp"
+                            android:layout_weight="1"
+                            android:background="#ffffff"
+                            android:ems="10"
+                            android:fontFamily="@font/regular"
+                            android:hint="Address"
+                            android:inputType="textEmailAddress"
+                            android:textColor="@color/text_primary"
+                            android:textColorHint="@color/hintColor"
+                            android:textSize="14dp" />
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/signupPasswordBg"
+                        android:layout_width="match_parent"
+                        android:layout_height="55dp"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="15dp"
+                        android:background="@drawable/cud_noti"
+                        android:gravity="center_vertical"
+
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:id="@+id/imageView14"
+                            android:layout_width="23dp"
+                            android:layout_height="23dp"
+                            android:layout_marginLeft="20dp"
+                            app:srcCompat="@drawable/ic_key_icon" />
+
+                        <LinearLayout
+                            android:layout_width="1.5dp"
+                            android:layout_height="20dp"
+                            android:layout_marginLeft="15dp"
+                            android:layout_marginRight="15dp"
+                            android:background="@color/light_gray"
+                            android:orientation="vertical"></LinearLayout>
+
+                        <EditText
+                            android:id="@+id/passwordSignupEdit"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="10sp"
+                            android:layout_weight="1"
+                            android:background="#ffffff"
+                            android:ems="10"
+                            android:fontFamily="@font/regular"
+                            android:hint="Password"
+                            android:inputType="textEmailAddress"
+                            android:textColor="@color/text_primary"
+                            android:textColorHint="@color/hintColor"
+                            android:textSize="14dp" />
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/signupConfirmPasswordBg"
+                        android:layout_width="match_parent"
+                        android:layout_height="55dp"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="15dp"
+                        android:background="@drawable/cud_noti"
+                        android:gravity="center_vertical"
+
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:id="@+id/imageView15"
+                            android:layout_width="23dp"
+                            android:layout_height="23dp"
+                            android:layout_marginLeft="20dp"
+                            app:srcCompat="@drawable/ic_key_icon" />
+
+                        <LinearLayout
+                            android:layout_width="1.5dp"
+                            android:layout_height="20dp"
+                            android:layout_marginLeft="15dp"
+                            android:layout_marginRight="15dp"
+                            android:background="@color/light_gray"
+                            android:orientation="vertical"></LinearLayout>
+
+                        <EditText
+                            android:id="@+id/ConfirmpasswordSignupEdit"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="10sp"
+                            android:layout_weight="1"
+                            android:background="#ffffff"
+                            android:ems="10"
+                            android:fontFamily="@font/regular"
+                            android:hint="Confirm Password"
+                            android:inputType="textEmailAddress"
+                            android:textColor="@color/text_primary"
+                            android:textColorHint="@color/hintColor"
+                            android:textSize="14dp" />
+
+
+                    </LinearLayout>
+
+
+                    <CheckBox
+                        android:id="@+id/mycheckbox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="I accept all Terms and Conditions."
+                        android:textSize="12sp"
+                        android:layout_marginTop="10sp"
+                        android:fontFamily="@font/regular"
+                        android:buttonTint="@color/Primary_box"
+                        android:textColor="@color/text_primary"
+                        android:outlineSpotShadowColor="@color/light_gray"
+                        android:layout_marginLeft="15sp"/>
+                    <LinearLayout
+                        android:id="@+id/signUpBtn"
+                        android:layout_width="match_parent"
+                        android:layout_height="55dp"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="15dp"
+                        android:background="@drawable/primary_color_bg"
+                        android:gravity="center"
+                        android:translationZ="10dp"
+                        android:layout_marginBottom="40dp"
+                        android:outlineSpotShadowColor="#3548FF"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:fontFamily="@font/meduim"
+                            android:text="SignUp"
+                            android:textColor="#FFFFFF"
+                            android:textSize="16dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/alreadyHaveBg"
+                        android:layout_width="match_parent"
+                        android:gravity="center"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="40sp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/regular"
+                            android:text="Already have an account ?"
+                            android:textColor="@color/text_secondary"
+                            android:textSize="14dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/meduim"
+                            android:text="  Login"
+                            android:textColor="@color/text_primary"
+                            android:textSize="14dp" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="12dp"
+                        android:fontFamily="@font/regular"
+                        android:layout_marginBottom="10dp"
+                        android:gravity="center"
+                        android:textColor="@color/text_secondary"
+                        android:text="\@All Right Reserved 2023"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

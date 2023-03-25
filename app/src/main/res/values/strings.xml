@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Health Buddy</string>
+    <color name="light_gray">#F4F4F4</color>
+    <string name="slogan">Health empowers you.</string>
+</resources>
