@@ -369,7 +369,7 @@
                                 android:background="#ffffff"
                                 android:ems="10"
                                 android:fontFamily="@font/regular"
-                                android:text="01/07/2003"
+                                android:text="08/08/2003"
                                 android:textColor="@color/text_primary"
                                 android:textSize="13dp" />
 
