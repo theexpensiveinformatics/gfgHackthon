@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<shape
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+
+    <gradient
+        android:type="radial"
+        android:centerX="50%"
+        android:centerY="100%"
+        android:startColor="@color/purple_home_bg"
+        android:centerColor="@color/bg"
+        android:endColor="@color/bg"
+        android:gradientRadius="100%"
+        />
+
+</shape>
+

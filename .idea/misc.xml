@@ -5,30 +5,55 @@
       <map>
         <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/drawable-v24/cud_noti.xml" value="0.21" />
         <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.21" />
+        <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/drawable/back_btn.xml" value="0.1935" />
         <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/drawable/blood_bg_active.xml" value="0.1935" />
         <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/drawable/blood_bg_disable.xml" value="0.1935" />
         <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/drawable/box_empty.xml" value="0.1935" />
         <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/drawable/dailog_background.xml" value="0.1245" />
+        <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/drawable/feature_1.xml" value="0.1935" />
+        <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/drawable/feature_2.xml" value="0.1935" />
+        <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/drawable/gredient_home_1.xml" value="0.1935" />
+        <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/drawable/gredient_home_2.xml" value="0.1935" />
+        <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/drawable/gredient_home_3.xml" value="0.1935" />
+        <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/drawable/gredient_list.xml" value="0.1935" />
+        <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/drawable/home_bg.xml" value="0.1935" />
+        <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/drawable/home_bg2.xml" value="0.1935" />
+        <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/drawable/ic_back.xml" value="0.1935" />
+        <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/drawable/ic_bin.xml" value="0.1935" />
         <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/drawable/ic_calander_icon.xml" value="0.21" />
         <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/drawable/ic_calling.xml" value="0.21" />
         <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/drawable/ic_eamil_sent.xml" value="0.1935" />
+        <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/drawable/ic_edit.xml" value="0.1935" />
         <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/drawable/ic_hand_heart.xml" value="0.21" />
         <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/drawable/ic_heart_icon.xml" value="0.21" />
+        <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/drawable/ic_histroy.xml" value="0.1245" />
+        <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/drawable/ic_home_outline.xml" value="0.1245" />
         <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/drawable/ic_key_icon.xml" value="0.21" />
         <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/drawable/ic_letter.xml" value="0.21" />
+        <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/drawable/ic_logout.xml" value="0.1935" />
         <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/drawable/ic_map.xml" value="0.1935" />
         <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/drawable/ic_men.xml" value="0.21" />
+        <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/drawable/ic_show_back.xml" value="0.1935" />
         <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/drawable/ic_user_icon.xml" value="0.21" />
         <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/drawable/ic_women.xml" value="0.21" />
         <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/drawable/mycheckbox.xml" value="0.1935" />
         <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/drawable/positive_dailog_ripple.xml" value="0.1935" />
         <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/drawable/postive_dailog.xml" value="0.1935" />
         <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/drawable/primary_color_bg.xml" value="0.21" />
-        <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/layout/activity_auth_signup.xml" value="0.2" />
+        <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/drawable/show_bg.xml" value="0.1935" />
+        <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/drawable/symtops.xml" value="0.1245" />
+        <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/drawable/sys_bg.xml" value="0.1935" />
+        <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/layout/activity_auth_signup.xml" value="0.264" />
         <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/layout/activity_authantication.xml" value="0.264" />
+        <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/layout/activity_home.xml" value="0.264" />
+        <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/layout/activity_home_screen2.xml" value="0.2" />
         <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/layout/activity_main.xml" value="0.176" />
         <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/layout/custom_dailog.xml" value="0.2604166666666667" />
         <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/layout/dailog_background.xml" value="0.1125" />
+        <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/layout/fragment_history.xml" value="0.4878522837706511" />
+        <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/layout/fragment_home.xml" value="0.264" />
+        <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/layout/fragment_profile.xml" value="0.264" />
+        <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/layout/fragment_third.xml" value="0.2" />
         <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/layout/loading_dailog.xml" value="0.2604166666666667" />
       </map>
     </option>

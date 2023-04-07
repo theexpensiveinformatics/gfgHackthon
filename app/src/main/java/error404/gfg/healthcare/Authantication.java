@@ -54,7 +54,7 @@ public class Authantication extends AppCompatActivity {
         activityAuthanticationBinding.createNewBg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intentSignup = new Intent(Authantication.this, Home.class);
+                Intent intentSignup = new Intent(Authantication.this, home_screen_2.class);
                 startActivity(intentSignup);
                 finish();
             }
@@ -70,6 +70,7 @@ public class Authantication extends AppCompatActivity {
         });
 
         Dailog();
+        ActivityChanger();
 
         //if user come from signup than redirect email password
         Intent upToIn = getIntent();
@@ -112,7 +113,7 @@ public class Authantication extends AppCompatActivity {
                                 {
                                     //if verified user try to login
                                     Toast.makeText(Authantication.this, "Authentication Successful", Toast.LENGTH_LONG).show();
-                                    startActivity(new Intent(getApplicationContext(), Home.class));
+                                    startActivity(new Intent(getApplicationContext(), home_screen_2.class));
                                     finish();
                                 }else
                                 {
@@ -155,6 +156,16 @@ public class Authantication extends AppCompatActivity {
             }
         });
         dialog.getWindow().getAttributes().windowAnimations = R.style.animation;
+    }
+
+    public void ActivityChanger()
+    {
+
+        if(fAuth.getCurrentUser() != null) {
+            Intent home = new Intent(Authantication.this, home_screen_2.class);
+            startActivity(home);
+            finish();
+        }
     }
 
 

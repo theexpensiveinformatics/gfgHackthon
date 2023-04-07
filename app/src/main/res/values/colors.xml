@@ -12,7 +12,18 @@
     <color name="text_secondary">#B3B3B3</color>
     <color name="Primary_box">#217AFF</color>
     <color name="bg">#FBFBFF</color>
+<!--    <color name="bg">#ECECFF</color>-->
     <color name="hintColor">@color/text_secondary</color>
     <color name="ErrorColor">#FFB5B5</color>
     <color name="trans">#00000000</color>
+    <color name="blue_home_bg">#C6D0FF</color>
+    <color name="purple_home_bg">#EAD3FF</color>
+    <color name="shadow_color">#B6CFFF</color>
+    <color name="feature_1">#86E1E2F4</color>
+    <color name="feature_2">#F1F1F1</color>
+    <color name="feature_3">#EFF7E0</color>
+    <color name="home_txt_one">#081325</color>
+    <color name="home_txt_two">#8990A8</color>
+    <color name="broadcastbg">#E6EEFF</color>
+
 </resources>
