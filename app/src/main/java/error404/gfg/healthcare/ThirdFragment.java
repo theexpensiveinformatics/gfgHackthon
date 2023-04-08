@@ -1,12 +1,25 @@
 package error404.gfg.healthcare;
 
+import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.Toast;
+
+//import com.firebase.ui.database.FirebaseRecyclerAdapter;
+//import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -14,6 +27,12 @@ import android.view.ViewGroup;
  * create an instance of this fragment.
  */
 public class ThirdFragment extends Fragment {
+    LinearLayoutManager mlinearLayoutManager;
+    RecyclerView mrecyclerView;
+    FirebaseDatabase mfirebaseDatabase;
+    DatabaseReference mdatabaseReference;
+    FirebaseRecyclerAdapter<Model,ViewHolder> firebaseRecyclerAdapter;
+    FirebaseRecyclerOptions<Model> options;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -59,6 +78,64 @@ public class ThirdFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_third, container, false);
+
+
+        View v = inflater.inflate(R.layout.fragment_third, container, false);
+
+        mlinearLayoutManager = new LinearLayoutManager(getActivity());
+        mlinearLayoutManager.setReverseLayout(true);
+        mlinearLayoutManager.setStackFromEnd(true);
+
+        mrecyclerView = v.findViewById(R.id.broadcast_recyclerView);
+        mfirebaseDatabase=FirebaseDatabase.getInstance();
+        mdatabaseReference =mfirebaseDatabase.getReference("broadcast");
+        showData();
+
+        return  v;
+    }
+
+    private void showData() {
+
+        options = new FirebaseRecyclerOptions.Builder<Model>().setQuery(mdatabaseReference,Model.class).build();
+        firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<Model, ViewHolder>(options) {
+            @Override
+            protected void onBindViewHolder(@NonNull ViewHolder holder, int position, @NonNull Model model) {
+                holder.setDeatils(getActivity().getApplicationContext(),model.getImg(), model.getHeadline(), model.getDescription(),model.getPublisher(),model.getTime(),model.getWeblink(),model.getYtlink());
+            }
+
+            @NonNull
+            @Override
+            public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+               View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.broadcast_recycler,parent,false);
+               ViewHolder viewHolder = new ViewHolder(itemView);
+               viewHolder.setOnClickListener(new ViewHolder.ClickListener() {
+                   @Override
+                   public void onItemClick(View view, int position) {
+                       Toast.makeText(getActivity(), "hi", Toast.LENGTH_SHORT).show();
+                   }
+
+                   @Override
+                   public void onItemLongClick(View view, int position) {
+                       Toast.makeText(getActivity(), "Long CLick ", Toast.LENGTH_SHORT).show();
+                   }
+               });
+                return viewHolder;
+            }
+        };
+
+        mrecyclerView.setLayoutManager(mlinearLayoutManager);
+        firebaseRecyclerAdapter.startListening();
+        mrecyclerView.setAdapter(firebaseRecyclerAdapter);
+
+
+    }
+
+    public void onStart()
+    {
+        super.onStart();
+        if(firebaseRecyclerAdapter != null)
+        {
+            firebaseRecyclerAdapter.startListening();
+        }
     }
 }

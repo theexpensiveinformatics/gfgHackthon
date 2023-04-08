@@ -59,10 +59,16 @@
             android:layout_marginRight="28dp"
             android:orientation="vertical">
 
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/broadcast_recyclerView"/>
+
             <LinearLayout
                 android:id="@+id/con_msg"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:visibility="gone"
                 android:background="@drawable/cud_noti"
                 android:orientation="vertical">
 
@@ -135,6 +141,7 @@
                 android:id="@+id/con_msg2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:visibility="gone"
                 android:background="@drawable/cud_noti"
                 android:layout_marginTop="15dp"
                 android:orientation="vertical">

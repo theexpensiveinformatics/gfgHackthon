@@ -8,8 +8,11 @@ import androidx.core.content.ContextCompat;
 import android.Manifest;
 import android.animation.ObjectAnimator;
 import android.app.AlertDialog;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.PathMeasure;
@@ -18,6 +21,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -50,6 +54,9 @@ public class ECall extends AppCompatActivity {
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
         window.setStatusBarColor(ContextCompat.getColor(this, R.color.bg));
+
+
+
 
         //status bar
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
@@ -89,6 +96,25 @@ public class ECall extends AppCompatActivity {
 
             activityEcallBinding.ifnotaddesBg.setVisibility(View.GONE);
             activityEcallBinding.ifAddedBg.setVisibility(View.VISIBLE);
+
+            //powerbutton
+            BroadcastReceiver receiver = new BroadcastReceiver() {
+                @Override
+                public void onReceive(Context context, Intent intent) {
+
+                    String s = "tel:" + numkey;
+                    Intent call = new Intent(Intent.ACTION_CALL);
+                    call.setData(Uri.parse(s));
+                    startActivity(call);
+
+                }
+            };
+
+            // on below line we are creating an intent filter.
+            IntentFilter filter = new IntentFilter(Intent.ACTION_SCREEN_ON);
+
+            // on below line we are registering receiver.
+            registerReceiver(receiver, filter);
         }
 
         activityEcallBinding.deleteCon.setOnClickListener(new View.OnClickListener() {
@@ -150,6 +176,10 @@ public class ECall extends AppCompatActivity {
                 startActivity(call);
             }
         });
+
+
+
+
 
         //onEcallBGClick
 
@@ -213,6 +243,9 @@ public class ECall extends AppCompatActivity {
                             }
                         };
                         _timer.schedule(timer, (int) (200));
+
+                        finish();
+                        Toast.makeText(ECall.this, "Emergency Number Added, Please Restart App ." , Toast.LENGTH_SHORT).show();
                     }
                 }
             });

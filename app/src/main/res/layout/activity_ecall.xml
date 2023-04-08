@@ -78,7 +78,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:visibility="gone">
+                android:visibility="visible">
 
                 <LinearLayout
                     android:id="@+id/sr_one_con"
@@ -216,7 +216,7 @@
                     android:fontFamily="@font/regular"
                     android:gravity="center"
                     android:shadowColor="@color/text_secondary"
-                    android:text="Auto calling feature is enabled,\nThis feature call automatically whenever\n your phone shaking too much."
+                    android:text="Open this app and then lock your phone.\nIt automatically calls each time you push the power button."
                     android:textSize="12dp" />
 
             </LinearLayout>
