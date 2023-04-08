@@ -27,6 +27,7 @@
                 android:layout_height="wrap_content"
                 android:src="@drawable/medical"
                 android:scaleType="fitCenter"
+                android:layout_gravity="center"
                 app:srcCompat="@drawable/medical" />
         </androidx.cardview.widget.CardView>
 
