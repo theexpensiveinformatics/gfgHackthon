@@ -20,6 +20,7 @@ import error404.gfg.healthcare.databinding.ActivityHomeScreen2Binding;
 
 public class home_screen_2 extends AppCompatActivity {
 
+
     ActivityHomeScreen2Binding activityHomeScreen2Binding;
 
     @Override
@@ -48,7 +49,7 @@ public class home_screen_2 extends AppCompatActivity {
         setContentView(view);
 
 
-                LinearLayout constraintLayout = findViewById(R.id.bg);
+        LinearLayout constraintLayout = findViewById(R.id.bg);
         AnimationDrawable animationDrawable = (AnimationDrawable) constraintLayout.getBackground();
         animationDrawable.setEnterFadeDuration(700);
         animationDrawable.setExitFadeDuration(3000);

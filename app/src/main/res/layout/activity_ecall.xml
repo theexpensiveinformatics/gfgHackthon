@@ -1,0 +1,447 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ECall">
+
+
+    <LinearLayout
+        android:id="@+id/bg_"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/gredient_list"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/top_bg"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/top_in_con"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="28dp"
+                android:layout_marginTop="45dp"
+                android:layout_marginRight="28dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+
+                <TextView
+                    android:id="@+id/textView15"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/bold"
+                    android:gravity="left"
+                    android:text="Emergency Call"
+                    android:textColor="@color/text_primary"
+                    android:textSize="22dp" />
+
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/logo_anim"
+                android:layout_width="300dp"
+                android:layout_height="190dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="30dp"
+                android:src="@drawable/ic_call" />
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/meduim"
+                android:gravity="center"
+                android:text="Be in Touch with \nYour Nears and Dears"
+                android:textColor="@color/text_primary" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/mid_bg"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="28dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="28dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/ifAdded_bg"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:id="@+id/sr_one_con"
+                    android:layout_width="match_parent"
+                    android:layout_height="130dp"
+                    android:background="@drawable/cud_noti"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:orientation="vertical">
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="70dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="18dp"
+                            android:layout_marginTop="15dp"
+                            android:layout_marginBottom="15dp"
+                            app:cardBackgroundColor="#EEEEFF"
+                            app:cardCornerRadius="6dp"
+                            app:cardElevation="0dp"
+                            app:cardMaxElevation="0dp">
+
+                            <ImageView
+                                android:id="@+id/imageView5"
+                                android:layout_width="70dp"
+                                android:layout_height="70dp"
+                                android:layout_gravity="bottom"
+                                android:src="@drawable/man" />
+                        </androidx.cardview.widget.CardView>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/setName"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="15dp"
+                            android:layout_marginTop="15dp"
+                            android:layout_marginRight="15dp"
+                            android:fontFamily="@font/semibold"
+                            android:text="Name"
+                            android:textColor="@color/text_primary" />
+
+                        <TextView
+                            android:id="@+id/setRelation"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="15dp"
+                            android:layout_marginRight="15dp"
+                            android:fontFamily="@font/regular"
+                            android:text="Relation"
+                            android:textColor="@color/text_primary"
+                            android:textSize="13dp" />
+
+                        <TextView
+                            android:id="@+id/setNumber"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="15dp"
+                            android:layout_marginRight="15dp"
+                            android:fontFamily="@font/semibold"
+                            android:text="Number"
+                            android:textColor="@color/Primary_box"
+                            android:textSize="13dp" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginRight="20dp"
+                            android:layout_marginBottom="15dp"
+                            android:gravity="center"
+                            android:orientation="horizontal">
+
+                            <LinearLayout
+                                android:id="@+id/delete_con"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:layout_marginLeft="15dp"
+                                android:layout_marginRight="10dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/blood_bg_disable"
+                                android:gravity="center"
+                                android:orientation="horizontal"
+                                android:outlineSpotShadowColor="@color/shadow_color">
+
+                                <ImageView
+                                    android:id="@+id/imageView7"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:src="@drawable/ic_bin2" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/call_con"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginRight="10dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/show_bg"
+                                android:gravity="center"
+                                android:orientation="horizontal"
+                                android:outlineSpotShadowColor="@color/shadow_color">
+
+                                <ImageView
+                                    android:id="@+id/imageView72"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:src="@drawable/ic_calling2" />
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/textView17"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="@font/regular"
+                    android:gravity="center"
+                    android:shadowColor="@color/text_secondary"
+                    android:text="Auto calling feature is enabled,\nThis feature call automatically whenever\n your phone shaking too much."
+                    android:textSize="12dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ifnotaddes_bg"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:visibility="visible">
+
+                <LinearLayout
+                    android:id="@+id/con_emeCall_details"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/blood_bg_disable"
+                    android:orientation="vertical"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="20dp"
+                    android:paddingRight="10dp"
+                    android:paddingBottom="20dp">
+
+                    <TextView
+                        android:id="@+id/textView8"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/bold"
+                        android:gravity="center"
+                        android:text="Add the Contact of person near you"
+                        android:textColor="@color/text_primary" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            android:id="@+id/NameBg"
+                            android:layout_width="match_parent"
+                            android:layout_height="55dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginRight="5dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/cud_noti"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:id="@+id/imageView13"
+                                android:layout_width="23dp"
+                                android:layout_height="23dp"
+                                android:layout_marginLeft="20dp"
+                                app:srcCompat="@drawable/ic_user_icon" />
+
+                            <LinearLayout
+                                android:layout_width="1.5dp"
+                                android:layout_height="20dp"
+                                android:layout_marginLeft="15dp"
+                                android:layout_marginRight="15dp"
+                                android:background="@color/light_gray"
+                                android:orientation="vertical"></LinearLayout>
+
+                            <EditText
+                                android:id="@+id/NameEdit"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="10sp"
+                                android:layout_weight="1"
+                                android:background="#ffffff"
+                                android:ems="10"
+                                android:fontFamily="@font/regular"
+                                android:hint="Name"
+                                android:inputType="textEmailAddress"
+                                android:textColor="@color/text_primary"
+                                android:textColorHint="@color/hintColor"
+                                android:textSize="14dp" />
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/RelationBg"
+                            android:layout_width="match_parent"
+                            android:layout_height="55dp"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/cud_noti"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:id="@+id/imageView163"
+                                android:layout_width="23dp"
+                                android:layout_height="23dp"
+                                android:layout_marginLeft="20dp"
+                                app:srcCompat="@drawable/ic_hand_heart" />
+
+                            <LinearLayout
+                                android:layout_width="1.5dp"
+                                android:layout_height="20dp"
+                                android:layout_marginLeft="15dp"
+                                android:layout_marginRight="15dp"
+                                android:background="@color/light_gray"
+                                android:orientation="vertical"></LinearLayout>
+
+                            <EditText
+                                android:id="@+id/RelationEdit"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="10sp"
+                                android:layout_weight="1"
+                                android:background="#ffffff"
+                                android:ems="10"
+                                android:fontFamily="@font/regular"
+                                android:hint="Relation"
+                                android:inputType="textEmailAddress"
+                                android:textColor="@color/text_primary"
+                                android:textColorHint="@color/hintColor"
+                                android:textSize="14dp" />
+
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/EcallBG"
+                        android:layout_width="match_parent"
+                        android:layout_height="55dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/cud_noti"
+
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:id="@+id/imageView16"
+                            android:layout_width="23dp"
+                            android:layout_height="23dp"
+                            android:layout_marginLeft="20dp"
+                            app:srcCompat="@drawable/ic_calling" />
+
+                        <LinearLayout
+                            android:layout_width="1.5dp"
+                            android:layout_height="20dp"
+                            android:layout_marginLeft="15dp"
+                            android:layout_marginRight="15dp"
+                            android:background="@color/light_gray"
+                            android:orientation="vertical"></LinearLayout>
+
+                        <TextView
+                            android:id="@+id/text91"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="5sp"
+
+                            android:background="#ffffff"
+                            android:fontFamily="@font/regular"
+                            android:text="+91"
+                            android:textColor="@color/text_primary"
+                            android:textSize="14dp" />
+
+                        <EditText
+                            android:id="@+id/EcallEdit"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="10sp"
+                            android:layout_weight="1"
+                            android:background="#ffffff"
+                            android:ems="5"
+                            android:fontFamily="@font/regular"
+                            android:hint="Enter Mobile Number"
+                            android:inputType="number"
+                            android:textColor="@color/text_primary"
+                            android:textColorHint="@color/hintColor"
+                            android:textSize="14dp" />
+
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/grantPermissionBg"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/cud_noti"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:outlineSpotShadowColor="#8B96FF">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/meduim"
+                        android:text="Grant Permission"
+                        android:textColor="@color/Primary_box"
+                        android:textSize="16dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/addNumBg"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="40dp"
+                    android:background="@drawable/primary_color_bg"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:outlineSpotShadowColor="#8B96FF">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/meduim"
+                        android:text="Add Number"
+                        android:textColor="#FFFFFF"
+                        android:textSize="16dp" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
