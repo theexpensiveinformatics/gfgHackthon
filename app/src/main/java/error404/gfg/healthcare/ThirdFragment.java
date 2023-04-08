@@ -111,7 +111,12 @@ public class ThirdFragment extends Fragment {
                viewHolder.setOnClickListener(new ViewHolder.ClickListener() {
                    @Override
                    public void onItemClick(View view, int position) {
+
                        Toast.makeText(getActivity(), "hi", Toast.LENGTH_SHORT).show();
+//                       Intent i = new Intent(getActivity(), Artical.class);
+//                       startActivity(i);
+
+
                    }
 
                    @Override

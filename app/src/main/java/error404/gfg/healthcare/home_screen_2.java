@@ -49,6 +49,7 @@ public class home_screen_2 extends AppCompatActivity {
         setContentView(view);
 
 
+        //animation Background
         LinearLayout constraintLayout = findViewById(R.id.bg);
         AnimationDrawable animationDrawable = (AnimationDrawable) constraintLayout.getBackground();
         animationDrawable.setEnterFadeDuration(700);

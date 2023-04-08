@@ -1,9 +1,191 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/arcbg"
     android:layout_width="match_parent"
+    android:layout_weight="1"
     android:layout_height="match_parent"
+    android:background="@drawable/gredient_list"
     tools:context=".Artical">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <ScrollView
+        android:id="@+id/scr_arc"
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/in_src"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:id="@+id/top_container"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="45dp"
+                android:layout_marginRight="15dp"
+                android:background="@drawable/artical_img_bg"
+                android:orientation="vertical"
+                android:outlineAmbientShadowColor="@color/light_gray"
+                android:outlineSpotShadowColor="#4966B1"
+                android:translationZ="80dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="210dp"
+                        android:layout_margin="8dp"
+                        android:background="@color/broadcastbg"
+                        app:cardBackgroundColor="@color/broadcastbg"
+                        app:cardCornerRadius="15dip"
+                        app:cardElevation="0dp"
+                        app:cardMaxElevation="0dp">
+
+                        <ImageView
+                            android:id="@+id/imageView8"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:srcCompat="@drawable/medical" />
+                    </androidx.cardview.widget.CardView>
+
+                    <TextView
+                        android:id="@+id/headtxt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginBottom="20dp"
+                        android:fontFamily="@font/bold"
+                        android:text="ResQMe - Your Personal Health Assistant"
+                        android:textColor="@color/text_primary"
+                        android:textSize="18dp" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/con_mid"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="15dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:outlineAmbientShadowColor="@color/light_gray"
+                android:outlineSpotShadowColor="#4966B1"
+                android:translationZ="65dp"
+                android:background="@drawable/bg_dec"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/description_arc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="45dp"
+                    android:layout_marginRight="30dp"
+                    android:layout_marginBottom="30dp"
+                    android:fontFamily="@font/regular_e"
+                    android:text="• ResQMe is a personal health assistant that helps you keep track of your symptoms.\n• Provides you with instant feedback. \n• With ResQMe, you can check your symptoms and get an instant diagnosis. \n• You can also take fun quizzes to learn more about your health and get personalized recommendations based on your answers. \n• That’s great! Is there anything specific you would like me to help you with?"
+                    android:textColor="@color/text_primary"
+                    android:textSize="16dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/publisherArc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginBottom="25dp"
+                        android:fontFamily="@font/regular_e"
+                        android:text="ResQMe"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="15dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/timeArc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginBottom="25dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/regular_e"
+                        android:text="8:30, 30 February 2023"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="12dp"
+                        android:textStyle="italic" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:translationZ="100dp"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/weblinkBg"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginBottom="200dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/btn_arc_bg"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/meduim"
+                        android:text="WebLink"
+                        android:textColor="#FFFFFF"
+                        android:textSize="14dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ytLinkBg"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginBottom="40dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/btn_arc_bg"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/meduim"
+                        android:text="YoutubeLink"
+                        android:textColor="#FFFFFF"
+                        android:textSize="14dp" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
