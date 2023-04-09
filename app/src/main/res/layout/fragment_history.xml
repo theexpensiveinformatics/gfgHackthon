@@ -36,7 +36,7 @@
                     android:layout_weight="1"
                     android:fontFamily="@font/bold"
                     android:gravity="left"
-                    android:text="Symptom Reports"
+                    android:text="Symptoms Reports"
                     android:textColor="@color/text_primary"
                     android:textSize="22dp" />
 
@@ -70,7 +70,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/meduim"
                 android:gravity="center"
-                android:text="Keep your\nSymptops Report Clear."
+                android:text="Keep your\nSymptoms Report Clear."
                 android:textColor="@color/text_primary" />
 
         </LinearLayout>
@@ -166,7 +166,7 @@
                         android:layout_marginTop="1dp"
                         android:layout_marginRight="15dp"
                         android:fontFamily="@font/semibold"
-                        android:text="Symtop Name"
+                        android:text="Symptom Name"
                         android:textColor="@color/Primary_box"
                         android:textSize="13dp" />
 
@@ -283,7 +283,7 @@
                         android:layout_marginTop="1dp"
                         android:layout_marginRight="15dp"
                         android:fontFamily="@font/semibold"
-                        android:text="Symtop Name"
+                        android:text="Symptoms Name"
                         android:textColor="@color/Primary_box"
                         android:textSize="13dp" />
 

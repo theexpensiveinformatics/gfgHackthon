@@ -27,7 +27,7 @@ import error404.gfg.healthcare.databinding.ActivityMainBinding;
 
 public class Authantication extends AppCompatActivity {
     FirebaseAuth fAuth;
-    Dialog dialog;
+    Dialog dialog,loadingDailog;
 
 
     //activityBinding
@@ -68,7 +68,7 @@ public class Authantication extends AppCompatActivity {
 
             }
         });
-
+        LoadingDailog();
         Dailog();
         ActivityChanger();
 
@@ -102,7 +102,7 @@ public class Authantication extends AppCompatActivity {
                     activityAuthanticationBinding.passwordBg.requestFocus();
                 }
                 else{
-
+                    loadingDailog.show();
                     //Authenticate the user
                     fAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
@@ -117,6 +117,7 @@ public class Authantication extends AppCompatActivity {
                                     finish();
                                 }else
                                 {
+                                    loadingDailog.dismiss();
                                     dialog.show();
 //                                    Toast.makeText(Authantication.this, "Please Verify your email" , Toast.LENGTH_LONG).show();
                                 }
@@ -166,6 +167,17 @@ public class Authantication extends AppCompatActivity {
             startActivity(home);
             finish();
         }
+    }
+
+    public void LoadingDailog()
+    {
+        //dailogLoading
+        loadingDailog = new Dialog(Authantication.this);
+        loadingDailog.setContentView(R.layout.loading_dailog);
+        loadingDailog.getWindow().setBackgroundDrawable(getDrawable(R.color.trans));
+        loadingDailog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+        loadingDailog.setCancelable(false);
+        loadingDailog.getWindow().getAttributes().windowAnimations = R.style.animation;
     }
 
 

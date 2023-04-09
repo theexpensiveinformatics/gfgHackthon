@@ -116,7 +116,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
                         android:fontFamily="@font/bold"
-                        android:text="Symptop\nChecker"
+                        android:text="Symptoms\nChecker"
                         android:textColor="@color/home_txt_one" />
 
                     <TextView
@@ -126,7 +126,7 @@
                         android:layout_marginLeft="20dp"
                         android:layout_marginTop="5dp"
                         android:fontFamily="@font/meduim"
-                        android:text="To find out what's\ncausing your\nsymptom."
+                        android:text="To find out what's\ncausing your\nSymptoms."
                         android:textColor="@color/home_txt_two" />
                 </LinearLayout>
 
@@ -270,7 +270,7 @@
                             android:layout_marginLeft="20dp"
                             android:layout_marginTop="20dp"
                             android:fontFamily="@font/bold"
-                            android:text="Reports of\nSymptop"
+                            android:text="Reports of\nSymptoms"
                             android:textColor="@color/home_txt_one" />
 
                         <ImageView

@@ -30,6 +30,7 @@
                 android:layout_marginRight="15dp"
                 android:background="@drawable/artical_img_bg"
                 android:orientation="vertical"
+
                 android:outlineAmbientShadowColor="@color/light_gray"
                 android:outlineSpotShadowColor="#4966B1"
                 android:translationZ="80dp">
@@ -42,6 +43,7 @@
                     <androidx.cardview.widget.CardView
                         android:layout_width="match_parent"
                         android:layout_height="210dp"
+                        android:transitionName="z"
                         android:layout_margin="8dp"
                         android:background="@color/broadcastbg"
                         app:cardBackgroundColor="@color/broadcastbg"

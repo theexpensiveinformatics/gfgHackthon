@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.core.app.ActivityOptionsCompat;
+import androidx.core.view.ViewCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -115,7 +117,9 @@ public class ThirdFragment extends Fragment {
                         arc.putExtra("time",model.getTime());
                         arc.putExtra("weblink",model.getWeblink());
                         arc.putExtra("ytlink",model.getYtlink());
-                        startActivity(arc);
+                        ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(getActivity(),view.findViewById(R.id.cardView), ViewCompat.getTransitionName(view.findViewById(R.id.cardView)));
+                        startActivity(arc,options.toBundle());
+
                     }
 
                     @Override
