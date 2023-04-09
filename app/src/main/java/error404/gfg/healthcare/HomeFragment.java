@@ -4,6 +4,8 @@ import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.core.app.ActivityOptionsCompat;
 import androidx.core.view.ViewCompat;
 import androidx.fragment.app.Fragment;
@@ -15,6 +17,17 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.ktx.Firebase;
 
 import error404.gfg.healthcare.databinding.ActivityHomeScreen2Binding;
 
@@ -24,10 +37,9 @@ import error404.gfg.healthcare.databinding.ActivityHomeScreen2Binding;
  * create an instance of this fragment.
  */
 public class HomeFragment extends Fragment {
-
     LinearLayout ECallCon;
     ImageView imageEme;
-    TextView textView13;
+    TextView textView13,user_Name;
 
 
     // TODO: Rename parameter arguments, choose names that match
@@ -77,9 +89,14 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        FirebaseAuth fAuth = FirebaseAuth.getInstance();
+        FirebaseUser firebaseUser = fAuth.getCurrentUser();
+        String uid = firebaseUser.getUid();
+
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_home, container, false);
-
+        user_Name = v.findViewById(R.id.textView4);
         textView13=v.findViewById(R.id.textView13);
         imageEme=v.findViewById(R.id.imageView23);
         ECallCon = v.findViewById(R.id.call_con);
@@ -94,11 +111,24 @@ public class HomeFragment extends Fragment {
 //                pairs[1]=new Pair<View,String>(imageEme,"example");
 //                ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(getActivity(),pairs);
                 startActivity(ecall,options.toBundle());
-
             }
         });
+        DatabaseReference DBref = FirebaseDatabase.getInstance().getReference();
+        DatabaseReference NameRef = DBref.child("users").child(uid);
+        NameRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                String firstName = snapshot.child("FirstName").getValue(String.class);
+                String lastName = snapshot.child("LastName").getValue(String.class);
+                String name = firstName + " " + lastName;
+                user_Name.setText(name);
+            }
 
-
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(getActivity(),""+error,Toast.LENGTH_SHORT).show();
+            }
+        });
         return v;
     }
 }

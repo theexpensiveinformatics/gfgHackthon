@@ -443,6 +443,7 @@ public class Auth_signup extends AppCompatActivity {
         user.put("ConfirmPassword",ConfirmPassword);
         user.put("BloodGroup",Str_BloodGroup);
         user.put("Gender",Str_Gender);
+        user.put("BirthDate", Str_BirthDate);
 
         dbRef.child(uid).setValue(user)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
