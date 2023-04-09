@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AnimationUtils;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
@@ -101,6 +102,30 @@ public class ThirdFragment extends Fragment {
             @Override
             protected void onBindViewHolder(@NonNull ViewHolder holder, int position, @NonNull Model model) {
                 holder.setDeatils(getActivity().getApplicationContext(),model.getImg(), model.getHeadline(), model.getDescription(),model.getPublisher(),model.getTime(),model.getWeblink(),model.getYtlink());
+                holder.mview.startAnimation(AnimationUtils.loadAnimation(holder.itemView.getContext(),R.anim.falldown));
+
+                holder.setOnClickListener(new ViewHolder.ClickListener() {
+                    @Override
+                    public void onItemClick(View view, int position) {
+
+                        Intent arc = new Intent(getActivity(), Artical.class);
+                        arc.putExtra("image",model.getImg());
+                        arc.putExtra("headline",model.getHeadline());
+                        arc.putExtra("description",model.getDescription());
+                        arc.putExtra("publisher",model.getPublisher());
+                        arc.putExtra("time",model.getTime());
+                        arc.putExtra("weblink",model.getWeblink());
+                        arc.putExtra("ytlink",model.getYtlink());
+                        startActivity(arc);
+                    }
+
+                    @Override
+                    public void onItemLongClick(View view, int position) {
+
+                    }
+                });
+
+
             }
 
             @NonNull
@@ -112,9 +137,7 @@ public class ThirdFragment extends Fragment {
                    @Override
                    public void onItemClick(View view, int position) {
 
-                       Toast.makeText(getActivity(), "hi", Toast.LENGTH_SHORT).show();
-//                       Intent i = new Intent(getActivity(), Artical.class);
-//                       startActivity(i);
+                       //on click
 
 
                    }
