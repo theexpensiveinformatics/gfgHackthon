@@ -163,7 +163,7 @@ public class Authantication extends AppCompatActivity {
     public void ActivityChanger()
     {
 
-        if(fAuth.getCurrentUser() != null) {
+        if(fAuth.getCurrentUser() != null && fAuth.getCurrentUser().isEmailVerified()) {
             Intent home = new Intent(Authantication.this, home_screen_2.class);
             startActivity(home);
             finish();

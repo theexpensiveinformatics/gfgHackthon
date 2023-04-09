@@ -427,6 +427,7 @@ public class Auth_signup extends AppCompatActivity {
         });
     }
     private void uploadData() {
+        String uid = fAuth.getUid();
         dbRef=reference.child("users");
         String key = dbRef.push().getKey();
         reference.child("users");
@@ -443,7 +444,7 @@ public class Auth_signup extends AppCompatActivity {
         user.put("BloodGroup",Str_BloodGroup);
         user.put("Gender",Str_Gender);
 
-        dbRef.child(key).setValue(user)
+        dbRef.child(uid).setValue(user)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
@@ -462,7 +463,7 @@ public class Auth_signup extends AppCompatActivity {
                     }
                 });
 
-        FirebaseFirestore.getInstance().collection("users").document(key).set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+        FirebaseFirestore.getInstance().collection("users").document(uid).set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 //data updated successfully in FirebaseFirestore
