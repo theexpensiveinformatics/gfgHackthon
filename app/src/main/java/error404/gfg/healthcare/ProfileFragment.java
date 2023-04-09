@@ -18,7 +18,7 @@ import com.google.firebase.auth.FirebaseAuth;
  * create an instance of this fragment.
  */
 public class ProfileFragment extends Fragment {
-    LinearLayout logoutBg;
+    LinearLayout logoutBg,firstNameBg;
     FirebaseAuth firebaseAuth;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -65,6 +65,14 @@ public class ProfileFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v =inflater.inflate(R.layout.fragment_profile, container, false);
+
+        firstNameBg = v.findViewById(R.id.firstNameBg);
+        firstNameBg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
 
         logoutBg=v.findViewById(R.id.logoutBg);
         logoutBg.setOnClickListener(new View.OnClickListener() {

@@ -117,13 +117,14 @@ public class Authantication extends AppCompatActivity {
                                     finish();
                                 }else
                                 {
-                                    loadingDailog.dismiss();
+                                    loadingDailog.cancel();
                                     dialog.show();
 //                                    Toast.makeText(Authantication.this, "Please Verify your email" , Toast.LENGTH_LONG).show();
                                 }
 
 
                             } else {
+                                loadingDailog.cancel();
                                 Toast.makeText(Authantication.this, "Error !!" + Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_LONG).show();
 
                             }

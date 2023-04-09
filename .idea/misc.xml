@@ -12,7 +12,9 @@
         <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/drawable/blood_bg_disable.xml" value="0.1935" />
         <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/drawable/box_empty.xml" value="0.1935" />
         <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/drawable/broadcast_bg.xml" value="0.188" />
+        <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/drawable/broadcast_bg_2.xml" value="0.1885" />
         <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/drawable/btn_arc_bg.xml" value="0.188" />
+        <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/drawable/cud_noti_2.xml" value="0.1885" />
         <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/drawable/dailog_background.xml" value="0.1245" />
         <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/drawable/feature_1.xml" value="0.1935" />
         <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/drawable/feature_2.xml" value="0.1935" />
@@ -46,9 +48,11 @@
         <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/drawable/positive_dailog_ripple.xml" value="0.1935" />
         <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/drawable/postive_dailog.xml" value="0.1935" />
         <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/drawable/primary_color_bg.xml" value="0.21" />
+        <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/drawable/primary_color_bg_2.xml" value="0.206" />
         <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/drawable/show_bg.xml" value="0.1935" />
         <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/drawable/symtops.xml" value="0.1245" />
         <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/drawable/sys_bg.xml" value="0.1935" />
+        <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/drawable/sys_bg_2.xml" value="0.1885" />
         <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/layout/activity_artical.xml" value="0.2" />
         <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/layout/activity_auth_signup.xml" value="0.264" />
         <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/layout/activity_authantication.xml" value="0.264" />
