@@ -35,6 +35,7 @@
                 <TextView
                     android:id="@+id/textView15"
                     android:layout_width="wrap_content"
+
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:fontFamily="@font/bold"
@@ -51,6 +52,7 @@
                 android:layout_height="190dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="30dp"
+                android:transitionName="example"
                 android:src="@drawable/ic_call" />
 
             <TextView
@@ -58,6 +60,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/meduim"
+
                 android:gravity="center"
                 android:text="Be in Touch with \nYour Nears and Dears"
                 android:textColor="@color/text_primary" />
@@ -82,6 +85,7 @@
 
                 <LinearLayout
                     android:id="@+id/sr_one_con"
+
                     android:layout_width="match_parent"
                     android:layout_height="130dp"
                     android:background="@drawable/cud_noti"

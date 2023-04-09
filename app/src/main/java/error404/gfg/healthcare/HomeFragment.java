@@ -1,14 +1,20 @@
 package error404.gfg.healthcare;
 
+import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.core.app.ActivityOptionsCompat;
+import androidx.core.view.ViewCompat;
 import androidx.fragment.app.Fragment;
 
+import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import error404.gfg.healthcare.databinding.ActivityHomeScreen2Binding;
 
@@ -20,6 +26,8 @@ import error404.gfg.healthcare.databinding.ActivityHomeScreen2Binding;
 public class HomeFragment extends Fragment {
 
     LinearLayout ECallCon;
+    ImageView imageEme;
+    TextView textView13;
 
 
     // TODO: Rename parameter arguments, choose names that match
@@ -72,14 +80,20 @@ public class HomeFragment extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_home, container, false);
 
-
-
+        textView13=v.findViewById(R.id.textView13);
+        imageEme=v.findViewById(R.id.imageView23);
         ECallCon = v.findViewById(R.id.call_con);
         ECallCon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent ecall = new Intent(getActivity(), ECall.class);
-                startActivity(ecall);
+                ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(getActivity(),imageEme, ViewCompat.getTransitionName(imageEme));
+
+//                Pair[] pairs=new Pair[2];
+//                pairs[0]=new Pair<View,String >(textView13,"ecallTxt");
+//                pairs[1]=new Pair<View,String>(imageEme,"example");
+//                ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(getActivity(),pairs);
+                startActivity(ecall,options.toBundle());
 
             }
         });

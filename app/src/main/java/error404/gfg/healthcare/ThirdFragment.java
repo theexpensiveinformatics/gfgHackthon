@@ -103,7 +103,6 @@ public class ThirdFragment extends Fragment {
             protected void onBindViewHolder(@NonNull ViewHolder holder, int position, @NonNull Model model) {
                 holder.setDeatils(getActivity().getApplicationContext(),model.getImg(), model.getHeadline(), model.getDescription(),model.getPublisher(),model.getTime(),model.getWeblink(),model.getYtlink());
                 holder.mview.startAnimation(AnimationUtils.loadAnimation(holder.itemView.getContext(),R.anim.falldown));
-
                 holder.setOnClickListener(new ViewHolder.ClickListener() {
                     @Override
                     public void onItemClick(View view, int position) {
