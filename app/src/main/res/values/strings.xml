@@ -17,5 +17,29 @@
     <string name="resuscitation">Resuscitation</string>
     <string name="seizure">Seizure</string>
     <string name="stroke">Stroke</string>
+    <string name="minor">Minor</string>
+    <string name="allergic_reaction">Allergic Reaction</string>
+    <string name="cold">Cold</string>
+    <string name="diabetes">Diabetes</string>
+    <string name="faint">Faint</string>
+    <string name="heat">Heat</string>
+    <string name="hyperventilation">Hyperventilation</string>
+    <string name="bites_Stings">Bites and Stings</string>
+    <string name="disasters">Disasters</string>
+    <string name="earth_quakes">Earth Quakes</string>
+    <string name="land_slides">Land Slides</string>
+    <string name="floods">Floods</string>
+    <string name="tsunami">Tsunami</string>
+    <string name="cyclones">Cyclones</string>
+    <string name="fire">Fire</string>
+    <string name="techniques">Techniques</string>
+    <string name="assessing_the_situation">Assessing the Situation</string>
+    <string name="treat_shock">Treat Shock</string>
+    <string name="hygine">Hygine</string>
+    <string name="using_an_aed">Using an AED</string>
+    <string name="opening_airWays">Opening Airways</string>
+    <string name="recovery_position">Recovery Position</string>
+    <string name="helplineNumber">Helpline Number</string>
+
 
 </resources>
