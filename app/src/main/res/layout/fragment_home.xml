@@ -53,7 +53,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="-1dp"
                         android:fontFamily="@font/bold"
-                        android:text="Krushang Patel"
+                        android:text="User Name"
                         android:textColor="@color/Primary_box"
                         android:textSize="16sp" />
                 </LinearLayout>
