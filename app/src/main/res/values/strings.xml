@@ -2,6 +2,20 @@
     <string name="app_name">ResQMe</string>
     <color name="light_gray">#F4F4F4</color>
     <string name="slogan">Health empowers you.</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
+    <string name="firstAidTips">First Aid Tips</string>
+    <string name="major">Major</string>
+    <string name="ashtma">Asthma Attack</string>
+    <string name="bleeding">Bleeding</string>
+    <string name="bones_and_muscles">Bones and Muscles</string>
+    <string name="burns">Burns</string>
+    <string name="chest_pain">Chest Pain</string>
+    <string name="choking">Choking</string>
+    <string name="drowning">Drowning</string>
+    <string name="headInjury">Head Injury</string>
+    <string name="poisoning">Poisoning</string>
+    <string name="resuscitation">Resuscitation</string>
+    <string name="seizure">Seizure</string>
+    <string name="stroke">Stroke</string>
+
 </resources>

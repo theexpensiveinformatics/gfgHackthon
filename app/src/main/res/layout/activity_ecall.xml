@@ -52,8 +52,8 @@
                 android:layout_height="190dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="30dp"
-                android:transitionName="example"
-                android:src="@drawable/ic_call" />
+                android:src="@drawable/ic_call"
+                android:transitionName="example" />
 
             <TextView
                 android:id="@+id/textView6"

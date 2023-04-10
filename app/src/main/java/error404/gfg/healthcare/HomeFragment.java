@@ -37,7 +37,7 @@ import error404.gfg.healthcare.databinding.ActivityHomeScreen2Binding;
  * create an instance of this fragment.
  */
 public class HomeFragment extends Fragment {
-    LinearLayout ECallCon;
+    LinearLayout ECallCon,instuctor_Con;
     ImageView imageEme;
     TextView textView13,user_Name;
 
@@ -129,6 +129,20 @@ public class HomeFragment extends Fragment {
                 Toast.makeText(getActivity(),""+error,Toast.LENGTH_SHORT).show();
             }
         });
+
+
+
+        //instuctor
+        instuctor_Con=v.findViewById(R.id.instractor_con);
+        instuctor_Con.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent instructor = new Intent(getActivity(), firstAidTips.class);
+                startActivity(instructor);
+            }
+        });
+
+
         return v;
     }
 }
