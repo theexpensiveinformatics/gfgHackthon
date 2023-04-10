@@ -11,13 +11,14 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:scrollbars="none">
 
         <LinearLayout
             android:id="@+id/inscr_fid"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <LinearLayout
                 android:id="@+id/top_in_con_firstAId"
@@ -70,13 +71,14 @@
                     <HorizontalScrollView
                         android:id="@+id/scr_major"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                        android:layout_height="match_parent"
+                        android:scrollbars="none">
 
                         <LinearLayout
                             android:id="@+id/scr_major_in"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
-                            android:orientation="horizontal" >
+                            android:orientation="horizontal">
 
                             <LinearLayout
                                 android:id="@+id/con_asthma"
@@ -526,9 +528,9 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="10dp"
+                                android:layout_marginRight="20dp"
                                 android:background="@drawable/first_aid_con_bg"
                                 android:gravity="center"
-                                android:layout_marginRight="20dp"
                                 android:orientation="vertical">
 
                                 <androidx.cardview.widget.CardView
@@ -563,7 +565,6 @@
                             </LinearLayout>
 
 
-
                         </LinearLayout>
                     </HorizontalScrollView>
                 </LinearLayout>
@@ -596,13 +597,14 @@
                     <HorizontalScrollView
                         android:id="@+id/minor_src"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                        android:layout_height="match_parent"
+                        android:scrollbars="none">
 
                         <LinearLayout
                             android:id="@+id/minor_in_src"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
-                            android:orientation="horizontal" >
+                            android:orientation="horizontal">
 
 
                             <LinearLayout
@@ -852,9 +854,9 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="10dp"
+                                android:layout_marginRight="20dp"
                                 android:background="@drawable/first_aid_con_bg"
                                 android:gravity="center"
-                                android:layout_marginRight="20dp"
                                 android:orientation="vertical">
 
                                 <androidx.cardview.widget.CardView
@@ -889,9 +891,6 @@
                             </LinearLayout>
 
 
-
-
-
                         </LinearLayout>
                     </HorizontalScrollView>
                 </LinearLayout>
@@ -924,13 +923,14 @@
                     <HorizontalScrollView
                         android:id="@+id/disaster_src"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                        android:layout_height="match_parent"
+                        android:scrollbars="none">
 
                         <LinearLayout
                             android:id="@+id/disaster_in_src"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
-                            android:orientation="horizontal" >
+                            android:orientation="horizontal">
 
 
                             <LinearLayout
@@ -1185,6 +1185,7 @@
                 android:id="@+id/techqnies_con"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginBottom="40dp"
                 android:orientation="vertical">
 
                 <TextView
@@ -1208,13 +1209,14 @@
                     <HorizontalScrollView
                         android:id="@+id/techqnies_src"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                        android:layout_height="match_parent"
+                        android:scrollbars="none">
 
                         <LinearLayout
                             android:id="@+id/techqnies_in_src"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
-                            android:orientation="horizontal" >
+                            android:orientation="horizontal">
 
 
                             <LinearLayout
@@ -1461,44 +1463,6 @@
 
 
                         </LinearLayout>
-                    </HorizontalScrollView>
-                </LinearLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/helpline_con"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/helplineTxt"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="25dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginBottom="10dp"
-                    android:fontFamily="@font/semibold_e"
-                    android:text="@string/helplineNumber"
-                    android:textColor="@color/text_secondary"
-                    android:textSize="18dp" />
-
-                <LinearLayout
-                    android:id="@+id/src_helpline_con"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
-
-                    <HorizontalScrollView
-                        android:id="@+id/src_helpline"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
-
-                        <LinearLayout
-                            android:id="@+id/helpline_src_in"
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:orientation="vertical" />
                     </HorizontalScrollView>
                 </LinearLayout>
             </LinearLayout>
