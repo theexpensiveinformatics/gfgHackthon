@@ -56,8 +56,9 @@ public class firstAidTips extends AppCompatActivity {
             public void onClick(View v) {
                 Intent earthIntent = new Intent(firstAidTips.this,Disasters.class);
                 earthIntent.putExtra("type","earthQ");
-                ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(firstAidTips.this,activityFirstAidTipsBinding.earthQuacksImg, ViewCompat.getTransitionName(activityFirstAidTipsBinding.earthQuacksImg));
-                startActivity(earthIntent,options.toBundle());
+//                ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(firstAidTips.this,activityFirstAidTipsBinding.earthQuacksImg, ViewCompat.getTransitionName(activityFirstAidTipsBinding.earthQuacksImg));
+//                startActivity(earthIntent,options.toBundle());
+                startActivity(earthIntent);
             }
         });
 
