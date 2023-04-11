@@ -76,7 +76,6 @@ public class Authantication extends AppCompatActivity {
         Intent upToIn = getIntent();
         String email = upToIn.getStringExtra("Email");
         String password = upToIn.getStringExtra("Password");
-
         activityAuthanticationBinding.editEmail.setText(email);
         activityAuthanticationBinding.editPassword.setText(password);
 

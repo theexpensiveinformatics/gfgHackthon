@@ -1,8 +1,11 @@
 package error404.gfg.healthcare;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityOptionsCompat;
 import androidx.core.content.ContextCompat;
+import androidx.core.view.ViewCompat;
 
+import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Build;
 import android.os.Bundle;
@@ -11,7 +14,11 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.LinearLayout;
 
+//import error404.gfg.healthcare.databinding.ActivityAuthanticationBinding;
+import error404.gfg.healthcare.databinding.ActivityFirstAidTipsBinding;
+
 public class firstAidTips extends AppCompatActivity {
+    ActivityFirstAidTipsBinding activityFirstAidTipsBinding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +43,24 @@ public class firstAidTips extends AppCompatActivity {
         animationDrawable.setEnterFadeDuration(700);
         animationDrawable.setExitFadeDuration(3000);
         animationDrawable.start();
+
+
+        //activityBinding
+        activityFirstAidTipsBinding = ActivityFirstAidTipsBinding.inflate(getLayoutInflater());
+        View view = activityFirstAidTipsBinding.getRoot();
+        setContentView(view);
+
+
+        activityFirstAidTipsBinding.earthQuacks.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent earthIntent = new Intent(firstAidTips.this,Disasters.class);
+                earthIntent.putExtra("type","earthQ");
+                ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(firstAidTips.this,activityFirstAidTipsBinding.earthQuacksImg, ViewCompat.getTransitionName(activityFirstAidTipsBinding.earthQuacksImg));
+                startActivity(earthIntent,options.toBundle());
+            }
+        });
+
 
     }
 }

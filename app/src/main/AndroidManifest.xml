@@ -19,6 +19,9 @@
         android:theme="@style/Theme.AppName"
         tools:targetApi="31">
         <activity
+            android:name=".Disasters"
+            android:exported="false" />
+        <activity
             android:name=".firstAidTips"
             android:exported="false" />
         <activity

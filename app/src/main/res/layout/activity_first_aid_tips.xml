@@ -949,6 +949,7 @@
                                     app:cardBackgroundColor="@color/firstAidCardviewbg"
                                     app:cardCornerRadius="16dp"
                                     app:cardElevation="0dp"
+
                                     app:cardMaxElevation="0dp">
 
                                     <ImageView
@@ -956,6 +957,7 @@
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:layout_margin="10dp"
+                                        android:transitionName="d"
                                         app:srcCompat="@drawable/ic_earthquackes" />
 
                                 </androidx.cardview.widget.CardView>

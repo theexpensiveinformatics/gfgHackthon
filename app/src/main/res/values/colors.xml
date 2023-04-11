@@ -28,4 +28,8 @@
     <color name="broadcastbg">#E6EEFF</color>
     <color name="firstAidCardviewbg">#E6EEFF</color>
 
+    <color name="one">#E4D3FF</color>
+    <color name="two">#D2D6FF</color>
+    <color name="three">#D2ECFF</color>
+
 </resources>
