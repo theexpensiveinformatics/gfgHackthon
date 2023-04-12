@@ -28,6 +28,7 @@
             android:layout_marginLeft="0.5dp"
             android:layout_height="wrap_content"
             android:text="QMe"
+            android:textColor="@color/Primary_box"
             android:id="@+id/QMe"
             android:fontFamily="@font/bold"
             android:textSize="22dp"/>

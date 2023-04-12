@@ -18,6 +18,7 @@ import android.widget.LinearLayout;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 import error404.gfg.healthcare.databinding.ActivityHomeScreen2Binding;
 
@@ -33,6 +34,8 @@ public class home_screen_2 extends AppCompatActivity {
         setContentView(R.layout.activity_home_screen2);
 
         mfirebaseDatabase= FirebaseDatabase.getInstance();
+        FirebaseMessaging.getInstance().subscribeToTopic("notification");
+        FirebaseMessaging.getInstance().subscribeToTopic("banner");
         mdatabaseReference =mfirebaseDatabase.getReference("broadcast");
         //status bar
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);

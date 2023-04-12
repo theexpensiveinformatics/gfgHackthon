@@ -73,6 +73,27 @@ public class Disasters extends AppCompatActivity {
 
         }
 
+        if(type.equals("fire"))
+        {
+            //imageView
+            activityDisastersBinding.imageDis.setImageResource(R.drawable.ic_fire);
+
+            //containers
+            activityDisastersBinding.conOne.setVisibility(View.VISIBLE);
+            activityDisastersBinding.conTwo.setVisibility(View.VISIBLE);
+            activityDisastersBinding.conThree.setVisibility(View.VISIBLE);
+            activityDisastersBinding.conFour.setVisibility(View.VISIBLE);
+
+            //text & Strings
+            activityDisastersBinding.headtxt.setText(R.string.fire);
+            activityDisastersBinding.oneHeadTxt.setText(R.string.fire_head1);
+            activityDisastersBinding.oneDesTxt.setText(R.string.fire_des1);
+            activityDisastersBinding.twoHeadTxt.setText(R.string.fire_head2);
+            activityDisastersBinding.threeHeadTxt.setText(R.string.fire_head3);
+            activityDisastersBinding.fourHeadTxt.setText(R.string.fire_head4);
+
+        }
+
 
     }
 }

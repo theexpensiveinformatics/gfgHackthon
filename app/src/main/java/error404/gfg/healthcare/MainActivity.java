@@ -1,5 +1,6 @@
 package error404.gfg.healthcare;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.content.ContextCompat;
@@ -7,6 +8,7 @@ import androidx.core.content.ContextCompat;
 import android.content.Intent;
 import android.graphics.LinearGradient;
 import android.graphics.Shader;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -17,21 +19,92 @@ import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.messaging.FirebaseMessaging;
+
 import java.util.Timer;
 import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity {
 
     TextView textView,Res;
+    FirebaseAuth fAuth;
+    String name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Intent i = new Intent(MainActivity.this, Authantication.class);
-        startActivity(i);
-        finish();
+
+        FirebaseAuth fAuth;
+        fAuth= FirebaseAuth.getInstance();
+        FirebaseUser firebaseUser = fAuth.getCurrentUser();
+        String uid = firebaseUser.getUid();
+
+        name="x12";
+        ConnectivityManager cm = (ConnectivityManager) getSystemService(MainActivity.CONNECTIVITY_SERVICE);
+        android.net.NetworkInfo wifi = cm.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
+        android.net.NetworkInfo datac = cm.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
+
+
+        //if internet connected
+        if ((wifi != null & datac != null) && (wifi.isConnected() | datac.isConnected())) {
+            //if userAuthenticated
+            if (fAuth.getCurrentUser() != null) {
+
+
+                //here we have get to name
+
+
+                DatabaseReference DBref = FirebaseDatabase.getInstance().getReference();
+                DatabaseReference NameRef = DBref.child("users").child(uid);
+                NameRef.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        String firstName = snapshot.child("FirstName").getValue(String.class);
+                        String lastName = snapshot.child("LastName").getValue(String.class);
+                        name = firstName + " " + lastName;
+
+                        if(name!="x12")
+                        {
+                            startActivity(new Intent(getApplicationContext(), home_screen_2.class));
+                            finish();
+                        }
+
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        Toast.makeText(MainActivity.this,""+error,Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+
+
+
+
+            } else {
+                Intent i = new Intent(MainActivity.this, Authantication.class);
+                startActivity(i);
+                finish();
+            }
+        }
+        else {
+            Intent i2 = new Intent(MainActivity.this, NoInternet.class);
+            startActivity(i2);
+            finish();
+
+        }
+
+
+        FirebaseMessaging.getInstance().subscribeToTopic("notification");
 
         // light theme
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
@@ -46,8 +119,8 @@ public class MainActivity extends AppCompatActivity {
 
         textView=(TextView) findViewById(R.id.QMe);
 
-        setTextViewColor(textView,
-                getResources().getColor(R.color.one),getResources().getColor(R.color.two));
+//        setTextViewColor(textView,
+//                getResources().getColor(R.color.one),getResources().getColor(R.color.two));
 
 
 
