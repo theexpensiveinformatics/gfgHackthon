@@ -30,7 +30,6 @@
         android:translationZ="20dp"
         android:outlineSpotShadowColor="#3548FF"
         android:orientation="horizontal">
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
