@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
+import android.content.pm.PackageInfo;
 import android.graphics.LinearGradient;
 import android.graphics.Shader;
 import android.net.ConnectivityManager;
@@ -13,6 +14,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.text.TextPaint;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -27,6 +29,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.messaging.FirebaseMessaging;
+import com.google.firebase.remoteconfig.FirebaseRemoteConfig;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -35,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
 
     TextView textView,Res;
     FirebaseAuth fAuth;
+    FirebaseRemoteConfig remoteConfig;
     String name;
 
     @Override
@@ -133,6 +137,19 @@ public class MainActivity extends AppCompatActivity {
         float width = paint.measureText("QMe");
         Shader shader = new LinearGradient(0,0,width,textView.getTextSize(),color,null ,Shader.TileMode.CLAMP);
         textView.getPaint().setShader(shader);
+    }
+
+    private int getCurrentVersionCode(){
+
+        PackageInfo packageInfo = null;
+        try
+        {
+            packageInfo = getPackageManager().getPackageInfo(getPackageName(),0);
+        }catch (Exception e)
+        {
+            Log.d("myApp",e.getMessage());
+        }
+        return packageInfo.versionCode;
     }
 
 

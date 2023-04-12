@@ -1,5 +1,6 @@
 package error404.gfg.healthcare;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
@@ -7,18 +8,25 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import android.animation.Animator;
 import android.animation.ObjectAnimator;
+import android.content.Intent;
+import android.content.pm.PackageInfo;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.LinearLayout;
 
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.messaging.FirebaseMessaging;
+import com.google.firebase.remoteconfig.FirebaseRemoteConfig;
+import com.google.firebase.remoteconfig.FirebaseRemoteConfigSettings;
 
 import error404.gfg.healthcare.databinding.ActivityHomeScreen2Binding;
 
@@ -26,6 +34,7 @@ public class home_screen_2 extends AppCompatActivity {
     FirebaseDatabase mfirebaseDatabase;
     DatabaseReference mdatabaseReference;
     ActivityHomeScreen2Binding activityHomeScreen2Binding;
+    FirebaseRemoteConfig remoteConfig;
 
 
     @Override
@@ -162,6 +171,37 @@ public class home_screen_2 extends AppCompatActivity {
         //framelayout
         replaceFragment(new HomeFragment());
 
+
+
+
+        //version latest
+        int currentVersionCode;
+        currentVersionCode=getCurrentVersionCode();
+        Log.d("myApp",String.valueOf(currentVersionCode));
+
+
+        remoteConfig = FirebaseRemoteConfig.getInstance();
+        FirebaseRemoteConfigSettings configSettings = new FirebaseRemoteConfigSettings.Builder().setMinimumFetchIntervalInSeconds(0).build();
+        remoteConfig.setConfigSettingsAsync(configSettings);
+
+
+        remoteConfig.fetchAndActivate().addOnCompleteListener(new OnCompleteListener<Boolean>() {
+            @Override
+            public void onComplete(@NonNull Task<Boolean> task) {
+                if(task.isSuccessful()){
+                    final String new_version_code = remoteConfig.getString("new_version_code");
+                    if(Integer.parseInt(new_version_code)>getCurrentVersionCode())
+                    {
+                        Intent upda = new Intent(home_screen_2.this, update.class);
+                        startActivity(upda);
+                        finish();
+                    }
+                }
+            }
+        });
+
+
+
     }
     //Animator Block
     public void _Animator (final View _view, final String _propertyName, final double _value, final double _duration) {
@@ -188,5 +228,19 @@ public class home_screen_2 extends AppCompatActivity {
                 .setCustomAnimations(R.anim.fragment_anim_2,R.anim.fragment_anim)
                 .replace(R.id.frameLayout, fragment);
                 fragmentTransaction.commit();
+    }
+
+
+    private int getCurrentVersionCode(){
+
+        PackageInfo packageInfo = null;
+        try
+        {
+            packageInfo = getPackageManager().getPackageInfo(getPackageName(),0);
+        }catch (Exception e)
+        {
+            Log.d("myApp",e.getMessage());
+        }
+        return packageInfo.versionCode;
     }
 }

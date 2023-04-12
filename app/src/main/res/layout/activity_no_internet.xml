@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
-    android:background="@color/bg"
+    android:id="@+id/bg"
+    android:background="@drawable/gredient_list"
     tools:context=".NoInternet">
 
     <com.airbnb.lottie.LottieAnimationView
