@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    compileSdk 32
+    compileSdk 33
 
     viewBinding.enabled=true
 
@@ -12,7 +12,7 @@ android {
     defaultConfig {
         applicationId "error404.gfg.healthcare"
         minSdk 23
-        targetSdk 31
+        targetSdk 33
         versionCode 1
         versionName "1.0"
 
@@ -54,6 +54,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-firestore:24.4.5'
     implementation 'com.squareup.picasso:picasso:2.71828'
     implementation 'com.firebaseui:firebase-ui-database:8.0.2'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
 //    implementation 'androidx.appcompat:appcompat:1.6.1'
 //    implementation 'androidx.appcompat:appcompat:1.6.1'
 //    implementation 'androidx.appcompat:appcompat:1.6.1'
@@ -63,4 +64,6 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 
+    implementation 'com.github.bumptech.glide:glide:4.11.0'
 }
+
