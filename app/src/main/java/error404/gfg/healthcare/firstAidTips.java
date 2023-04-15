@@ -69,6 +69,43 @@ public class firstAidTips extends AppCompatActivity {
             }
         });
 
+        activityFirstAidTipsBinding.earthQuacks.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent earthIntent = new Intent(firstAidTips.this,Disasters.class);
+                earthIntent.putExtra("type","Flood");
+                startActivity(earthIntent);
+            }
+        });
+
+        activityFirstAidTipsBinding.earthQuacks.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent earthIntent = new Intent(firstAidTips.this,Disasters.class);
+                earthIntent.putExtra("type","Tsunami");
+                startActivity(earthIntent);
+            }
+        });
+
+
+        activityFirstAidTipsBinding.earthQuacks.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent earthIntent = new Intent(firstAidTips.this,Disasters.class);
+                earthIntent.putExtra("type","Land Slides");
+                startActivity(earthIntent);
+            }
+        });
+
+        activityFirstAidTipsBinding.earthQuacks.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent earthIntent = new Intent(firstAidTips.this,Disasters.class);
+                earthIntent.putExtra("type","Cyclones");
+                startActivity(earthIntent);
+            }
+        });
+
 
     }
 }
