@@ -37,7 +37,7 @@ import error404.gfg.healthcare.databinding.ActivityHomeScreen2Binding;
  * create an instance of this fragment.
  */
 public class HomeFragment extends Fragment {
-    LinearLayout ECallCon,instuctor_Con;
+    LinearLayout ECallCon,instuctor_Con,quiz_con;
     ImageView imageEme;
     TextView textView13,user_Name;
 
@@ -100,6 +100,7 @@ public class HomeFragment extends Fragment {
         textView13=v.findViewById(R.id.textView13);
         imageEme=v.findViewById(R.id.imageView23);
         ECallCon = v.findViewById(R.id.call_con);
+        quiz_con= v.findViewById(R.id.quiz_con);
         ECallCon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -132,7 +133,7 @@ public class HomeFragment extends Fragment {
 
 
 
-        //instructor
+        //instuctor
         instuctor_Con=v.findViewById(R.id.instractor_con);
         instuctor_Con.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -141,6 +142,17 @@ public class HomeFragment extends Fragment {
                 startActivity(instructor);
             }
         });
+
+
+        quiz_con.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent instructor = new Intent(getActivity(), QuizGame.class);
+                startActivity(instructor);
+
+            }
+        });
+
 
 
 
