@@ -132,7 +132,7 @@ public class HomeFragment extends Fragment {
 
 
 
-        //instuctor
+        //instructor
         instuctor_Con=v.findViewById(R.id.instractor_con);
         instuctor_Con.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -141,6 +141,8 @@ public class HomeFragment extends Fragment {
                 startActivity(instructor);
             }
         });
+
+
 
 
         return v;

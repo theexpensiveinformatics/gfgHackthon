@@ -94,6 +94,100 @@ public class Disasters extends AppCompatActivity {
 
         }
 
+        if(type.equals("Flood"))
+        {
+            //imageView
+            activityDisastersBinding.imageDis.setImageResource(R.drawable.ic_flood);
+
+            //containers
+            activityDisastersBinding.conOne.setVisibility(View.VISIBLE);
+            activityDisastersBinding.conTwo.setVisibility(View.VISIBLE);
+            activityDisastersBinding.conThree.setVisibility(View.VISIBLE);
+            activityDisastersBinding.conFour.setVisibility(View.VISIBLE);
+
+            //text & Strings
+            activityDisastersBinding.headtxt.setText("Flood");
+            activityDisastersBinding.oneHeadTxt.setText(R.string.flood_head1);
+            activityDisastersBinding.oneDesTxt.setText(R.string.flood_text1);
+            activityDisastersBinding.twoHeadTxt.setText(R.string.flood_head2);
+            activityDisastersBinding.twoDesTxt.setText(R.string.flood_text2);
+            activityDisastersBinding.threeHeadTxt.setText(R.string.flood_head3);
+            activityDisastersBinding.threeDesTxt.setText(R.string.flood_text3);
+            activityDisastersBinding.fourHeadTxt.setText(R.string.flood_head4);
+            activityDisastersBinding.fourDesTxt.setText(R.string.flood_text4);
+
+        }
+
+        if(type.equals("Tsunami"))
+        {
+            //imageView
+            activityDisastersBinding.imageDis.setImageResource(R.drawable.ic_tsunami);
+
+            //containers
+            activityDisastersBinding.conOne.setVisibility(View.VISIBLE);
+            activityDisastersBinding.conTwo.setVisibility(View.VISIBLE);
+            activityDisastersBinding.conThree.setVisibility(View.VISIBLE);
+            activityDisastersBinding.conFour.setVisibility(View.GONE);
+
+            //text & Strings
+            activityDisastersBinding.headtxt.setText("Tsunami");
+            activityDisastersBinding.oneHeadTxt.setText(R.string.tsunami_head1);
+            activityDisastersBinding.oneDesTxt.setText(R.string.tsunami_text1);
+            activityDisastersBinding.twoHeadTxt.setText(R.string.tsunami_head2);
+            activityDisastersBinding.twoDesTxt.setText(R.string.tsunami_text2);
+            activityDisastersBinding.threeHeadTxt.setText(R.string.tsunami_head3);
+            activityDisastersBinding.threeDesTxt.setText(R.string.tsunami_text3);
+
+        }
+
+
+        if(type.equals("Land Slides"))
+        {
+            //imageView
+            activityDisastersBinding.imageDis.setImageResource(R.drawable.ic_landslide);
+
+            //containers
+            activityDisastersBinding.conOne.setVisibility(View.VISIBLE);
+            activityDisastersBinding.conTwo.setVisibility(View.VISIBLE);
+            activityDisastersBinding.conThree.setVisibility(View.VISIBLE);
+            activityDisastersBinding.conFour.setVisibility(View.GONE);
+
+            //text & Strings
+            activityDisastersBinding.headtxt.setText("Land Slides");
+            activityDisastersBinding.oneHeadTxt.setText(R.string.landslide_head1);
+            activityDisastersBinding.oneDesTxt.setText(R.string.landslide_text1);
+            activityDisastersBinding.twoHeadTxt.setText(R.string.landslide_head2);
+            activityDisastersBinding.twoDesTxt.setText(R.string.landslide_text2);
+            activityDisastersBinding.threeHeadTxt.setText(R.string.landslide_head3);
+            activityDisastersBinding.threeDesTxt.setText(R.string.landslide_text3);
+
+        }
+
+
+        if(type.equals("Cyclones"))
+        {
+            //imageView
+            activityDisastersBinding.imageDis.setImageResource(R.drawable.ic_cyclones);
+
+            //containers
+            activityDisastersBinding.conOne.setVisibility(View.VISIBLE);
+            activityDisastersBinding.conTwo.setVisibility(View.VISIBLE);
+            activityDisastersBinding.conThree.setVisibility(View.VISIBLE);
+            activityDisastersBinding.conFour.setVisibility(View.VISIBLE);
+
+            //text & Strings
+            activityDisastersBinding.headtxt.setText("Cyclones");
+            activityDisastersBinding.oneHeadTxt.setText(R.string.cyclones_head1);
+            activityDisastersBinding.oneDesTxt.setText(R.string.cyclones_text1);
+            activityDisastersBinding.twoHeadTxt.setText(R.string.cyclones_head2);
+            activityDisastersBinding.twoDesTxt.setText(R.string.cyclones_text2);
+            activityDisastersBinding.threeHeadTxt.setText(R.string.cyclones_head3);
+            activityDisastersBinding.threeDesTxt.setText(R.string.cyclones_text3);
+            activityDisastersBinding.fourHeadTxt.setText(R.string.cyclones_head4);
+            activityDisastersBinding.fourDesTxt.setText(R.string.cyclones_text4);
+
+        }
+
 
     }
 }
