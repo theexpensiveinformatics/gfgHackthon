@@ -2,6 +2,7 @@ package error404.gfg.healthcare;
 
 import android.app.ActivityOptions;
 import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -39,6 +40,7 @@ import error404.gfg.healthcare.databinding.ActivityHomeScreen2Binding;
 public class HomeFragment extends Fragment {
     LinearLayout ECallCon,instuctor_Con,quiz_con;
     ImageView imageEme;
+    ImageView imageQuiz;
     TextView textView13,user_Name;
 
 
@@ -100,6 +102,7 @@ public class HomeFragment extends Fragment {
         textView13=v.findViewById(R.id.textView13);
         imageEme=v.findViewById(R.id.imageView23);
         ECallCon = v.findViewById(R.id.call_con);
+        imageQuiz=v.findViewById(R.id.imageView22);
         quiz_con= v.findViewById(R.id.quiz_con);
         ECallCon.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -147,12 +150,12 @@ public class HomeFragment extends Fragment {
         quiz_con.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent instructor = new Intent(getActivity(), QuizGame.class);
-                startActivity(instructor);
+                Intent quizIntent = new Intent(getActivity(), QuizGame.class);
+                ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(getActivity(),imageQuiz, ViewCompat.getTransitionName(imageQuiz));
+                startActivity(quizIntent,options.toBundle());
 
             }
         });
-
 
 
 

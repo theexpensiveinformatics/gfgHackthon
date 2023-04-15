@@ -1,32 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/bg_quiz"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/arcbg"
+    android:orientation="vertical"
     tools:context=".QuizGame">
 
 
-    <View
-        android:id="@+id/view2"
-        android:layout_width="wrap_content"
-        android:layout_height="80dp"
-        android:background="@drawable/background_bottom"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+    <LinearLayout
+        android:id="@+id/top_bg"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/top_in_con"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="28dp"
+            android:layout_marginTop="45dp"
+            android:layout_marginRight="28dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+
+            <TextView
+                android:id="@+id/textView15"
+                android:layout_width="wrap_content"
+
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/bold"
+                android:gravity="left"
+                android:text="Quiz Game"
+                android:textColor="@color/text_primary"
+                android:textSize="22dp" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/quizImg"
+            android:layout_width="300dp"
+            android:layout_height="190dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            android:src="@drawable/ic_quiz"
+            android:transitionName="example2" />
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/meduim"
+            android:gravity="center"
+            android:text="Let's Play Game,\nAnswer and get point."
+            android:textColor="@color/text_primary" />
+
+    </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/categoryList"
+        android:layout_marginLeft="28dp"
+        android:layout_marginTop="45dp"
+        android:layout_marginRight="28dp"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view2" />
+        android:layout_height="wrap_content" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
