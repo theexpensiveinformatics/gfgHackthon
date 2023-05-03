@@ -49,8 +49,8 @@ public class MainActivity extends AppCompatActivity {
 
         FirebaseAuth fAuth;
         fAuth= FirebaseAuth.getInstance();
-        FirebaseUser firebaseUser = fAuth.getCurrentUser();
-        String uid = firebaseUser.getUid();
+        FirebaseUser firebaseUser; firebaseUser = fAuth.getCurrentUser();
+        String uid;
 
         name="x12";
         ConnectivityManager cm = (ConnectivityManager) getSystemService(MainActivity.CONNECTIVITY_SERVICE);
@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
             //if userAuthenticated
             if (fAuth.getCurrentUser() != null) {
 
-
+                uid = firebaseUser.getUid();
                 //here we have get to name
 
 
