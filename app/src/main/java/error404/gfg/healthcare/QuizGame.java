@@ -15,6 +15,7 @@ import android.os.CountDownTimer;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.animation.AnimationUtils;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -73,6 +74,8 @@ public class QuizGame extends AppCompatActivity {
         final ArrayList<CategoryModel> categories = new ArrayList<>();
 
         final CategoryAdapter adapter = new CategoryAdapter(QuizGame.this, categories);
+
+
 
         database.collection("categories")
                 .addSnapshotListener(new EventListener<QuerySnapshot>() {
