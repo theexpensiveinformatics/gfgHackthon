@@ -17,6 +17,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -77,6 +78,10 @@ public class QuizGame extends AppCompatActivity {
                 .addSnapshotListener(new EventListener<QuerySnapshot>() {
                     @Override
                     public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+                        if (error != null) {
+
+                            return;
+                        }
                         categories.clear();
                         for (DocumentSnapshot snapshot : value.getDocuments()) {
                             CategoryModel model = snapshot.toObject(CategoryModel.class);
@@ -86,6 +91,7 @@ public class QuizGame extends AppCompatActivity {
                         adapter.notifyDataSetChanged();
                     }
                 });
+
 
 
         binding.categoryList.setLayoutManager(new GridLayoutManager(QuizGame.this,1));
