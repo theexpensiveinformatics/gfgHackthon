@@ -4,16 +4,19 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -30,6 +33,7 @@ public class quizgame_box extends AppCompatActivity {
 
 
     ActivityQuizgameBoxBinding binding;
+    Dialog dialog,loadingDailog;
 
     ArrayList<Question> questions;
     int index = 0;
@@ -58,6 +62,18 @@ public class quizgame_box extends AppCompatActivity {
             w.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
         }
 
+        LoadingDailog();
+
+        String checker = (String) binding.question.getText();
+        if(checker.equals("Questions?"))
+        {
+            binding.bgQuizBox.setVisibility(View.GONE);
+            loadingDailog.show();
+        }else
+        {
+            binding.bgQuizBox.setVisibility(View.VISIBLE);
+            loadingDailog.dismiss();
+        }
 
         ConstraintLayout constraintLayout = findViewById(R.id.bg_quizBox);
         AnimationDrawable animationDrawable = (AnimationDrawable) constraintLayout.getBackground();
@@ -103,6 +119,8 @@ public class quizgame_box extends AppCompatActivity {
                                             for(DocumentSnapshot snapshot : queryDocumentSnapshots) {
                                                 Question question = snapshot.toObject(Question.class);
                                                 questions.add(question);
+                                                binding.bgQuizBox.setVisibility(View.VISIBLE);
+                                                loadingDailog.dismiss();
                                             }
                                             setNextQuestion();
                                         }
@@ -200,7 +218,7 @@ public class quizgame_box extends AppCompatActivity {
                 break;
             case R.id.nextBtn:
                 reset();
-                if(index <= questions.size()) {
+                if(index < questions.size()-1) {
                     index++;
                     setNextQuestion();
                 } else {
@@ -212,5 +230,16 @@ public class quizgame_box extends AppCompatActivity {
                 }
                 break;
         }
+    }
+
+    public void LoadingDailog()
+    {
+        //dailogLoading
+        loadingDailog = new Dialog(quizgame_box.this);
+        loadingDailog.setContentView(R.layout.loading_dailog);
+        loadingDailog.getWindow().setBackgroundDrawable(getDrawable(R.color.trans));
+        loadingDailog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+        loadingDailog.setCancelable(false);
+        loadingDailog.getWindow().getAttributes().windowAnimations = R.style.animation;
     }
 }
