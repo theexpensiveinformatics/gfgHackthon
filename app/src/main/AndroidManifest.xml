@@ -20,6 +20,9 @@
         android:theme="@style/Theme.AppName"
         tools:targetApi="31">
         <activity
+            android:name=".symtopChecker"
+            android:exported="false" />
+        <activity
             android:name=".major"
             android:exported="false" />
         <activity
