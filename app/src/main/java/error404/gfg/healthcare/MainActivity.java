@@ -34,8 +34,17 @@ import com.google.firebase.remoteconfig.FirebaseRemoteConfig;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import error404.gfg.healthcare.Token.TokenManager;
+import error404.gfg.healthcare.model.UserModel;
+import error404.gfg.healthcare.reotrfit.RetrofitService;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class MainActivity extends AppCompatActivity {
 
+    RetrofitService retrofitService = new RetrofitService();
+    error404.gfg.healthcare.reotrfit.userAPI userAPI = retrofitService.getRetrofit().create(error404.gfg.healthcare.reotrfit.userAPI.class);
     TextView textView,Res;
     FirebaseAuth fAuth;
     FirebaseRemoteConfig remoteConfig;
@@ -61,39 +70,38 @@ public class MainActivity extends AppCompatActivity {
         //if internet connected
         if ((wifi != null & datac != null) && (wifi.isConnected() | datac.isConnected())) {
             //if userAuthenticated
-            if (fAuth.getCurrentUser() != null) {
+            TokenManager tokenManager = TokenManager.getInstance(getApplicationContext());
+            String accessToken = tokenManager.getAccessToken();
+            if (accessToken != null) {
 
-                uid = firebaseUser.getUid();
-                //here we have get to name
-
-
-                DatabaseReference DBref = FirebaseDatabase.getInstance().getReference();
-                DatabaseReference NameRef = DBref.child("users").child(uid);
-                NameRef.addValueEventListener(new ValueEventListener() {
+                Call<UserModel> call = userAPI.getUserProfile("Bearer " + accessToken);
+                call.enqueue(new Callback<UserModel>() {
                     @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        String firstName = snapshot.child("FirstName").getValue(String.class);
-                        String lastName = snapshot.child("LastName").getValue(String.class);
-                        name = firstName + " " + lastName;
+                    public void onResponse(Call<UserModel> call, Response<UserModel> response) {
+                        if (response.isSuccessful()) {
+                            UserModel userModel = response.body();
+                            String firstName = userModel.getFirstName();
+                            String lastName = userModel.getLastName();
+                            String name = firstName + " " + lastName;
 
-                        if(name!="x12")
-                        {
-                            startActivity(new Intent(getApplicationContext(), home_screen_2.class));
+                            if (!"x12".equals(name)) {
+                                startActivity(new Intent(getApplicationContext(), home_screen_2.class));
+                                finish();
+                            }
+                        } else {
+                            // Handle API error
+                            Intent i = new Intent(MainActivity.this, Authantication.class);
+                            startActivity(i);
                             finish();
                         }
-
                     }
 
                     @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-                        Toast.makeText(MainActivity.this,""+error,Toast.LENGTH_SHORT).show();
+                    public void onFailure(Call<UserModel> call, Throwable t) {
+                        // Handle API failure
+                        Toast.makeText(MainActivity.this, "Error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
-
-
-
-
-
             } else {
                 Intent i = new Intent(MainActivity.this, Authantication.class);
                 startActivity(i);

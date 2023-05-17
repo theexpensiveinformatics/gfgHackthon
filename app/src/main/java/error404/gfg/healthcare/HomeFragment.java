@@ -30,7 +30,14 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.ktx.Firebase;
 
+import error404.gfg.healthcare.Token.TokenManager;
 import error404.gfg.healthcare.databinding.ActivityHomeScreen2Binding;
+import error404.gfg.healthcare.model.UserModel;
+import error404.gfg.healthcare.reotrfit.RetrofitService;
+import error404.gfg.healthcare.reotrfit.userAPI;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -94,7 +101,6 @@ public class HomeFragment extends Fragment {
 
         FirebaseAuth fAuth = FirebaseAuth.getInstance();
         FirebaseUser firebaseUser = fAuth.getCurrentUser();
-        String uid = firebaseUser.getUid();
 
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_home, container, false);
@@ -118,20 +124,26 @@ public class HomeFragment extends Fragment {
                 startActivity(ecall,options.toBundle());
             }
         });
-        DatabaseReference DBref = FirebaseDatabase.getInstance().getReference();
-        DatabaseReference NameRef = DBref.child("users").child(uid);
-        NameRef.addValueEventListener(new ValueEventListener() {
+        RetrofitService retrofitService = new RetrofitService();
+        userAPI userAPI = retrofitService.getRetrofit().create(error404.gfg.healthcare.reotrfit.userAPI.class);
+
+        TokenManager tokenManager = TokenManager.getInstance(getActivity());
+        String accessToken = tokenManager.getAccessToken();
+
+        Call<UserModel> call = userAPI.getUserProfile("Bearer " + accessToken);
+        call.enqueue(new Callback<UserModel>() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                String firstName = snapshot.child("FirstName").getValue(String.class);
-                String lastName = snapshot.child("LastName").getValue(String.class);
-                String name = firstName + " " + lastName;
-                user_Name.setText(name);
+            public void onResponse(Call<UserModel> call, Response<UserModel> response) {
+                if(response.isSuccessful()){
+                    user_Name.setText(response.body().getFirstName() + " " + response.body().getLastName());
+                }else {
+                    Toast.makeText(getActivity(), response.message(), Toast.LENGTH_SHORT).show();
+                }
             }
 
             @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(getActivity(),""+error,Toast.LENGTH_SHORT).show();
+            public void onFailure(Call<UserModel> call, Throwable t) {
+                Toast.makeText(getActivity(), t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
 

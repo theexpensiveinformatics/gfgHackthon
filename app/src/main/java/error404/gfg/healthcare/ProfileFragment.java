@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -22,6 +23,14 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+
+import error404.gfg.healthcare.Token.TokenManager;
+import error404.gfg.healthcare.model.UserModel;
+import error404.gfg.healthcare.reotrfit.RetrofitService;
+import error404.gfg.healthcare.reotrfit.userAPI;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -86,30 +95,38 @@ public class ProfileFragment extends Fragment {
         BloodGroup = v.findViewById(R.id.BloodGrpTxt);
         Address = v.findViewById(R.id.AddressTxt);
 
-        FirebaseAuth fAuth = FirebaseAuth.getInstance();
-        FirebaseUser firebaseUser = fAuth.getCurrentUser();
-        String uid = firebaseUser.getUid();
+        RetrofitService retrofitService = new RetrofitService();
+        userAPI userAPI = retrofitService.getRetrofit().create(error404.gfg.healthcare.reotrfit.userAPI.class);
 
-        DatabaseReference DBref = FirebaseDatabase.getInstance().getReference();
-        DatabaseReference ProfileData = DBref.child("users").child(uid);
-        ProfileData.addValueEventListener(new ValueEventListener() {
+        TokenManager tokenManager = TokenManager.getInstance(getActivity());
+        String accessToken = tokenManager.getAccessToken();
+
+        Call<UserModel> call = userAPI.getUserProfile("Bearer " + accessToken);
+
+        call.enqueue(new Callback<UserModel>() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                FristName.setText(snapshot.child("FirstName").getValue(String.class));
-                LastName.setText(snapshot.child("LastName").getValue(String.class));
-                Email.setText(snapshot.child("Email").getValue(String.class));
-                PhoneNumber.setText(snapshot.child("Number").getValue(String.class));
-                Gender.setText(snapshot.child("Gender").getValue(String.class));
-                BirthDate.setText(snapshot.child("BirthDate").getValue(String.class));
-                BloodGroup.setText(snapshot.child("BloodGroup").getValue(String.class));
-                Address.setText(snapshot.child("Address").getValue(String.class));
+            public void onResponse(Call<UserModel> call, Response<UserModel> response) {
+                if (response.isSuccessful()){
+                    UserModel model = response.body();
+                    FristName.setText(model.getFirstName());
+                    LastName.setText(model.getLastName());
+                    Email.setText(model.getEmail());
+                    PhoneNumber.setText(model.getNumber());
+                    Gender.setText(model.getGender());
+                    BirthDate.setText(model.getBirthDate());
+                    BloodGroup.setText(model.getBloodGroup());
+                    Address.setText(model.getAddress());
+                }else {
+                    Toast.makeText(getActivity(), response.message(), Toast.LENGTH_SHORT).show();
+                }
             }
 
             @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
+            public void onFailure(Call<UserModel> call, Throwable t) {
+                Toast.makeText(getActivity(), t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
+;
 
         firstNameBg = v.findViewById(R.id.firstNameBg);
         firstNameBg.setOnClickListener(new View.OnClickListener() {
@@ -123,7 +140,9 @@ public class ProfileFragment extends Fragment {
         logoutBg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FirebaseAuth.getInstance().signOut();
+                TokenManager tokenManager = TokenManager.getInstance(getActivity());
+                tokenManager.clearAccessToken();
+
                 startActivity(new Intent(getActivity(), MainActivity.class)); //Go back to home page
                 getActivity().finish();
             }

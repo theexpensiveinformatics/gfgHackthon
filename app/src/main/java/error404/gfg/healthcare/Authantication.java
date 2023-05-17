@@ -22,10 +22,19 @@ import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.Objects;
 
+import error404.gfg.healthcare.Token.TokenManager;
 import error404.gfg.healthcare.databinding.ActivityAuthanticationBinding;
 import error404.gfg.healthcare.databinding.ActivityMainBinding;
+import error404.gfg.healthcare.model.UserModel;
+import error404.gfg.healthcare.reotrfit.RetrofitService;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class Authantication extends AppCompatActivity {
+
+    RetrofitService retrofitService = new RetrofitService();
+    error404.gfg.healthcare.reotrfit.userAPI userAPI = retrofitService.getRetrofit().create(error404.gfg.healthcare.reotrfit.userAPI.class);
     FirebaseAuth fAuth;
     Dialog dialog,loadingDailog;
 
@@ -70,7 +79,7 @@ public class Authantication extends AppCompatActivity {
         });
         LoadingDailog();
         Dailog();
-        ActivityChanger();
+//        ActivityChanger();
 
         //if user come from signup than redirect email password
         Intent upToIn = getIntent();
@@ -103,39 +112,41 @@ public class Authantication extends AppCompatActivity {
                 else{
                     loadingDailog.show();
                     //Authenticate the user
-                    fAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-                            if (task.isSuccessful()) {
+                    UserModel model = new UserModel();
 
-                                if(fAuth.getCurrentUser().isEmailVerified())
-                                {
-                                    //if verified user try to login
-                                    Toast.makeText(Authantication.this, "Authentication Successful", Toast.LENGTH_LONG).show();
-                                    startActivity(new Intent(getApplicationContext(), home_screen_2.class));
-                                    finish();
-                                }else
-                                {
-                                    loadingDailog.cancel();
-                                    dialog.show();
-//                                    Toast.makeText(Authantication.this, "Please Verify your email" , Toast.LENGTH_LONG).show();
+                    model.setEmail(email);
+                    model.setPassword(password);
+
+                    userAPI.login(model)
+                            .enqueue(new Callback<UserModel>() {
+                                @Override
+                                public void onResponse(Call<UserModel> call, Response<UserModel> response) {
+                                    if (response.isSuccessful()){
+                                        UserModel model1 = response.body();
+                                        String JWT_Token = model1.getAccess_token();
+                                        TokenManager tokenManager = TokenManager.getInstance(getApplicationContext());
+                                        tokenManager.saveAccessToken(JWT_Token);
+                                        Intent intentSignup = new Intent(Authantication.this, home_screen_2.class);
+                                        startActivity(intentSignup);
+                                        finish();
+                                    }else {
+                                        if (response.code() == 401){
+                                            Toast.makeText(Authantication.this, "email and password don't match", Toast.LENGTH_SHORT).show();
+                                        }else {
+                                            Toast.makeText(Authantication.this,response.message(), Toast.LENGTH_SHORT).show();
+                                        }
+                                        loadingDailog.dismiss();
+                                    }
                                 }
 
-
-                            } else {
-                                loadingDailog.cancel();
-                                Toast.makeText(Authantication.this, "Error !!" + Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_LONG).show();
-
-                            }
-
-                            //nothing
-
-                        }
-                    });
+                                @Override
+                                public void onFailure(Call<UserModel> call, Throwable t) {
+                                    Toast.makeText(Authantication.this, "Error !!" + t.getMessage(), Toast.LENGTH_SHORT).show();
+                                    loadingDailog.dismiss();
+                                }
+                            });
                 }
             }
-
-
         });
 
 
@@ -160,15 +171,15 @@ public class Authantication extends AppCompatActivity {
         dialog.getWindow().getAttributes().windowAnimations = R.style.animation;
     }
 
-    public void ActivityChanger()
-    {
-
-        if(fAuth.getCurrentUser() != null && fAuth.getCurrentUser().isEmailVerified()) {
-            Intent home = new Intent(Authantication.this, home_screen_2.class);
-            startActivity(home);
-            finish();
-        }
-    }
+//    public void ActivityChanger()
+//    {
+//
+//        if(fAuth.getCurrentUser() != null && fAuth.getCurrentUser().isEmailVerified()) {
+//            Intent home = new Intent(Authantication.this, home_screen_2.class);
+//            startActivity(home);
+//            finish();
+//        }
+//    }
 
     public void LoadingDailog()
     {
