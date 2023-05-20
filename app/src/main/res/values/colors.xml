@@ -27,11 +27,11 @@
     <color name="home_txt_two">#8990A8</color>
     <color name="broadcastbg">#E6EEFF</color>
     <color name="firstAidCardviewbg">#E6EEFF</color>
-
+    <color name="light_blue">#EFF1FF</color>
     <color name="one">#E4D3FF</color>
     <color name="two">#D2D6FF</color>
     <color name="three">#D2ECFF</color>
-
+    <color name="dark">#0D1725</color>
 
     <color name="colorPurple">#673AB7</color>
     <color name="colorBlue">#3F51B5</color>

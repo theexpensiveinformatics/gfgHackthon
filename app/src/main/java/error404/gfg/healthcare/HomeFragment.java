@@ -154,7 +154,7 @@ public class HomeFragment extends Fragment {
         instuctor_Con.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent instructor = new Intent(getActivity(), firstAidTips.class);
+                Intent instructor = new Intent(getActivity(), first_aid_tips_two.class);
                 startActivity(instructor);
             }
         });

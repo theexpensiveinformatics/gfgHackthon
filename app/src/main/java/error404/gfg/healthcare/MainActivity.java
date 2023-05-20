@@ -90,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
                             }
                         } else {
                             // Handle API error
-                            Intent i = new Intent(MainActivity.this, Authantication.class);
+                            Intent i = new Intent(MainActivity.this, first_aid_tips_two.class);
                             startActivity(i);
                             finish();
                         }
