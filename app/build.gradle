@@ -5,19 +5,15 @@ plugins {
 
 android {
     compileSdk 33
-
     viewBinding.enabled=true
 
-    
     defaultConfig {
         applicationId "error404.gfg.healthcare"
         minSdk 23
         targetSdk 33
         versionCode 1
         versionName "1.0"
-
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-
     }
 
     buildTypes {
@@ -55,16 +51,9 @@ dependencies {
     implementation 'com.squareup.picasso:picasso:2.71828'
     implementation 'com.firebaseui:firebase-ui-database:8.0.2'
 
-
     implementation 'com.google.firebase:firebase-messaging:23.1.2'
     implementation 'com.google.firebase:firebase-config:21.4.0'
     implementation 'androidx.appcompat:appcompat:1.6.1'
-
-
-//    implementation 'androidx.appcompat:appcompat:1.6.1'
-//    implementation 'androidx.appcompat:appcompat:1.6.1'
-//    implementation 'androidx.appcompat:appcompat:1.6.1'
-
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
