@@ -64,6 +64,7 @@
                     android:src="@drawable/ic_search" />
 
                 <EditText
+                    android:id="@+id/searchEdit"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
@@ -88,6 +89,7 @@
                     android:src="@drawable/ic_filter" />
 
             </LinearLayout>
+
 
             <LinearLayout
                 android:id="@+id/catCon"
@@ -214,7 +216,7 @@
                 android:id="@+id/con_list"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="10dp"
                 android:orientation="vertical" >
 
                 <androidx.recyclerview.widget.RecyclerView

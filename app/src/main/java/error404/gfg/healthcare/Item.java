@@ -1,5 +1,8 @@
 package error404.gfg.healthcare;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Item {
 
     String title;
@@ -8,10 +11,15 @@ public class Item {
     String type;
     String webLink;
     String ytLink;
+
+
+
+    String Do;
+    String Donts;
     String effectedPart;
     String call;
 
-    public Item(String title, String description, int image, String type, String webLink, String ytLink, String effectedPart, String call) {
+    public Item(String title, String description, int image, String type, String webLink, String ytLink, String effectedPart, String call,String Do,String Donts) {
         this.title = title;
         this.description = description;
         this.image = image;
@@ -20,7 +28,11 @@ public class Item {
         this.ytLink = ytLink;
         this.effectedPart = effectedPart;
         this.call = call;
+        this.Do=Do;
+        this.Donts=Donts;
     }
+
+
 
     public String getTitle() {
         return title;
@@ -84,5 +96,21 @@ public class Item {
 
     public void setCall(String call) {
         this.call = call;
+    }
+
+    public String getDo() {
+        return Do;
+    }
+
+    public void setDo(String aDo) {
+        Do = aDo;
+    }
+
+    public String getDonts() {
+        return Donts;
+    }
+
+    public void setDonts(String donts) {
+        Donts = donts;
     }
 }
