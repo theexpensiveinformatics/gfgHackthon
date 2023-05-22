@@ -27,9 +27,6 @@
             android:name=".symtopChecker"
             android:exported="false" />
         <activity
-            android:name=".major"
-            android:exported="false" />
-        <activity
             android:name=".quizgame_box"
             android:exported="false" />
         <activity
@@ -43,12 +40,6 @@
             android:exported="false" />
         <activity
             android:name=".NoInternet"
-            android:exported="false" />
-        <activity
-            android:name=".Disasters"
-            android:exported="false" />
-        <activity
-            android:name=".firstAidTips"
             android:exported="false" />
         <activity
             android:name=".Artical"
