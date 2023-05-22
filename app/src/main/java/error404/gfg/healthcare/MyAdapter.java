@@ -68,6 +68,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -112,6 +113,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         holder.type.setText(items.get(position).getType());
         holder.img.setImageResource(items.get(position).getImage());
         holder.effectedPart.setText(items.get(position).getEffectedPart());
+        holder.itemView.startAnimation(AnimationUtils.loadAnimation(holder.itemView.getContext(),R.anim.falldown));
     }
 
     @Override

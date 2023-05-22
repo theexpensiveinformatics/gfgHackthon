@@ -111,6 +111,8 @@
                     android:layout_marginRight="15dp"
                     android:fontFamily="@font/regular_e"
                     android:text="Lungs"
+                    android:ellipsize="end"
+                    android:lines="1"
                     android:textColor="@color/text_primary"
                     android:textSize="13dp" />
 
