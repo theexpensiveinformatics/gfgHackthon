@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -85,6 +86,7 @@ public class ProfileFragment extends Fragment {
         // Inflate the layout for this fragment
         View v =inflater.inflate(R.layout.fragment_profile, container, false);
         TextView FristName, LastName, Email,PhoneNumber,Gender,BirthDate,BloodGroup,Address;
+        ImageView profileedit;
 
         FristName = v.findViewById(R.id.FirstNameEdit);
         LastName = v.findViewById(R.id.LastNameEdit);
@@ -94,6 +96,7 @@ public class ProfileFragment extends Fragment {
         BirthDate = v.findViewById(R.id.BirthDateText);
         BloodGroup = v.findViewById(R.id.BloodGrpTxt);
         Address = v.findViewById(R.id.AddressTxt);
+        profileedit =v.findViewById(R.id.imageView2);
 
         RetrofitService retrofitService = new RetrofitService();
         userAPI userAPI = retrofitService.getRetrofit().create(error404.gfg.healthcare.reotrfit.userAPI.class);
@@ -127,6 +130,13 @@ public class ProfileFragment extends Fragment {
             }
         });
 ;
+
+        profileedit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getActivity(), ProfileEdit.class));
+            }
+        });
 
         firstNameBg = v.findViewById(R.id.firstNameBg);
         firstNameBg.setOnClickListener(new View.OnClickListener() {

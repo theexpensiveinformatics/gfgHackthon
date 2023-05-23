@@ -223,11 +223,6 @@ public class Auth_signup extends AppCompatActivity {
                 dialog.show();
             }
         });
-
-
-
-
-
     }
 
 
