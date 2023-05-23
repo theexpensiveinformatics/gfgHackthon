@@ -14,7 +14,7 @@
         android:layout_height="138dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:background="@drawable/bg_item"
+        android:background="@drawable/sys_bg"
         android:orientation="horizontal">
 
         <LinearLayout

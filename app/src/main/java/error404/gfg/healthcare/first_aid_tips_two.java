@@ -24,6 +24,8 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import error404.gfg.healthcare.databinding.ActivityAuthSignupBinding;
 import error404.gfg.healthcare.databinding.ActivityFirstAidTipsTwoBinding;
@@ -94,12 +96,14 @@ public class first_aid_tips_two extends AppCompatActivity {
 
         //ArrayList
 
+        //ArrayList
+
         items = new ArrayList<Item>();
         items.add(new Item("Asthma Attack",
                 "During an asthma attack, the airways in the lungs become narrow, making it difficult to breathe. It is often accompanied by wheezing, coughing, and a feeling of tightness in the chest.",
                 R.drawable.asthma,
                 "MAJOR",
-                "https://www.who.int/news-room/fact-sheets/detail/asthma",
+                "https://www.wikihow.com/Treat-Asthma-Attacks",
                 "https://youtu.be/hdVKpUR513M",
                 "Lungs",
                 "110011",
@@ -118,8 +122,8 @@ public class first_aid_tips_two extends AppCompatActivity {
                 "Bleeding is when blood comes out of your body from a cut or injury. It's important to know what to do and what not to do when you or someone else is bleeding. Here's some information in easy language:",
                 R.drawable.ic_bleeding,
                 "MAJOR",
-                "https://www.medindia.net/patients/firstaid_severebleeding.htm",
-                "https://youtu.be/NxO5LvgqZe0",
+                "https://www.wikihow.com/Stop-Bleeding",
+                "https://youtu.be/8pTaqY40-Rs",
                 "Any part of the body",
                 "110011",
                 "    Stay calm: Try to stay calm and reassure the person who is bleeding. Panicking can make the situation worse.\n" +
@@ -137,8 +141,8 @@ public class first_aid_tips_two extends AppCompatActivity {
                 "Bones and muscles injuries refer to damage or harm to the skeletal system or the muscular system of the body. These injuries can occur due to accidents, falls, sports activities, or repetitive strain.",
                 R.drawable.ic_bones,
                 "MAJOR",
-                "https://www.sja.org.uk/get-advice/first-aid-advice/bones-and-muscle-injuries/",
-                "https://youtu.be/N-FY78--JWw",
+                "https://www.wikihow.com/Heal-Broken-Bones",
+                "https://youtu.be/2v8vlXgGXwE",
                 "Any part of body",
                 "110011",
                 "    Rest the injured area and avoid putting weight or strain on it.\n" +
@@ -151,14 +155,14 @@ public class first_aid_tips_two extends AppCompatActivity {
                         "    Don't ignore persistent pain, swelling, or difficulty in moving the affected area.\n" +
                         "    Avoid massaging or applying pressure directly to the injured area.\n" +
                         "    Don't delay seeking medical help for fractures, dislocations, or severe injuries."
-                ));
+        ));
 
         items.add(new Item("Burns",
                 "Burns occur when the skin or other tissues are damaged by heat, chemicals, electricity, or radiation.",
                 R.drawable.ic_burn,
                 "MAJOR",
-                "https://www.sja.org.uk/get-advice/first-aid-advice/burns/",
-                "https://youtu.be/N-FY78--JWw",
+                "https://www.wikihow.com/Treat-a-Burn",
+                "https://youtu.be/Dsvtzwp4nG8",
                 "Any part of the body",
                 "110011",
                 "    Cool the burn under cool running water for at least 10 minutes.\n" +
@@ -177,8 +181,8 @@ public class first_aid_tips_two extends AppCompatActivity {
                 "Chest pain can have various causes, including heart-related issues, muscle strain, digestive problems, or anxiety.",
                 R.drawable.ic_chest,
                 "MAJOR",
-                "https://www.sja.org.uk/get-advice/first-aid-advice/chest-pain/",
-                "https://youtu.be/N-FY78--JWw",
+                "https://www.wikihow.com/Stop-Chest-Pain",
+                "https://youtu.be/gDwt7dD3awc",
                 "Chest",
                 "110011",
                 "    Encourage the person to rest in a comfortable position.\n" +
@@ -196,8 +200,8 @@ public class first_aid_tips_two extends AppCompatActivity {
                 "Choking occurs when the airway is partially or completely blocked, preventing proper breathing.",
                 R.drawable.ic_choking1,
                 "MAJOR",
-                "https://www.sja.org.uk/get-advice/first-aid-advice/choking-adult/",
-                "https://youtu.be/N-FY78--JWw",
+                "https://www.wikihow.com/Help-a-Choking-Victim",
+                "https://youtu.be/SqpcTF2HFvg",
                 "Throat",
                 "110011",
                 "    Encourage the person to cough forcefully to try to clear the blockage.\n" +
@@ -215,8 +219,8 @@ public class first_aid_tips_two extends AppCompatActivity {
                 "Drowning occurs when a person's airway is blocked, preventing them from breathing. It often happens in water-related accidents or incidents.",
                 R.drawable.ic_drowning,
                 "MAJOR",
-                "https://www.sja.org.uk/get-advice/first-aid-advice/drowning/",
-                "https://youtu.be/N-FY78--JWw",
+                "https://www.wikihow.com/Save-an-Active-Drowning-Victim",
+                "https://youtu.be/Hlrbio-NpxQ",
                 "Water-related",
                 "110011",
                 "    Call emergency services immediately.\n" +
@@ -234,8 +238,8 @@ public class first_aid_tips_two extends AppCompatActivity {
                 "A head injury refers to any trauma or damage to the head, scalp, skull, or brain.",
                 R.drawable.ic_head_injury,
                 "MAJOR",
-                "https://www.sja.org.uk/get-advice/first-aid-advice/head-injuries/",
-                "https://youtu.be/N-FY78--JWw",
+                "https://www.wikihow.com/Treat-a-Mild-Concussion",
+                "https://youtu.be/Qdb8xnErnXk",
                 "Head",
                 "110011",
                 "    Encourage the person to sit still and not move excessively.\n" +
@@ -253,8 +257,8 @@ public class first_aid_tips_two extends AppCompatActivity {
                 "Poisoning occurs when harmful substances or toxins are ingested, inhaled, or absorbed through the skin.",
                 R.drawable.ic_poisning,
                 "MAJOR",
-                "https://www.sja.org.uk/get-advice/first-aid-advice/poisoning/",
-                "https://youtu.be/N-FY78--JWw",
+                "https://www.wikihow.com/Treat-Poisoning",
+                "https://youtu.be/0qwpz43XdVc",
                 "Depends on the poisonous substance",
                 "110011",
                 "    Call emergency services or local poison control immediately.\n" +
@@ -272,8 +276,8 @@ public class first_aid_tips_two extends AppCompatActivity {
                 "Resuscitation, also known as cardiopulmonary resuscitation (CPR), is a life-saving technique used to restore breathing and circulation in a person who is in cardiac arrest.",
                 R.drawable.ic_res   ,
                 "MAJOR",
-                "https://www.sja.org.uk/get-advice/first-aid-advice/cpr/",
-                "https://youtu.be/N-FY78--JWw",
+                "https://www.wikihow.com/Do-CPR",
+                "https://youtu.be/G87knTZnhks",
                 "N/A",
                 "110011",
                 "    Check for responsiveness and call emergency services.\n" +
@@ -291,8 +295,8 @@ public class first_aid_tips_two extends AppCompatActivity {
                 "A seizure is a sudden, uncontrolled electrical disturbance in the brain that can cause changes in behavior, movements, and consciousness.",
                 R.drawable.seizure,
                 "MAJOR",
-                "https://www.sja.org.uk/get-advice/first-aid-advice/seizures/",
-                "https://youtu.be/N-FY78--JWw",
+                "https://www.wikihow.com/Help-Someone-Who-Is-Having-a-Seizure",
+                "https://youtu.be/Ovsw7tdneqE",
                 "Depends on the type of seizure",
                 "110011",
                 "    Stay with the person and clear the area of any objects that could cause harm.\n" +
@@ -310,8 +314,8 @@ public class first_aid_tips_two extends AppCompatActivity {
                 "A stroke occurs when blood flow to the brain is interrupted, leading to damage to brain cells. It can result in various symptoms, such as weakness, numbness, and difficulty speaking.",
                 R.drawable.ic_stoke,
                 "MAJOR",
-                "https://www.sja.org.uk/get-advice/first-aid-advice/stroke/",
-                "https://youtu.be/N-FY78--JWw",
+                "https://www.wikihow.com/Prevent-Stroke",
+                "https://youtu.be/BR9OjTiwKSM",
                 "Brain",
                 "110011",
                 "    Recognize the signs of a stroke using the FAST acronym: Face drooping, Arm weakness, Speech difficulty, Time to call emergency services.\n" +
@@ -329,8 +333,8 @@ public class first_aid_tips_two extends AppCompatActivity {
                 "An allergic reaction occurs when the immune system overreacts to a substance, resulting in symptoms such as itching, swelling, rash, or difficulty breathing.",
                 R.drawable.ic_allergic,
                 "MINOR",
-                "https://www.sja.org.uk/get-advice/first-aid-advice/allergic-reactions/",
-                "https://youtu.be/N-FY78--JWw",
+                "https://www.wikihow.com/Deal-With-Allergic-Reactions",
+                "https://youtu.be/bIqNTaRZnhs",
                 "Depends on the allergen",
                 "110011",
                 "    Help the person move away from the allergen, if possible.\n" +
@@ -348,8 +352,8 @@ public class first_aid_tips_two extends AppCompatActivity {
                 "A cold is a common viral infection that affects the nose, throat, and upper respiratory system, causing symptoms such as a runny nose, cough, sore throat, and congestion.",
                 R.drawable.ic_cold,
                 "MINOR",
-                "https://www.sja.org.uk/get-advice/first-aid-advice/cold/",
-                "https://youtu.be/N-FY78--JWw",
+                "https://www.wikihow.com/Treat-a-Cold",
+                "https://youtu.be/eeeVSHgfCZ0",
                 "Nose, throat, respiratory system",
                 "110011",
                 "    Encourage the person to rest and drink plenty of fluids.\n" +
@@ -367,8 +371,8 @@ public class first_aid_tips_two extends AppCompatActivity {
                 "Diabetes is a chronic condition that affects how the body processes blood sugar (glucose). It can lead to high or low blood sugar levels and various symptoms.",
                 R.drawable.ic_diabetes,
                 "MINOR",
-                "https://www.sja.org.uk/get-advice/first-aid-advice/diabetes/",
-                "https://youtu.be/N-FY78--JWw",
+                "https://www.wikihow.com/Control-Diabetes",
+                "https://youtu.be/_gQNm_1wjGk",
                 "N/A",
                 "110011",
                 "    Offer the person a sugary drink or food if they are experiencing low blood sugar (hypoglycemia).\n" +
@@ -385,8 +389,8 @@ public class first_aid_tips_two extends AppCompatActivity {
                 "Fainting, also known as syncope, is a temporary loss of consciousness caused by a brief interruption in the brain's blood supply. It can occur due to various factors.",
                 R.drawable.ic_faint,
                 "MINOR",
-                "https://www.sja.org.uk/get-advice/first-aid-advice/fainting/",
-                "https://youtu.be/N-FY78--JWw",
+                "https://www.wikihow.com/Deal-With-Fainting",
+                "https://youtu.be/ddHKwkMwNyI",
                 "N/A",
                 "110011",
                 "    Help the person lie down flat on their back, preferably with their legs elevated.\n" +
@@ -403,8 +407,8 @@ public class first_aid_tips_two extends AppCompatActivity {
                 "Heat exhaustion occurs when the body overheats and can't cool itself down properly. It can be caused by prolonged exposure to high temperatures and inadequate fluid intake.",
                 R.drawable.ic_heat,
                 "MINOR",
-                "https://www.sja.org.uk/get-advice/first-aid-advice/heat-exhaustion/",
-                "https://youtu.be/N-FY78--JWw",
+                "https://www.wikihow.com/Treat-Heatstroke",
+                "https://youtu.be/R6VdoV8dZRc",
                 "N/A",
                 "110011",
                 "    Move the person to a cooler area and encourage them to rest.\n" +
@@ -422,8 +426,8 @@ public class first_aid_tips_two extends AppCompatActivity {
                 "Hyperventilation is an abnormal breathing pattern that involves rapid or deep breathing, often triggered by stress or anxiety. It can lead to various symptoms.",
                 R.drawable.ic_hyperventilation,
                 "MINOR",
-                "https://www.sja.org.uk/get-advice/first-aid-advice/hyperventilation/",
-                "https://youtu.be/N-FY78--JWw",
+                "https://www.wikihow.health/Prevent-Hyperventilation",
+                "https://youtu.be/p97HeXx0vN0",
                 "N/A",
                 "110011",
                 "    Help the person sit down and encourage them to breathe slowly and deeply.\n" +
@@ -440,8 +444,8 @@ public class first_aid_tips_two extends AppCompatActivity {
                 "Bites and stings from insects, spiders, or animals can cause pain, swelling, itching, and allergic reactions. The severity and treatment depend on the type of bite or sting.",
                 R.drawable.ic_bites,
                 "MINOR",
-                "https://www.sja.org.uk/get-advice/first-aid-advice/bites-and-stings/",
-                "https://youtu.be/N-FY78--JWw",
+                "https://www.wikihow.com/Identify-Insect-Bites",
+                "https://youtu.be/ibsIs9-wM1Y",
                 "Depends on the type of bite or sting",
                 "110011",
                 "    Remove any stingers or foreign objects from the skin, if visible.\n" +
@@ -459,8 +463,8 @@ public class first_aid_tips_two extends AppCompatActivity {
                 "Earthquakes are natural disasters that occur when there is a sudden release of energy in the Earth's crust, resulting in seismic waves. They can cause shaking, ground rupture, and various secondary hazards.",
                 R.drawable.ic_earthquackes,
                 "DISASTERS",
-                "https://www.sja.org.uk/get-advice/first-aid-advice/earthquakes/",
-                "https://youtu.be/N-FY78--JWw",
+                "https://www.wikihow.com/Survive-an-Earthquake",
+                "https://youtu.be/BLEPakj1YTY",
                 "N/A",
                 "110011",
                 "    Drop down to the ground, take cover under a sturdy piece of furniture, and hold on.\n" +
@@ -478,8 +482,8 @@ public class first_aid_tips_two extends AppCompatActivity {
                 "Landslides occur when masses of rock, earth, or debris move downhill, often triggered by heavy rainfall, earthquakes, or human activities. They can pose significant risks to people and infrastructure.",
                 R.drawable.ic_landslide,
                 "DISASTERS",
-                "https://www.sja.org.uk/get-advice/first-aid-advice/landslides/",
-                "https://youtu.be/N-FY78--JWw",
+                "https://www.wikihow.com/Be-Safe-During-a-Landslide",
+                "https://youtu.be/bX7z102Kq-Q",
                 "N/A",
                 "110011",
                 "    If indoors, stay inside on the lower floors and away from windows and doors.\n" +
@@ -497,8 +501,8 @@ public class first_aid_tips_two extends AppCompatActivity {
                 "Floods occur when there is an overflow of water onto normally dry land, often caused by heavy rain, melting snow, or dam failure. They can result in property damage, displacement, and other hazards.",
                 R.drawable.ic_flood,
                 "DISASTERS",
-                "https://www.sja.org.uk/get-advice/first-aid-advice/floods/",
-                "https://youtu.be/N-FY78--JWw",
+                "https://www.wikihow.com/Survive-a-Flood",
+                "https://youtu.be/dvuGyLZh-og",
                 "N/A",
                 "110011",
                 "    Move to higher ground and away from flood-prone areas.\n" +
@@ -516,8 +520,8 @@ public class first_aid_tips_two extends AppCompatActivity {
                 "Tsunamis are large ocean waves triggered by earthquakes, volcanic eruptions, or underwater landslides. They can cause widespread destruction and pose significant threats to coastal areas.",
                 R.drawable.ic_tsunami,
                 "DISASTERS",
-                "https://www.sja.org.uk/get-advice/first-aid-advice/tsunamis/",
-                "https://youtu.be/N-FY78--JWw",
+                "https://www.wikihow.com/Survive-a-Tsunami",
+                "https://youtu.be/m7EDddq9ftQ",
                 "N/A",
                 "110011",
                 "    If near the coast, move inland to higher ground immediately.\n" +
@@ -535,8 +539,8 @@ public class first_aid_tips_two extends AppCompatActivity {
                 "Cyclones, also known as hurricanes or typhoons, are powerful tropical storms characterized by strong winds and heavy rain. They can cause extensive damage to infrastructure and pose risks to lives.",
                 R.drawable.ic_cyclones,
                 "DISASTERS",
-                "https://www.sja.org.uk/get-advice/first-aid-advice/cyclones/",
-                "https://youtu.be/N-FY78--JWw",
+                "https://www.wikihow.com/Survive-a-Hurricane",
+                "https://youtu.be/aEkAzbM4_HU",
                 "N/A",
                 "110011",
                 "    Stay indoors in a secure location away from windows and doors.\n" +
@@ -554,8 +558,8 @@ public class first_aid_tips_two extends AppCompatActivity {
                 "Fires can occur due to various causes, including accidents, natural disasters, or human activities. They pose immediate dangers to life, property, and the environment.",
                 R.drawable.ic_fire,
                 "DISASTERS",
-                "https://www.sja.org.uk/get-advice/first-aid-advice/fires/",
-                "https://youtu.be/N-FY78--JWw",
+                "https://www.wikihow.com/Keep-Safe-During-a-House-Fire",
+                "https://youtu.be/apwK7Y362qU",
                 "N/A",
                 "110011",
                 "    Call the emergency services immediately to report the fire.\n" +
@@ -573,8 +577,8 @@ public class first_aid_tips_two extends AppCompatActivity {
                 "Assessing the situation involves evaluating the surroundings and circumstances to determine the appropriate course of action in a medical emergency. It helps gather information, identify hazards, and prioritize care.",
                 R.drawable.ic_asssessing,
                 "TECHNIQUES",
-                "https://www.sja.org.uk/get-advice/first-aid-advice/assessing-the-situation/",
-                "https://youtu.be/N-FY78--JWw",
+                "https://www.wikihow.com/Handle-an-Emergency-Situation",
+                "https://youtu.be/ea1RJUOiNfQ",
                 "N/A",
                 "110011",
                 "    Stay calm and observe the scene to identify potential dangers.\n" +
@@ -591,8 +595,8 @@ public class first_aid_tips_two extends AppCompatActivity {
                 "Shock is a life-threatening condition that can occur due to various reasons, including severe injuries, medical emergencies, or emotional stress. Prompt treatment is necessary to help stabilize the person's condition.",
                 R.drawable.ic_treating_shock,
                 "TECHNIQUES",
-                "https://www.sja.org.uk/get-advice/first-aid-advice/treating-shock/",
-                "https://youtu.be/N-FY78--JWw",
+                "https://www.wikihow.com/Treat-Shock",
+                "https://youtu.be/61urGQrmeNM",
                 "N/A",
                 "110011",
                 "    Ensure the person is lying flat on their back.\n" +
@@ -609,8 +613,8 @@ public class first_aid_tips_two extends AppCompatActivity {
                 "Maintaining proper hygiene practices is essential for preventing the spread of infections, diseases, and maintaining overall health. It includes regular handwashing, cleanliness, and adopting hygienic habits.",
                 R.drawable.ic_hygine,
                 "TECHNIQUES",
-                "https://www.sja.org.uk/get-advice/first-aid-advice/hygiene/",
-                "https://youtu.be/N-FY78--JWw",
+                "https://www.wikihow.com/Be-Hygienic",
+                "https://youtu.be/UxskKQ9WOTE",
                 "N/A",
                 "110011",
                 "    Wash your hands thoroughly with soap and water for at least 20 seconds.\n" +
@@ -628,8 +632,8 @@ public class first_aid_tips_two extends AppCompatActivity {
                 "An AED is a portable device used to deliver an electric shock to the heart during sudden cardiac arrest. It helps restore the heart's normal rhythm and can significantly improve the chances of survival.",
                 R.drawable.ic_usingaed,
                 "TECHNIQUES",
-                "https://www.sja.org.uk/get-advice/first-aid-advice/using-an-aed-automated-external-defibrillator/",
-                "https://youtu.be/N-FY78--JWw",
+                "https://www.wikihow.com/Use-a-Defibrillator",
+                "https://youtu.be/0Yb4RA8C5D8",
                 "N/A",
                 "110011",
                 "    Turn on the AED and follow the voice prompts or visual instructions provided.\n" +
@@ -647,8 +651,8 @@ public class first_aid_tips_two extends AppCompatActivity {
                 "Opening the airways is a critical step in providing first aid for a person who is unconscious or having difficulty breathing. It helps ensure the airway is clear and facilitates adequate oxygen supply.",
                 R.drawable.ic_openingairways,
                 "TECHNIQUES",
-                "https://www.sja.org.uk/get-advice/first-aid-advice/opening-airways/",
-                "https://youtu.be/N-FY78--JWw",
+                "https://www.wikihow.com/Check-Airway,-Breathing-and-Circulation",
+                "https://youtu.be/2fnS8mtqzms",
                 "N/A",
                 "110011",
                 "    Place one hand on the person's forehead and gently tilt their head back.\n" +
@@ -666,8 +670,8 @@ public class first_aid_tips_two extends AppCompatActivity {
                 "The recovery position is a safe and stable position used to place an unconscious person who is breathing normally. It helps protect the airway and prevent the risk of aspiration.",
                 R.drawable.recovery_position,
                 "TECHNIQUES",
-                "https://www.sja.org.uk/get-advice/first-aid-advice/recovery-position/",
-                "https://youtu.be/N-FY78--JWw",
+                "https://www.wikihow.com/Put-Someone-in-the-Recovery-Position",
+                "https://youtu.be/GmqXqwSV3bo",
                 "N/A",
                 "110011",
                 "    Kneel beside the person and place their arm that is closest to you at a right angle to their body, with the elbow bent.\n" +
@@ -680,7 +684,6 @@ public class first_aid_tips_two extends AppCompatActivity {
                         "    Don't leave the person unattended in the recovery position; seek medical help as soon as possible.\n" +
                         "    Don't use excessive force or rough handling when moving the person into the recovery position."
         ));
-
 
 
 
@@ -872,7 +875,7 @@ public class first_aid_tips_two extends AppCompatActivity {
             }
         });
 
-
+            animationFirstAid();
 
     }
 
@@ -923,6 +926,137 @@ public class first_aid_tips_two extends AppCompatActivity {
 
     }
 
+    private void animationFirstAid()
+    {
+        _Animator(activityFirstAidTipsTwoBinding.headFirstAid,"alpha",0,0);
+        _Animator(activityFirstAidTipsTwoBinding.searchBarCon,"alpha",0,0);
+        _Animator(activityFirstAidTipsTwoBinding.headFirstAid,"translationY",75,0);
+        _Animator(activityFirstAidTipsTwoBinding.searchBarCon,"translationY",75,0);
+        _Animator(activityFirstAidTipsTwoBinding.allCon,"translationX",75,0);
+        _Animator(activityFirstAidTipsTwoBinding.majorCon,"translationX",75,0);
+        _Animator(activityFirstAidTipsTwoBinding.minorCon,"translationX",75,0);
+        _Animator(activityFirstAidTipsTwoBinding.disasterCon,"translationX",75,0);
+        _Animator(activityFirstAidTipsTwoBinding.techCon,"translationX",75,0);
+        _Animator(activityFirstAidTipsTwoBinding.allCon,"alpha",0,0);
+        _Animator(activityFirstAidTipsTwoBinding.majorCon,"alpha",0,0);
+        _Animator(activityFirstAidTipsTwoBinding.minorCon,"alpha",0,0);
+        _Animator(activityFirstAidTipsTwoBinding.disasterCon,"alpha",0,0);
+        _Animator(activityFirstAidTipsTwoBinding.techCon,"alpha",0,0);
+        _Animator(activityFirstAidTipsTwoBinding.conList,"alpha",0,0);
+        _Animator(activityFirstAidTipsTwoBinding.conList,"translationY",75,0);
+
+
+        _Animator(activityFirstAidTipsTwoBinding.headFirstAid,"translationY",0,300);
+        _Animator(activityFirstAidTipsTwoBinding.headFirstAid,"alpha",1,300);
+
+        Timer _timer = new Timer();
+        TimerTask timer = new TimerTask() {
+            @Override
+            public void run() {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        _Animator(activityFirstAidTipsTwoBinding.searchBarCon,"translationY",0,300);
+                        _Animator(activityFirstAidTipsTwoBinding.searchBarCon,"alpha",1,300);
+                    }
+                });
+            }
+        };
+        _timer.schedule(timer, (int)(175));
+
+        timer = new TimerTask() {
+            @Override
+            public void run() {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        _Animator(activityFirstAidTipsTwoBinding.allCon,"translationX",0,250);
+                        _Animator(activityFirstAidTipsTwoBinding.allCon,"alpha",1,250);
+                    }
+                });
+            }
+        };
+        _timer.schedule(timer, (int)(350));
+
+        timer = new TimerTask() {
+            @Override
+            public void run() {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        _Animator(activityFirstAidTipsTwoBinding.majorCon,"translationX",0,250);
+                        _Animator(activityFirstAidTipsTwoBinding.majorCon,"alpha",1,250);
+                    }
+                });
+            }
+        };
+        _timer.schedule(timer, (int)(500));
+
+        timer = new TimerTask() {
+            @Override
+            public void run() {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        _Animator(activityFirstAidTipsTwoBinding.minorCon,"translationX",0,250);
+                        _Animator(activityFirstAidTipsTwoBinding.minorCon,"alpha",1,250);
+                    }
+                });
+            }
+        };
+        _timer.schedule(timer, (int)(650));
+
+
+        timer = new TimerTask() {
+            @Override
+            public void run() {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        _Animator(activityFirstAidTipsTwoBinding.disasterCon,"translationX",0,250);
+                        _Animator(activityFirstAidTipsTwoBinding.disasterCon,"alpha",1,250);
+                    }
+                });
+            }
+        };
+        _timer.schedule(timer, (int)(750));
+
+        timer = new TimerTask() {
+            @Override
+            public void run() {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        _Animator(activityFirstAidTipsTwoBinding.techCon,"translationX",0,250);
+                        _Animator(activityFirstAidTipsTwoBinding.techCon,"alpha",1,250);
+                    }
+                });
+            }
+        };
+        _timer.schedule(timer, (int)(850));
+
+        timer = new TimerTask() {
+            @Override
+            public void run() {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        _Animator(activityFirstAidTipsTwoBinding.conList,"translationY",0,300);
+                        _Animator(activityFirstAidTipsTwoBinding.conList,"alpha",1,300);
+                    }
+                });
+            }
+        };
+        _timer.schedule(timer, (int)(950));
+
+
+        //animation list
+
+
+
+
+    }
+
     private void recordSpeech() {
         Intent intent=new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
         intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,"en-US");
@@ -951,4 +1085,125 @@ public class first_aid_tips_two extends AppCompatActivity {
     }
 
 
+    @Override
+    public void onBackPressed() {
+
+
+        _Animator(activityFirstAidTipsTwoBinding.conList,"translationY",75,200);
+        _Animator(activityFirstAidTipsTwoBinding.conList,"alpha",0,200);
+
+        Timer _timer = new Timer();
+        TimerTask timer = new TimerTask() {
+            @Override
+            public void run() {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        _Animator(activityFirstAidTipsTwoBinding.techCon,"translationX",75,100);
+                        _Animator(activityFirstAidTipsTwoBinding.techCon,"alpha",0,100);
+                    }
+                });
+            }
+        };
+        _timer.schedule(timer, (int)(100));
+
+        timer = new TimerTask() {
+            @Override
+            public void run() {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        _Animator(activityFirstAidTipsTwoBinding.disasterCon,"translationX",75,100);
+                        _Animator(activityFirstAidTipsTwoBinding.disasterCon,"alpha",0,100);
+                    }
+                });
+            }
+        };
+        _timer.schedule(timer, (int)(150));
+
+        timer = new TimerTask() {
+            @Override
+            public void run() {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        _Animator(activityFirstAidTipsTwoBinding.minorCon,"translationX",75,100);
+                        _Animator(activityFirstAidTipsTwoBinding.minorCon,"alpha",0,100);
+                    }
+                });
+            }
+        };
+        _timer.schedule(timer, (int)(200));
+
+        timer = new TimerTask() {
+            @Override
+            public void run() {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        _Animator(activityFirstAidTipsTwoBinding.majorCon,"translationX",75,100);
+                        _Animator(activityFirstAidTipsTwoBinding.majorCon,"alpha",0,100);
+                    }
+                });
+            }
+        };
+        _timer.schedule(timer, (int)(250));
+
+        timer = new TimerTask() {
+            @Override
+            public void run() {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        _Animator(activityFirstAidTipsTwoBinding.allCon,"translationX",75,100);
+                        _Animator(activityFirstAidTipsTwoBinding.allCon,"alpha",0,100);
+                    }
+                });
+            }
+        };
+        _timer.schedule(timer, (int)(300));
+
+        timer = new TimerTask() {
+            @Override
+            public void run() {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        _Animator(activityFirstAidTipsTwoBinding.searchBarCon,"translationY",75,100);
+                        _Animator(activityFirstAidTipsTwoBinding.searchBarCon,"alpha",0,100);
+                    }
+                });
+            }
+        };
+        _timer.schedule(timer, (int)(350));
+
+        timer = new TimerTask() {
+            @Override
+            public void run() {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        _Animator(activityFirstAidTipsTwoBinding.headFirstAid,"translationX",75,100);
+                        _Animator(activityFirstAidTipsTwoBinding.headFirstAid,"alpha",0,100);
+                    }
+                });
+            }
+        };
+        _timer.schedule(timer, (int)(400));
+
+        timer = new TimerTask() {
+            @Override
+            public void run() {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+
+                        first_aid_tips_two.super.onBackPressed();
+                    }
+                });
+            }
+        };
+        _timer.schedule(timer, (int)(500));
+
+    }
 }

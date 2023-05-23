@@ -65,12 +65,14 @@ package error404.gfg.healthcare;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -114,6 +116,30 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         holder.img.setImageResource(items.get(position).getImage());
         holder.effectedPart.setText(items.get(position).getEffectedPart());
         holder.itemView.startAnimation(AnimationUtils.loadAnimation(holder.itemView.getContext(),R.anim.anim_item));
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Item clickedItem = items.get(position);
+                Intent farc = new Intent(v.getContext(), FirstAidArticle.class);
+                farc.putExtra("imageResourceId", clickedItem.getImage());
+                // Pass other data as extras if needed
+
+                farc.putExtra("title",items.get(position).getTitle());
+                farc.putExtra("description",items.get(position).getDescription());
+//                farc.putExtra("image",items.get(position).getImage());
+                farc.putExtra("type",items.get(position).getType());
+                farc.putExtra("effectedPart",items.get(position).getEffectedPart());
+                farc.putExtra("wLink",items.get(position).getWebLink());
+                farc.putExtra("yLink",items.get(position).getYtLink());
+                farc.putExtra("call",items.get(position).getCall());
+                farc.putExtra("do",items.get(position).getDo());
+                farc.putExtra("dont",items.get(position).getDonts());
+//                context.startActivity(farc);
+                v.getContext().startActivity(farc);
+            }
+        });
     }
 
     @Override
