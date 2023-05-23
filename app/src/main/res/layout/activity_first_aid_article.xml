@@ -153,6 +153,7 @@
                     android:layout_marginLeft="25dp"
                     android:layout_marginTop="20dp"
                     android:layout_marginRight="25dp"
+
                     android:background="@drawable/bg_item"
                     android:orientation="vertical">
 
@@ -160,6 +161,9 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:layout_marginTop="25dp"
+                        android:layout_marginRight="10dp"
                         android:orientation="horizontal">
 
                         <TextView
@@ -167,12 +171,31 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="20dp"
-                            android:layout_marginTop="25dp"
                             android:layout_weight="1"
                             android:fontFamily="@font/black"
+                            android:ellipsize="end"
+                            android:lines="1"
                             android:text="Ashthma Attack"
                             android:textColor="@color/text_primary"
                             android:textSize="20dp" />
+
+                        <LinearLayout
+                            android:id="@+id/soundBtndes"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_marginRight="10dp"
+                            android:background="@drawable/round_bg"
+                            android:gravity="center"
+                            android:orientation="horizontal"
+                            android:tooltipText="Text to Speech">
+
+                            <ImageView
+
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                app:srcCompat="@drawable/ic_sound" />
+
+                        </LinearLayout>
 
                     </LinearLayout>
 
@@ -253,6 +276,9 @@
 
                     <LinearLayout
                         android:layout_width="match_parent"
+                        android:layout_marginTop="25dp"
+                        android:gravity="center"
+                        android:layout_marginRight="10dp"
                         android:layout_height="match_parent"
                         android:orientation="horizontal">
 
@@ -261,13 +287,31 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="20dp"
-                            android:layout_marginTop="25dp"
+
                             android:layout_weight="1"
                             android:fontFamily="@font/black"
                             android:gravity="center_vertical"
                             android:text="✔️ What to do ?"
                             android:textColor="@color/text_primary"
                             android:textSize="20dp" />
+
+                        <LinearLayout
+                            android:id="@+id/soundBtndo"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_marginRight="10dp"
+                            android:background="@drawable/round_bg"
+                            android:gravity="center"
+                            android:orientation="horizontal"
+                            android:tooltipText="Text to Speech">
+
+                            <ImageView
+
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                app:srcCompat="@drawable/ic_sound" />
+
+                        </LinearLayout>
 
                     </LinearLayout>
 
@@ -278,6 +322,7 @@
                         android:layout_marginLeft="20dp"
                         android:layout_marginTop="10dp"
                         android:layout_marginRight="15dp"
+                        android:layout_marginBottom="15dp"
                         android:fontFamily="@font/regular_e"
                         android:text="During an asthma attack, the airways in the lungs become narrow, making it difficult to breathe. It is often accompanied by wheezing, coughing, and a feeling of tightness in the chest."
                         android:textSize="16dp" />
@@ -297,6 +342,9 @@
 
                     <LinearLayout
                         android:layout_width="match_parent"
+                        android:layout_marginRight="10dp"
+                        android:gravity="center"
+                        android:layout_marginTop="25dp"
                         android:layout_height="match_parent"
                         android:orientation="horizontal">
 
@@ -305,13 +353,30 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="20dp"
-                            android:layout_marginTop="25dp"
                             android:layout_weight="1"
                             android:fontFamily="@font/black"
                             android:gravity="center_vertical"
                             android:text="❌ What not to do ?"
                             android:textColor="@color/text_primary"
                             android:textSize="20dp" />
+
+                        <LinearLayout
+                            android:id="@+id/soundBtndont"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_marginRight="10dp"
+                            android:background="@drawable/round_bg"
+                            android:gravity="center"
+                            android:orientation="horizontal"
+                            android:tooltipText="Text to Speech">
+
+                            <ImageView
+
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                app:srcCompat="@drawable/ic_sound" />
+
+                        </LinearLayout>
 
                     </LinearLayout>
 
@@ -322,6 +387,7 @@
                         android:layout_marginLeft="20dp"
                         android:layout_marginTop="10dp"
                         android:layout_marginRight="15dp"
+                        android:layout_marginBottom="15dp"
                         android:fontFamily="@font/regular_e"
                         android:text="During an asthma attack, the airways in the lungs become narrow, making it difficult to breathe. It is often accompanied by wheezing, coughing, and a feeling of tightness in the chest."
                         android:textSize="16dp" />

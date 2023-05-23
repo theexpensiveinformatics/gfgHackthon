@@ -8,17 +8,20 @@ import androidx.core.content.res.ResourcesCompat;
 
 import android.animation.ObjectAnimator;
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Typeface;
 import android.graphics.drawable.AnimationDrawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.speech.tts.TextToSpeech;
 import android.text.Html;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
+import android.text.style.BackgroundColorSpan;
 import android.text.style.BulletSpan;
 import android.text.style.LineHeightSpan;
 import android.view.View;
@@ -48,8 +51,11 @@ import java.util.TimerTask;
 public class FirstAidArticle extends AppCompatActivity {
     TextView titleTxt,descriptionTxt,typeTxt,effectedPartTxt,doTxt,dontxt;
     ImageView img,imageViewHead;
-    LinearLayout back,sound,web,yt;
+    LinearLayout back,sound1,sound2,sound3,web,yt,sound;
     TextToSpeech t1;
+    private Handler handler;
+
+    TextToSpeech tts;
     CardView cardView;
     LinearLayout one,two,three;
 
@@ -58,6 +64,8 @@ public class FirstAidArticle extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_first_aid_article);
+
+
 
 //        //animation Background
 //        LinearLayout bg = findViewById(R.id.bg);
@@ -93,6 +101,9 @@ public class FirstAidArticle extends AppCompatActivity {
         three=(LinearLayout)findViewById(R.id.three);
         yt=(LinearLayout) findViewById(R.id.ytBtn);
         sound=(LinearLayout) findViewById(R.id.soundBtn);
+        sound1=(LinearLayout)findViewById(R.id.soundBtndes) ;
+        sound2=(LinearLayout)findViewById(R.id.soundBtndo) ;
+        sound3=(LinearLayout)findViewById(R.id.soundBtndont);
         back=(LinearLayout)findViewById(R.id.backBtn);
 
         String title = getIntent().getExtras().getString("title");
@@ -157,7 +168,11 @@ public class FirstAidArticle extends AppCompatActivity {
         dontxt.setText(formattedDontS);
 
 
+        //text to speech two
 
+
+
+        handler = new Handler();
 
 
         //text to speech
@@ -171,12 +186,87 @@ public class FirstAidArticle extends AppCompatActivity {
             }
         });
 
-        sound.setOnClickListener(new View.OnClickListener() {
+
+        sound3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                    t1.speak(voice,TextToSpeech.QUEUE_FLUSH,null);
+                // Get the text from the 'doTxt' TextView
+                String doText = dontxt.getText().toString();
+
+                // Split the text into individual sentences
+                final String[] sentences = doText.split("•");
+
+                // Create a SpannableStringBuilder to build the highlighted text
+                final SpannableStringBuilder spannableBuilder = new SpannableStringBuilder(doText);
+
+                // Create a BackgroundColorSpan to set the background color
+                final BackgroundColorSpan backgroundColorSpan = new BackgroundColorSpan(getResources().getColor(R.color.light_blue));
+
+                // Start highlighting and speaking the sentences
+                highlightAndSpeakSentence3(0, sentences, spannableBuilder, backgroundColorSpan);
             }
         });
+
+        sound2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Get the text from the 'doTxt' TextView
+                String doText = doTxt.getText().toString();
+
+                // Split the text into individual sentences
+                final String[] sentences = doText.split("•");
+
+                // Create a SpannableStringBuilder to build the highlighted text
+                final SpannableStringBuilder spannableBuilder = new SpannableStringBuilder(doText);
+
+                // Create a BackgroundColorSpan to set the background color
+                final BackgroundColorSpan backgroundColorSpan = new BackgroundColorSpan(getResources().getColor(R.color.light_blue));
+
+                // Start highlighting and speaking the sentences
+                highlightAndSpeakSentence(0, sentences, spannableBuilder, backgroundColorSpan);
+            }
+        });
+
+        sound1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Get the text from the 'doTxt' TextView
+                String desS = descriptionTxt.getText().toString();
+
+                // Split the text into individual sentences
+                final String[] sentences = desS.split("\\.");
+
+                // Create a SpannableStringBuilder to build the highlighted text
+                final SpannableStringBuilder spannableBuilder = new SpannableStringBuilder(desS);
+
+                // Create a BackgroundColorSpan to set the background color
+                final BackgroundColorSpan backgroundColorSpan = new BackgroundColorSpan(getResources().getColor(R.color.light_blue));
+
+                // Start highlighting and speaking the sentences
+                highlightAndSpeakSentence2(0, sentences, spannableBuilder, backgroundColorSpan);
+            }
+        });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -465,5 +555,126 @@ public class FirstAidArticle extends AppCompatActivity {
         _timer.schedule(timer, (int)(520));
 
 
+
+
+
+
     }
+
+
+    private void highlightAndSpeakSentence(final int sentenceIndex, final String[] sentences, final SpannableStringBuilder spannableBuilder, final BackgroundColorSpan backgroundColorSpan) {
+        if (sentenceIndex >= sentences.length) {
+            // All sentences have been processed
+            return;
+        }
+
+        final String sentence = sentences[sentenceIndex].trim();
+
+        // Get the start and end indices of the current sentence
+        int start = spannableBuilder.toString().indexOf(sentence);
+        int end = start + sentence.length();
+
+        // Apply the BackgroundColorSpan to the current sentence
+        spannableBuilder.setSpan(backgroundColorSpan, start, end, Spannable.SPAN_INCLUSIVE_INCLUSIVE);
+
+        // Set the highlighted text in the 'doTxt' TextView
+        doTxt.setText(spannableBuilder);
+
+        // Speak the current sentence
+        t1.speak(sentence, TextToSpeech.QUEUE_FLUSH, null);
+
+        // Delay the highlighting and speaking by the duration of the current sentence
+        int delay = sentence.length() * 100; // Adjust the multiplier as needed
+
+        // Schedule the removal of highlighting and proceed to the next sentence
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                // Remove the highlighting from the current sentence
+                spannableBuilder.removeSpan(backgroundColorSpan);
+                doTxt.setText(spannableBuilder);
+
+                // Proceed to the next sentence
+                highlightAndSpeakSentence(sentenceIndex + 1, sentences, spannableBuilder, backgroundColorSpan);
+            }
+        }, delay);
+    }
+    private void highlightAndSpeakSentence2(final int sentenceIndex, final String[] sentences, final SpannableStringBuilder spannableBuilder, final BackgroundColorSpan backgroundColorSpan) {
+        if (sentenceIndex >= sentences.length) {
+            // All sentences have been processed
+            return;
+        }
+
+        final String sentence = sentences[sentenceIndex].trim();
+
+        // Get the start and end indices of the current sentence
+        int start = spannableBuilder.toString().indexOf(sentence);
+        int end = start + sentence.length();
+
+        // Apply the BackgroundColorSpan to the current sentence
+        spannableBuilder.setSpan(backgroundColorSpan, start, end, Spannable.SPAN_INCLUSIVE_INCLUSIVE);
+
+        // Set the highlighted text in the 'doTxt' TextView
+        descriptionTxt.setText(spannableBuilder);
+
+        // Speak the current sentence
+        t1.speak(sentence, TextToSpeech.QUEUE_FLUSH, null);
+
+        // Delay the highlighting and speaking by the duration of the current sentence
+        int delay = sentence.length() * 90; // Adjust the multiplier as needed
+
+        // Schedule the removal of highlighting and proceed to the next sentence
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                // Remove the highlighting from the current sentence
+                spannableBuilder.removeSpan(backgroundColorSpan);
+                descriptionTxt.setText(spannableBuilder);
+
+                // Proceed to the next sentence
+                highlightAndSpeakSentence2(sentenceIndex + 1, sentences, spannableBuilder, backgroundColorSpan);
+            }
+        }, delay);
+    }
+
+    private void highlightAndSpeakSentence3(final int sentenceIndex, final String[] sentences, final SpannableStringBuilder spannableBuilder, final BackgroundColorSpan backgroundColorSpan) {
+        if (sentenceIndex >= sentences.length) {
+            // All sentences have been processed
+            return;
+        }
+
+        final String sentence = sentences[sentenceIndex].trim();
+
+        // Get the start and end indices of the current sentence
+        int start = spannableBuilder.toString().indexOf(sentence);
+        int end = start + sentence.length();
+
+        // Apply the BackgroundColorSpan to the current sentence
+        spannableBuilder.setSpan(backgroundColorSpan, start, end, Spannable.SPAN_INCLUSIVE_INCLUSIVE);
+
+        // Set the highlighted text in the 'doTxt' TextView
+        dontxt.setText(spannableBuilder);
+
+        // Speak the current sentence
+        t1.speak(sentence, TextToSpeech.QUEUE_FLUSH, null);
+
+        // Delay the highlighting and speaking by the duration of the current sentence
+        int delay = sentence.length() * 90; // Adjust the multiplier as needed
+
+        // Schedule the removal of highlighting and proceed to the next sentence
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                // Remove the highlighting from the current sentence
+                spannableBuilder.removeSpan(backgroundColorSpan);
+                dontxt.setText(spannableBuilder);
+
+                // Proceed to the next sentence
+                highlightAndSpeakSentence3(sentenceIndex + 1, sentences, spannableBuilder, backgroundColorSpan);
+            }
+        }, delay);
+    }
+
+
+
 }
