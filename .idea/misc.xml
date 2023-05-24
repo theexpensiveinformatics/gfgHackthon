@@ -3,32 +3,47 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/drawable-v24/cud_noti.xml" value="0.2665" />
         <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/drawable-v24/custom_background_two.xml" value="0.1245" />
         <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/drawable-v24/diable_post.xml" value="0.1245" />
         <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/drawable-v24/post_light_blue.xml" value="0.2665" />
+        <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/drawable/artical_img_bg.xml" value="0.2665" />
         <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/drawable/back_btn.xml" value="0.2665" />
+        <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/drawable/bg2.xml" value="0.1235" />
+        <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/drawable/bg_dec.xml" value="0.1245" />
         <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/drawable/bg_item.xml" value="0.2655" />
         <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/drawable/blood_bg_active.xml" value="0.2665" />
+        <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/drawable/blood_bg_disable.xml" value="0.2665" />
+        <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/drawable/box_empty.xml" value="0.2665" />
         <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/drawable/gredient_home_2.xml" value="0.2665" />
+        <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/drawable/ic_back.xml" value="0.2665" />
+        <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/drawable/ic_baseline_close_24.xml" value="0.2665" />
         <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/drawable/ic_link.xml" value="0.2665" />
         <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/drawable/ic_mic.xml" value="0.2665" />
         <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/drawable/ic_running.xml" value="0.2665" />
         <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/drawable/ic_sound.xml" value="0.2665" />
         <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/drawable/ic_video.xml" value="0.2665" />
+        <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/drawable/light_blue_bg.xml" value="0.2655" />
+        <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/drawable/overlay.xml" value="0.2655" />
+        <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/drawable/red_bg.xml" value="0.2655" />
         <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/drawable/round_bg.xml" value="0.2655" />
+        <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/drawable/show_bg.xml" value="0.2665" />
         <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/drawable/sys_bg.xml" value="0.2665" />
         <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/drawable/sys_bg_2.xml" value="0.2665" />
         <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/drawable/top_gredient_items.xml" value="0.2655" />
         <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/layout/activity_artical.xml" value="0.21462163317657118" />
         <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/layout/activity_disasters.xml" value="0.21462163317657118" />
+        <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/layout/activity_ecall.xml" value="0.264" />
         <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/layout/activity_first_aid_article.xml" value="0.2" />
         <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/layout/activity_first_aid_tips_two.xml" value="0.264" />
         <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/layout/activity_home_screen2.xml" value="0.21462163317657118" />
         <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/layout/activity_symtop_checker.xml" value="0.21462163317657118" />
         <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/layout/broadcast_recycler.xml" value="0.21462163317657118" />
+        <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/layout/custom_dailog.xml" value="0.2" />
         <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/layout/fragment_history.xml" value="0.21462163317657118" />
         <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/layout/fragment_home.xml" value="0.21190375685943436" />
         <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/layout/item_view.xml" value="0.264" />
+        <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/layout/overlay_layout.xml" value="0.6" />
       </map>
     </option>
   </component>

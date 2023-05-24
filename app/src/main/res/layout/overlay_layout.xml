@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <!--Root container-->
+    <RelativeLayout
+        android:id="@+id/root_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:ignore="UselessParent">
+
+        <!--View while view is collapsed-->
+        <RelativeLayout
+            android:id="@+id/collapse_view"
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="visible">
+
+            <ImageView
+                android:id="@+id/close_btn"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="0dp"
+                android:background="@drawable/red_bg"
+                android:padding="2dp"
+                android:src="@drawable/ic_baseline_close_24"
+                android:translationZ="0dp"
+                tools:ignore="ContentDescription" />
+
+            <RelativeLayout
+                android:layout_width="150dp"
+                android:layout_height="81dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/call_png"
+                android:gravity="center"
+                android:translationZ="-1dp">
+
+            </RelativeLayout>
+
+            <!--Close button-->
+
+        </RelativeLayout>
+
+
+
+    </RelativeLayout>
+</FrameLayout>

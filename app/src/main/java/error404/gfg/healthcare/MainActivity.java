@@ -10,9 +10,12 @@ import android.content.pm.PackageInfo;
 import android.graphics.LinearGradient;
 import android.graphics.Shader;
 import android.net.ConnectivityManager;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.provider.Settings;
 import android.text.TextPaint;
 import android.util.Log;
 import android.view.View;
@@ -43,6 +46,7 @@ import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
 
+    private static final int REQUEST_OVERLAY_PERMISSION = 0;
     RetrofitService retrofitService = new RetrofitService();
     error404.gfg.healthcare.reotrfit.userAPI userAPI = retrofitService.getRetrofit().create(error404.gfg.healthcare.reotrfit.userAPI.class);
     TextView textView,Res;
@@ -103,7 +107,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
             } else {
-                Intent i = new Intent(MainActivity.this, first_aid_tips_two.class);
+                Intent i = new Intent(MainActivity.this, Authantication.class);
                 startActivity(i);
                 finish();
             }
@@ -114,6 +118,23 @@ public class MainActivity extends AppCompatActivity {
             finish();
 
         }
+
+//        // Check if the SYSTEM_ALERT_WINDOW permission is granted
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && !Settings.canDrawOverlays(this)) {
+//            // If not, request the permission
+//            Intent intent = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION,
+//                    Uri.parse("package:" + getPackageName()));
+//            startActivityForResult(intent, REQUEST_OVERLAY_PERMISSION);
+//
+//            Toast.makeText(this, "done", Toast.LENGTH_SHORT).show();
+//        } else {
+//            // Permission already granted or not needed
+//            // Add your overlay window code here
+//            startService(new Intent(MainActivity.this,FloatingViewService.class));
+//        }
+
+
+
 
 
         FirebaseMessaging.getInstance().subscribeToTopic("notification");
@@ -159,6 +180,19 @@ public class MainActivity extends AppCompatActivity {
         }
         return packageInfo.versionCode;
     }
+
+//    @Override
+//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+//        super.onActivityResult(requestCode, resultCode, data);
+//        if (requestCode == REQUEST_OVERLAY_PERMISSION) {
+//            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && Settings.canDrawOverlays(this)) {
+//                // Permission granted, add your overlay window code here
+//            } else {
+//                // Permission denied, handle accordingly
+//            }
+//        }
+//    }
+
 
 
 }

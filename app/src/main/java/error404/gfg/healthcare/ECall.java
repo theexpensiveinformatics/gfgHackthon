@@ -20,14 +20,18 @@ import android.graphics.drawable.AnimationDrawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
+import android.provider.Settings;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import java.util.Objects;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -36,6 +40,7 @@ import error404.gfg.healthcare.databinding.ActivityEcallBinding;
 
 public class ECall extends AppCompatActivity {
     String ECallNum,Name,Relation;
+    private static final int REQUEST_OVERLAY_PERMISSION = 0;
     ActivityEcallBinding activityEcallBinding;
     SharedPreferences sharedPreferencesECall;
     private static final String KEY_NAME= "namekey";
@@ -83,6 +88,13 @@ public class ECall extends AppCompatActivity {
 
             activityEcallBinding.ifAddedBg.setVisibility(View.GONE);
 
+//        //open keyboard
+//        InputMethodManager inputMethodManager =  (InputMethodManager)getSystemService(INPUT_METHOD_SERVICE);
+//        inputMethodManager.toggleSoftInputFromWindow(activityEcallBinding.NameEdit.getApplicationWindowToken(), InputMethodManager.SHOW_FORCED, 0);
+//        activityEcallBinding.NameEdit.requestFocus();
+//
+//        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
+
         //click on add number
         if(numkey!=null)
         {
@@ -96,6 +108,24 @@ public class ECall extends AppCompatActivity {
 
             activityEcallBinding.ifnotaddesBg.setVisibility(View.GONE);
             activityEcallBinding.ifAddedBg.setVisibility(View.VISIBLE);
+
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && !Settings.canDrawOverlays(this)) {
+            // If not, request the permission
+            Intent intent = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION,
+                    Uri.parse("package:" + getPackageName()));
+            startActivityForResult(intent, REQUEST_OVERLAY_PERMISSION);
+
+            Toast.makeText(this, "done", Toast.LENGTH_SHORT).show();
+        } else {
+            // Permission already granted or not needed
+            // Add your overlay window code here
+
+                Intent i = new Intent(ECall.this, FloatingViewService.class);
+                i.putExtra("n",numkey);
+                startService(i);
+
+//            startService(new Intent(ECall.this,FloatingViewService.class));
+        }
 
             //powerbutton
             BroadcastReceiver receiver = new BroadcastReceiver() {
@@ -164,6 +194,29 @@ public class ECall extends AppCompatActivity {
             }
         });
 
+        activityEcallBinding.grantPermission2Bg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && !Settings.canDrawOverlays(ECall.this)) {
+                    // If not, request the permission
+                    Intent intent = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION,
+                            Uri.parse("package:" + getPackageName()));
+                    startActivityForResult(intent, REQUEST_OVERLAY_PERMISSION);
+
+
+//                    activityEcallBinding.grantPermission2Bg.setBackgroundResource(R.drawable.box_empty);
+
+                } else {
+
+                    activityEcallBinding.grantPermission2Bg.setBackgroundResource(R.drawable.cud_noti);
+                    Toast.makeText(ECall.this, "Overlay Permission Granted", Toast.LENGTH_SHORT).show();
+//                    // Permission already granted or not needed
+//                    // Add your overlay window code here
+//                    startService(new Intent(ECall.this,FloatingViewService.class));
+                }
+            }
+        });
+
 
         //callContainer On click
         activityEcallBinding.callCon.setOnClickListener(new View.OnClickListener() {
@@ -213,8 +266,31 @@ public class ECall extends AppCompatActivity {
                     }else if(ContextCompat.checkSelfPermission(ECall.this,
                             Manifest.permission.CALL_PHONE)== PackageManager.PERMISSION_DENIED) {
                         activityEcallBinding.grantPermissionBg.setBackgroundResource(R.drawable.box_empty);
+//
+//                    }
+//
+//                    else if(ContextCompat.checkSelfPermission(ECall.this,
+//                            Manifest.permission.SYSTEM_ALERT_WINDOW)== PackageManager.PERMISSION_DENIED) {
+//                        activityEcallBinding.grantPermission2Bg.setBackgroundResource(R.drawable.box_empty);
 
-                    } else {
+
+                    }else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && !Settings.canDrawOverlays(ECall.this)) {
+                        // If not, request the permission
+                        Intent intent = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION,
+                                Uri.parse("package:" + getPackageName()));
+                        startActivityForResult(intent, REQUEST_OVERLAY_PERMISSION);
+
+
+                    }
+
+//                        startService(new Intent(ECall.this,FloatingViewService.class));
+
+
+
+                    else {
+
+
+
                         SharedPreferences.Editor editor = sharedPreferencesECall.edit();
                         editor.putString(KEY_NAME, Name);
                         editor.putString(KEY_NUMBER, activityEcallBinding.EcallEdit.getText().toString());
@@ -262,6 +338,9 @@ public class ECall extends AppCompatActivity {
         animationDrawable.start();
 
 
+
+
+
     }
 
     //Animator Block
@@ -275,6 +354,34 @@ public class ECall extends AppCompatActivity {
         anim.start();
 
 
+
+
+    }
+
+
+    private void RequestOverlayPermissionPermission()
+    {
+        if(ActivityCompat.shouldShowRequestPermissionRationale(this ,Manifest.permission.SYSTEM_ALERT_WINDOW))
+        {
+            new AlertDialog.Builder(this )
+                    .setTitle("Permission Needed")
+                    .setMessage("Permission needed due to floating Button!")
+                    .setPositiveButton("Okay", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            ActivityCompat.requestPermissions(ECall.this,new String[]{Manifest.permission.SYSTEM_ALERT_WINDOW},REQUEST_OVERLAY_PERMISSION);
+                        }
+                    }).setNegativeButton("Cancle", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    }).create().show();
+        }
+        else
+        {
+            ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.SYSTEM_ALERT_WINDOW},REQUEST_OVERLAY_PERMISSION);
+        }
     }
 
     //call Request
@@ -315,4 +422,19 @@ public class ECall extends AppCompatActivity {
             }
         }
     }
+
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQUEST_OVERLAY_PERMISSION) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && Settings.canDrawOverlays(this)) {
+                // Permission granted, add your overlay window code here
+            } else {
+                // Permission denied, handle accordingly
+            }
+        }
+    }
+
 }

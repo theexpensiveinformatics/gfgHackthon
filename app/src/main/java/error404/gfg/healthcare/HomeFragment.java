@@ -115,13 +115,13 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent ecall = new Intent(getActivity(), ECall.class);
-                ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(getActivity(),imageEme, ViewCompat.getTransitionName(imageEme));
+//                ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(getActivity(),imageEme, ViewCompat.getTransitionName(imageEme));
 
 //                Pair[] pairs=new Pair[2];
 //                pairs[0]=new Pair<View,String >(textView13,"ecallTxt");
 //                pairs[1]=new Pair<View,String>(imageEme,"example");
 //                ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(getActivity(),pairs);
-                startActivity(ecall,options.toBundle());
+                startActivity(ecall);
             }
         });
         RetrofitService retrofitService = new RetrofitService();
