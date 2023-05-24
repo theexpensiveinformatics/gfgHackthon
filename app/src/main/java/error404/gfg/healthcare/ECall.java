@@ -120,9 +120,22 @@ public class ECall extends AppCompatActivity {
             // Permission already granted or not needed
             // Add your overlay window code here
 
-                Intent i = new Intent(ECall.this, FloatingViewService.class);
-                i.putExtra("n",numkey);
-                startService(i);
+                Timer _timer = new Timer();
+                TimerTask timer = new TimerTask() {
+                    @Override
+                    public void run() {
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+//                                Intent i = new Intent(ECall.this, FloatingViewService.class);
+//                                i.putExtra("n",numkey);
+//                                startService(i);
+                            }
+                        });
+                    }
+                };
+                _timer.schedule(timer, (int)(6000));
+
 
 //            startService(new Intent(ECall.this,FloatingViewService.class));
         }
@@ -338,7 +351,7 @@ public class ECall extends AppCompatActivity {
         animationDrawable.start();
 
 
-
+        animationECall();
 
 
     }
@@ -355,6 +368,191 @@ public class ECall extends AppCompatActivity {
 
 
 
+
+    }
+
+
+    private void animationECall()
+    {
+        _Animator(activityEcallBinding.headTxt,"alpha",0,0);
+        _Animator(activityEcallBinding.conRound1,"alpha",0,0);
+        _Animator(activityEcallBinding.conRound2,"alpha",0,0);
+        _Animator(activityEcallBinding.context1,"alpha",0,0);
+        _Animator(activityEcallBinding.context2,"alpha",0,0);
+        _Animator(activityEcallBinding.cardView1,"alpha",0,0);
+        _Animator(activityEcallBinding.cardView2,"alpha",0,0);
+        _Animator(activityEcallBinding.des1,"alpha",0,0);
+        _Animator(activityEcallBinding.des2,"alpha",0,0);
+        _Animator(activityEcallBinding.line1,"alpha",0,0);
+        _Animator(activityEcallBinding.line2,"alpha",0,0);
+        _Animator(activityEcallBinding.conDetails,"alpha",0,0);
+
+        _Animator(activityEcallBinding.headTxt,"translationX",75,0);
+        _Animator(activityEcallBinding.context1,"translationX",-70,0);
+        _Animator(activityEcallBinding.context2,"translationX",-70,0);
+        _Animator(activityEcallBinding.conRound1,"scaleX",0,0);
+        _Animator(activityEcallBinding.conRound2,"scaleX",0,0);
+        _Animator(activityEcallBinding.conRound1,"scaleY",0,0);
+        _Animator(activityEcallBinding.conRound2,"scaleY",0,0);
+
+        _Animator(activityEcallBinding.cardView1,"translationY",75,0);
+        _Animator(activityEcallBinding.cardView2,"translationY",75,0);
+        _Animator(activityEcallBinding.des1,"translationY",75,0);
+        _Animator(activityEcallBinding.des2,"translationY",75,0);
+        _Animator(activityEcallBinding.conDetails,"translationY",75,0);
+
+        _Animator(activityEcallBinding.line1,"translationY",-200,0);
+        _Animator(activityEcallBinding.line2,"translationY",-200,0);
+
+
+        _Animator(activityEcallBinding.headTxt,"translationX",0,250);
+        _Animator(activityEcallBinding.headTxt,"alpha",1,250);
+
+        Timer _timer = new Timer();
+        TimerTask timer = new TimerTask() {
+            @Override
+            public void run() {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        _Animator(activityEcallBinding.conRound1,"scaleX",1,200);
+                        _Animator(activityEcallBinding.conRound1,"scaleY",1,200);
+                        _Animator(activityEcallBinding.conRound1,"alpha",1,200);
+                    }
+                });
+            }
+        };
+        _timer.schedule(timer, (int)(200));
+
+
+        timer = new TimerTask() {
+            @Override
+            public void run() {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        _Animator(activityEcallBinding.context1,"translationX",0,200);
+                        _Animator(activityEcallBinding.context1,"alpha",1,200);
+                    }
+                });
+            }
+        };
+        _timer.schedule(timer, (int)(300));
+
+        timer = new TimerTask() {
+            @Override
+            public void run() {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+
+                        _Animator(activityEcallBinding.cardView1,"translationY",0,200);
+                        _Animator(activityEcallBinding.line1,"translationY",0,400);
+                        _Animator(activityEcallBinding.cardView1,"alpha",1,200);
+                        _Animator(activityEcallBinding.line1,"alpha",1,400);
+                    }
+                });
+            }
+        };
+        _timer.schedule(timer, (int)(400));
+
+        timer = new TimerTask() {
+            @Override
+            public void run() {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+
+                        _Animator(activityEcallBinding.des1,"translationY",0,200);
+
+                        _Animator(activityEcallBinding.des1,"alpha",1,200);
+
+                    }
+                });
+            }
+        };
+        _timer.schedule(timer, (int)(500));
+
+        timer = new TimerTask() {
+            @Override
+            public void run() {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        _Animator(activityEcallBinding.conRound2,"scaleX",1,200);
+                        _Animator(activityEcallBinding.conRound2,"scaleY",1,200);
+                        _Animator(activityEcallBinding.conRound2,"alpha",1,200);
+                    }
+                });
+            }
+        };
+        _timer.schedule(timer, (int)(600));
+
+
+        timer = new TimerTask() {
+            @Override
+            public void run() {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        _Animator(activityEcallBinding.context2,"translationX",0,200);
+                        _Animator(activityEcallBinding.context2,"alpha",1,200);
+                    }
+                });
+            }
+        };
+        _timer.schedule(timer, (int)(700));
+
+        timer = new TimerTask() {
+            @Override
+            public void run() {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+
+                        _Animator(activityEcallBinding.cardView2,"translationY",0,200);
+                        _Animator(activityEcallBinding.line2,"translationY",0,400);
+                        _Animator(activityEcallBinding.cardView2,"alpha",1,200);
+                        _Animator(activityEcallBinding.line2,"alpha",1,400);
+                    }
+                });
+            }
+        };
+        _timer.schedule(timer, (int)(800));
+
+        timer = new TimerTask() {
+            @Override
+            public void run() {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+
+                        _Animator(activityEcallBinding.des2,"translationY",0,200);
+
+                        _Animator(activityEcallBinding.des2,"alpha",1,200);
+
+                    }
+                });
+            }
+        };
+        _timer.schedule(timer, (int)(900));
+
+        timer = new TimerTask() {
+            @Override
+            public void run() {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+
+                        _Animator(activityEcallBinding.conDetails,"translationY",0,200);
+
+                        _Animator(activityEcallBinding.conDetails,"alpha",1,200);
+
+                    }
+                });
+            }
+        };
+        _timer.schedule(timer, (int)(1000));
 
     }
 
@@ -437,4 +635,178 @@ public class ECall extends AppCompatActivity {
         }
     }
 
+
+    @Override
+    public void onBackPressed() {
+
+        _Animator(activityEcallBinding.conDetails,"translationY",80,100);
+        _Animator(activityEcallBinding.conDetails,"alpha",0,100);
+
+        Timer _timer = new Timer();
+        TimerTask timer = new TimerTask() {
+            @Override
+            public void run() {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        _Animator(activityEcallBinding.des2,"translationY",80,100);
+                        _Animator(activityEcallBinding.des2,"alpha",0,100);
+                        _Animator(activityEcallBinding.line2,"translationY",-200,100);
+                        _Animator(activityEcallBinding.line2,"alpha",0,100);
+
+                    }
+                });
+            }
+        };
+        _timer.schedule(timer, (int)(50));
+
+        timer = new TimerTask() {
+            @Override
+            public void run() {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        _Animator(activityEcallBinding.cardView2,"translationY",80,100);
+                        _Animator(activityEcallBinding.cardView2,"alpha",0,100);
+
+
+                    }
+                });
+            }
+        };
+        _timer.schedule(timer, (int)(100));
+
+        timer = new TimerTask() {
+            @Override
+            public void run() {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        _Animator(activityEcallBinding.context2,"translationX",-80,100);
+                        _Animator(activityEcallBinding.context2,"alpha",0,100);
+
+
+                    }
+                });
+            }
+        };
+        _timer.schedule(timer, (int)(100));
+
+        timer = new TimerTask() {
+            @Override
+            public void run() {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        _Animator(activityEcallBinding.conRound2,"scaleX",0,100);
+                        _Animator(activityEcallBinding.conRound2,"scaleY",0,100);
+                        _Animator(activityEcallBinding.conRound2,"alpha",0,100);
+
+
+                    }
+                });
+            }
+        };
+        _timer.schedule(timer, (int)(150));
+
+        timer = new TimerTask() {
+            @Override
+            public void run() {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        _Animator(activityEcallBinding.des1,"translationY",80,100);
+                        _Animator(activityEcallBinding.des1,"alpha",0,100);
+                        _Animator(activityEcallBinding.line1,"translationY",-200,100);
+                        _Animator(activityEcallBinding.line1,"alpha",0,100);
+
+                    }
+                });
+            }
+        };
+        _timer.schedule(timer, (int)(200));
+
+        timer = new TimerTask() {
+            @Override
+            public void run() {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        _Animator(activityEcallBinding.cardView1,"translationY",80,100);
+                        _Animator(activityEcallBinding.cardView1,"alpha",0,100);
+
+
+                    }
+                });
+            }
+        };
+        _timer.schedule(timer, (int)(250));
+
+        timer = new TimerTask() {
+            @Override
+            public void run() {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        _Animator(activityEcallBinding.context1,"translationX",-80,100);
+                        _Animator(activityEcallBinding.context1,"alpha",0,100);
+
+
+                    }
+                });
+            }
+        };
+        _timer.schedule(timer, (int)(300));
+
+        timer = new TimerTask() {
+            @Override
+            public void run() {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        _Animator(activityEcallBinding.conRound1,"scaleX",0,100);
+                        _Animator(activityEcallBinding.conRound1,"scaleY",0,100);
+                        _Animator(activityEcallBinding.conRound1,"alpha",0,100);
+
+
+                    }
+                });
+            }
+        };
+        _timer.schedule(timer, (int)(350));
+
+        timer = new TimerTask() {
+            @Override
+            public void run() {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        _Animator(activityEcallBinding.headTxt,"translationX",80,100);
+                        _Animator(activityEcallBinding.headTxt,"alpha",0,100);
+
+
+                    }
+                });
+            }
+        };
+        _timer.schedule(timer, (int)(400));
+        timer = new TimerTask() {
+            @Override
+            public void run() {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        ECall.super.onBackPressed();
+
+
+                    }
+                });
+            }
+        };
+        _timer.schedule(timer, (int)(500));
+
+
+
+
+    }
 }
