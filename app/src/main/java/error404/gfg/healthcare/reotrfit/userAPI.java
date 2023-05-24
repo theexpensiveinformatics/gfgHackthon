@@ -6,6 +6,8 @@ import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
+import retrofit2.http.Path;
 
 public interface userAPI {
     @POST("/signup")
@@ -16,4 +18,7 @@ public interface userAPI {
 
     @GET("user/profile")
     Call<UserModel> getUserProfile(@Header("Authorization") String token);
+
+    @PUT("users/{user_email}")
+    Call<Void> editUser(@Path("user_email") String userEmail, @Body UserModel userModel);
 }
