@@ -45,7 +45,7 @@ import retrofit2.Response;
  * create an instance of this fragment.
  */
 public class HomeFragment extends Fragment {
-    LinearLayout ECallCon,instuctor_Con,quiz_con,sym_con;
+    LinearLayout ECallCon,instuctor_Con,quiz_con,sym_con,lastCon;
     ImageView imageEme;
     ImageView imageQuiz;
     TextView textView13,user_Name;
@@ -110,6 +110,7 @@ public class HomeFragment extends Fragment {
         ECallCon = v.findViewById(R.id.call_con);
         imageQuiz=v.findViewById(R.id.imageView22);
         quiz_con= v.findViewById(R.id.quiz_con);
+        lastCon=v.findViewById(R.id.last_con);
         sym_con=v.findViewById(R.id.con_sym);
         ECallCon.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -156,6 +157,16 @@ public class HomeFragment extends Fragment {
             public void onClick(View v) {
                 Intent instructor = new Intent(getActivity(), first_aid_tips_two.class);
                 startActivity(instructor);
+            }
+        });
+
+        //last con
+
+        lastCon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent lastCon = new Intent(getActivity(), SosActivity.class);
+                startActivity(lastCon);
             }
         });
 

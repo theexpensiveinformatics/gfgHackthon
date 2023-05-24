@@ -242,7 +242,7 @@
 
                             android:layout_marginTop="20dp"
                             android:fontFamily="@font/bold"
-                            android:text="Emergency\nCall"
+                            android:text="Emergency\nCall Service"
                             android:textColor="@color/home_txt_one" />
 
                         <ImageView
@@ -271,7 +271,7 @@
                             android:layout_marginLeft="20dp"
                             android:layout_marginTop="20dp"
                             android:fontFamily="@font/bold"
-                            android:text="Reports of\nSymptoms"
+                            android:text="SOS Message\nService"
                             android:textColor="@color/home_txt_one" />
 
                         <ImageView
