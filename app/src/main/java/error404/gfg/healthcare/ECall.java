@@ -127,14 +127,14 @@ public class ECall extends AppCompatActivity {
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-//                                Intent i = new Intent(ECall.this, FloatingViewService.class);
-//                                i.putExtra("n",numkey);
-//                                startService(i);
+                                Intent i = new Intent(ECall.this, FloatingViewService.class);
+                                i.putExtra("n",numkey);
+                                startService(i);
                             }
                         });
                     }
                 };
-                _timer.schedule(timer, (int)(6000));
+                _timer.schedule(timer, (int)(1100));
 
 
 //            startService(new Intent(ECall.this,FloatingViewService.class));
