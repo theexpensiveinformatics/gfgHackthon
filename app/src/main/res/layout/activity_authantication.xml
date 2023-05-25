@@ -166,6 +166,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_gravity="right"
+                android:id="@+id/forgotPass"
                 android:fontFamily="@font/meduim"
                 android:gravity="right|center_vertical"
                 android:text="Forgot Password?"

@@ -37,6 +37,9 @@ This permission is necessary for devices
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".forgotPassword"
+            android:exported="false" />
+        <activity
             android:name=".SosActivity"
             android:exported="false" />
         <activity
@@ -80,20 +83,15 @@ This permission is necessary for devices
             android:exported="false" />
         <activity
             android:name=".Authantication"
-            android:exported="false" />
-
-        <!-- register the receiver -->
+            android:exported="false" /> <!-- register the receiver -->
         <receiver
             android:name=".ReactivateService"
             android:enabled="true"
-            android:exported="true"/>
-
-        <!-- register the service -->
+            android:exported="true" /> <!-- register the service -->
         <service
             android:name=".SensorService"
             android:enabled="true"
             android:exported="true" />
-
 
         <activity
             android:name=".MainActivity"

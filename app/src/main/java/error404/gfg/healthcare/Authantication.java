@@ -60,6 +60,15 @@ public class Authantication extends AppCompatActivity {
         View view = activityAuthanticationBinding.getRoot();
         setContentView(view);
 
+        //forgot pass page
+        activityAuthanticationBinding.forgotPass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent forgotPassIntent = new Intent(Authantication.this, forgotPassword.class);
+                startActivity(forgotPassIntent);
+            }
+        });
+
         activityAuthanticationBinding.createNewBg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
