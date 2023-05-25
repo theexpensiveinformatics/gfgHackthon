@@ -1,19 +1,6 @@
 package error404.gfg.healthcare.model;
 
 public class UserModel {
-    public UserModel(String _id, String email, String password, String address, String bloodGroup, String firstName, String gender, String lastName, String number, String birthDate, String access_token) {
-        this._id = _id;
-        Email = email;
-        Password = password;
-        Address = address;
-        BloodGroup = bloodGroup;
-        FirstName = firstName;
-        Gender = gender;
-        LastName = lastName;
-        Number = number;
-        BirthDate = birthDate;
-        this.access_token = access_token;
-    }
 
     private String _id;
 
@@ -31,6 +18,25 @@ public class UserModel {
     private String BirthDate;
     private String access_token;
 
+    public String getNewPassword() {
+        return NewPassword;
+    }
+
+    public void setNewPassword(String newPassword) {
+        NewPassword = newPassword;
+    }
+
+    private String NewPassword;
+
+    public String getResetToken() {
+        return ResetToken;
+    }
+
+    public void setResetToken(String resetToken) {
+        ResetToken = resetToken;
+    }
+
+    private String ResetToken;
     public String get_id() {
         return _id;
     }
