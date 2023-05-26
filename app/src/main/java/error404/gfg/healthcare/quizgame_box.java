@@ -10,6 +10,7 @@ import android.graphics.drawable.AnimationDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
@@ -218,6 +219,12 @@ public class quizgame_box extends AppCompatActivity {
                 break;
             case R.id.nextBtn:
                 reset();
+
+                binding.option1.setPadding(15,30,15,30);
+                binding.option2.setPadding(15,30,15,30);
+                binding.option3.setPadding(15,30,15,30);
+                binding.option4.setPadding(15,30,15,30);
+
                 if(index < questions.size()-1) {
                     index++;
                     setNextQuestion();

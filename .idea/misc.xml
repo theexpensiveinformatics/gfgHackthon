@@ -29,6 +29,8 @@
         <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/drawable/red_bg.xml" value="0.2655" />
         <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/drawable/round_bg.xml" value="0.2655" />
         <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/drawable/show_bg.xml" value="0.2665" />
+        <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/drawable/sos_bg.xml" value="0.2655" />
+        <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/drawable/sos_btn_bg.xml" value="0.2655" />
         <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/drawable/sys_bg.xml" value="0.2665" />
         <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/drawable/sys_bg_2.xml" value="0.2665" />
         <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/drawable/top_gredient_items.xml" value="0.2655" />
@@ -38,17 +40,20 @@
         <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/layout/activity_ecall.xml" value="0.23337982333798232" />
         <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/layout/activity_first_aid_article.xml" value="0.2" />
         <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/layout/activity_first_aid_tips_two.xml" value="0.264" />
-        <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/layout/activity_forgot_password.xml" value="0.176" />
+        <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/layout/activity_forgot_password.xml" value="0.264" />
         <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/layout/activity_home_screen2.xml" value="0.21462163317657118" />
-        <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/layout/activity_item_user.xml" value="0.21462163317657118" />
-        <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/layout/activity_sos.xml" value="0.264" />
+        <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/layout/activity_item_user.xml" value="0.264" />
+        <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/layout/activity_quizgame_box.xml" value="0.21462163317657118" />
+        <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/layout/activity_sos.xml" value="0.136" />
         <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/layout/activity_symtop_checker.xml" value="0.21462163317657118" />
         <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/layout/broadcast_recycler.xml" value="0.21462163317657118" />
         <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/layout/custom_dailog.xml" value="0.2" />
         <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/layout/fragment_history.xml" value="0.21462163317657118" />
         <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/layout/fragment_home.xml" value="0.21190375685943436" />
         <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/layout/fragment_profile.xml" value="0.1" />
+        <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/layout/item_category.xml" value="0.21462163317657118" />
         <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/layout/item_view.xml" value="0.264" />
+        <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/layout/loading_dailog.xml" value="0.21462163317657118" />
         <entry key="..\:/Flutter/application_by_flutter/AppName/app/src/main/res/layout/overlay_layout.xml" value="0.6" />
       </map>
     </option>

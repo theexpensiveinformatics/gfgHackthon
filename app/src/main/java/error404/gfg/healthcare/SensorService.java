@@ -8,6 +8,7 @@ import android.app.NotificationManager;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
 import android.location.Location;
@@ -17,6 +18,7 @@ import android.os.VibrationEffect;
 import android.os.Vibrator;
 import android.telephony.SmsManager;
 import android.util.Log;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
@@ -34,6 +36,7 @@ import java.util.List;
 
 public class SensorService extends Service {
 
+    private static final String ACTION_STOP_SERVICE = "error404.gfg.healthcare.STOP_SERVICE";
     private SensorManager mSensorManager;
     private Sensor mAccelerometer;
     private ShakeDetector mShakeDetector;
@@ -59,6 +62,8 @@ public class SensorService extends Service {
 
         super.onCreate();
 
+
+
         // start the foreground service
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
             startMyOwnForeground();
@@ -76,7 +81,8 @@ public class SensorService extends Service {
             public void onShake(int count) {
                 // check if the user has shacked
                 // the phone for 3 time in a row
-                if (count == 3) {
+                if (count == 3 && isSosEnabled()) {
+
 
                     // vibrate the phone
                     vibrate();
@@ -205,6 +211,11 @@ public class SensorService extends Service {
         broadcastIntent.setClass(this, ReactivateService.class);
         this.sendBroadcast(broadcastIntent);
         super.onDestroy();
+    }
+
+    private boolean isSosEnabled() {
+        SharedPreferences preferences = getSharedPreferences("SOS_PREFS", Context.MODE_PRIVATE);
+        return preferences.getBoolean("sosEnabled", true);
     }
 
 

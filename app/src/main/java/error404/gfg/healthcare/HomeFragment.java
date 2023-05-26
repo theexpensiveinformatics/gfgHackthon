@@ -1,13 +1,18 @@
 package error404.gfg.healthcare;
 
+import android.Manifest;
 import android.app.ActivityOptions;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.media.Image;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.app.ActivityCompat;
 import androidx.core.app.ActivityOptionsCompat;
+import androidx.core.content.ContextCompat;
 import androidx.core.view.ViewCompat;
 import androidx.fragment.app.Fragment;
 
@@ -49,6 +54,13 @@ public class HomeFragment extends Fragment {
     ImageView imageEme;
     ImageView imageQuiz;
     TextView textView13,user_Name;
+    private static final int PERMISSION_REQUEST_CODE = 100;
+    private static final String[] REQUIRED_PERMISSIONS = {
+            Manifest.permission.ACCESS_FINE_LOCATION,
+            Manifest.permission.SEND_SMS,
+            Manifest.permission.CALL_PHONE,
+            Manifest.permission.READ_CONTACTS
+    };
 
 
     // TODO: Rename parameter arguments, choose names that match
@@ -165,8 +177,13 @@ public class HomeFragment extends Fragment {
         lastCon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent lastCon = new Intent(getActivity(), SosActivity.class);
-                startActivity(lastCon);
+
+                if (arePermissionsGranted()) {
+                    startNextActivity();
+                } else {
+                    requestPermissions();
+                }
+
             }
         });
 
@@ -197,4 +214,50 @@ public class HomeFragment extends Fragment {
 
         return v;
     }
+
+    private void requestPermissions() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            ActivityCompat.requestPermissions(requireActivity(), REQUIRED_PERMISSIONS, PERMISSION_REQUEST_CODE);
+        } else {
+            startNextActivity();
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        if (requestCode == PERMISSION_REQUEST_CODE) {
+            boolean allPermissionsGranted = true;
+            for (int result : grantResults) {
+                if (result != PackageManager.PERMISSION_GRANTED) {
+                    allPermissionsGranted = false;
+                    break;
+                }
+            }
+            if (allPermissionsGranted) {
+                startNextActivity();
+            } else {
+                showPermissionDeniedToast();
+            }
+        } else {
+            super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        }
+    }
+    private boolean arePermissionsGranted() {
+        for (String permission : REQUIRED_PERMISSIONS) {
+            if (ContextCompat.checkSelfPermission(requireContext(), permission) != PackageManager.PERMISSION_GRANTED) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private void showPermissionDeniedToast() {
+        Toast.makeText(requireContext(), "Permissions denied. Please grant the required permissions.", Toast.LENGTH_SHORT).show();
+    }
+
+    private void startNextActivity() {
+        Intent nextIntent = new Intent(getActivity(), SosActivity.class);
+        startActivity(nextIntent);
+    }
+
 }

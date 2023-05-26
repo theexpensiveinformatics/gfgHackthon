@@ -6,6 +6,8 @@ import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -40,9 +42,31 @@ public class CustomAdapter extends ArrayAdapter<ContactModel>{
         ContactModel c = getItem(position);
 
         // Check if an existing view is being reused, otherwise inflate the view
+//        if (convertView == null) {
+//            convertView = LayoutInflater.from(getContext()).inflate(R.layout.activity_item_user, parent, false);
+//        }
+
         if (convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.activity_item_user, parent, false);
+
+            // Apply animation to the convertView
+
+        }else {
+//            Animation animation = AnimationUtils.loadAnimation(context, R.anim.falldown);
+//            convertView.startAnimation(animation);
         }
+
+        // Apply animation to the convertView
+        convertView.setTranslationY(100);
+
+        // Initial position above the screen
+
+        convertView.animate()
+                .translationY(0)
+                .setDuration(400)
+                .start();
+
+
 
         LinearLayout linearLayout = (LinearLayout) convertView.findViewById(R.id.linear);
 

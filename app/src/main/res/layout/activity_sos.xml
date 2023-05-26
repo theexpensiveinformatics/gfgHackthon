@@ -1,24 +1,129 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:id="@+id/bg"
+     android:background="@drawable/gredient_list"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/Button1"
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="12dp"
-        android:background="#0F9D58"
-        android:text="Add Emergency Contact "
-        android:textColor="#FFFFFF" />
+        android:textSize="20dp"
+        android:translationY="15dp"
+        android:text="SOS Message\nService Started"
+        android:gravity="center"
+        android:fontFamily="@font/semibold"
+        android:textColor="@color/text_primary"
+        android:layout_marginTop="50dp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="14dp"
+        android:translationY="15dp"
+        android:layout_gravity="center"
+        android:layout_marginRight="45dp"
+        android:layout_marginLeft="45dp"
+        android:text="When your phone is shaken more than 3 times,\na message will be sent to people near you."
+        android:gravity="center"
+        android:fontFamily="@font/regular_e"
+        android:layout_marginTop="5dp"/>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_gravity="center"
+        android:layout_height="300dp">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/l"
+                android:layout_width="300dp"
+                android:layout_height="300dp"
+                android:layout_gravity="center"
+                android:translationZ="101dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:lottie_autoPlay="true"
+                app:lottie_fileName="z.json"
+                app:lottie_loop="true" />
+
+            <LinearLayout
+                android:layout_width="180dp"
+                android:layout_height="180dp"
+                android:gravity="center"
+                android:outlineAmbientShadowColor="#000000"
+                android:outlineSpotShadowColor="#000000"
+                android:translationZ="40dp"
+                android:background="@drawable/sos_bg"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/l" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="SOS"
+                    android:textSize="20dp"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/bold"
+                    android:textColor="@color/white"/>
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+
+
+    <Switch
+        android:id="@+id/sosSwitch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/text_primary"
+        android:fontFamily="@font/regular"
+        android:layout_gravity="center"
+        android:theme="@style/SCBSwitch"
+        android:text="Enable SOS"
+        android:checked="true" />
+
+    <LinearLayout
+        android:id="@+id/Button1"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+       android:layout_gravity="center"
+        android:background="@drawable/sos_btn_bg"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:textSize="13dp"
+            android:text="Add Emergency Contact "
+            android:fontFamily="@font/regular"
+            android:textColor="@color/sos"/>
+    </LinearLayout>
+
 
     <ListView
         android:id="@+id/ListView"
         android:layout_width="match_parent"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:dividerHeight="8dp"
+        android:divider="@null"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
         android:layout_height="match_parent" />
 
 </LinearLayout>
