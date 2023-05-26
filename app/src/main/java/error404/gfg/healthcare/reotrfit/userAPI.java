@@ -21,4 +21,13 @@ public interface userAPI {
 
     @PUT("users/{user_email}")
     Call<Void> editUser(@Path("user_email") String userEmail, @Body UserModel userModel);
+
+    @POST("/forgot_password")
+    Call<UserModel> forgot_password(@Body UserModel userModel);
+
+    @POST("/verify_otp")
+    Call<UserModel> verify_otp(@Body UserModel userModel);
+
+    @POST("/update_password")
+    Call<UserModel> update_password(@Body UserModel userModel);
 }
