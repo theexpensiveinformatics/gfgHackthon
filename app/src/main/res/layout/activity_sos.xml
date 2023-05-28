@@ -27,7 +27,7 @@
         android:layout_gravity="center"
         android:layout_marginRight="45dp"
         android:layout_marginLeft="45dp"
-        android:text="When your phone is shaken more than 3 times,\na message will be sent to your emergency contacts."
+        android:text="When your phone is shaken more than 3 times,a message will be sent to your emergency contacts."
         android:gravity="center"
         android:fontFamily="@font/regular_e"
         android:layout_marginTop="5dp"/>
@@ -109,11 +109,11 @@
             android:layout_height="match_parent"
             android:gravity="center"
             android:textSize="13dp"
-            android:text="Add Emergency Contact "
+            android:text="Add Emergency Contact"
             android:fontFamily="@font/regular"
             android:textColor="@color/sos"/>
     </LinearLayout>
-
+`
 
     <ListView
         android:id="@+id/ListView"

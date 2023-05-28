@@ -548,6 +548,8 @@ public class FirstAidArticle extends AppCompatActivity {
                     @Override
                     public void run() {
                         FirstAidArticle.super.onBackPressed();
+                        t1.stop();
+                        finish();
                     }
                 });
             }
