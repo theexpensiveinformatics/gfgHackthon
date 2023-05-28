@@ -3,6 +3,7 @@ package error404.gfg.healthcare;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
 import android.net.Uri;
@@ -82,14 +83,21 @@ public class Artical extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if(sweblink.equals("noLink")) {
-                    Toast.makeText(Artical.this, "No Website link attached.", Toast.LENGTH_SHORT).show();
 
-                }else
+
+
                 {
-                    Intent i = new Intent(Intent.ACTION_VIEW);
-                    i.setData(Uri.parse(sweblink));
-                    startActivity(i);
+                    try {
+                        Intent i = new Intent(Intent.ACTION_VIEW);
+                        i.setData(Uri.parse(sweblink));
+                        startActivity(i);
+                    } catch (ActivityNotFoundException e) {
+                        // Handle the exception when no activity is found to handle the intent
+                        Toast.makeText(getApplicationContext(), "No application found to open the link.", Toast.LENGTH_SHORT).show();
+                    } catch (Exception e) {
+                        // Handle any other unexpected exceptions
+                        Toast.makeText(getApplicationContext(), "No application found to open the link.", Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
         });
@@ -102,9 +110,17 @@ public class Artical extends AppCompatActivity {
                     Toast.makeText(Artical.this, "No Youtube link attached.", Toast.LENGTH_SHORT).show();
                 }else
                 {
-                    Intent i = new Intent(Intent.ACTION_VIEW);
-                    i.setData(Uri.parse(sytlink));
-                    startActivity(i);
+                    try {
+                        Intent i = new Intent(Intent.ACTION_VIEW);
+                        i.setData(Uri.parse(sytlink));
+                        startActivity(i);
+                    } catch (ActivityNotFoundException e) {
+                        // Handle the exception when no activity is found to handle the intent
+                        Toast.makeText(getApplicationContext(), "No application found to open the link.", Toast.LENGTH_SHORT).show();
+                    } catch (Exception e) {
+                        // Handle any other unexpected exceptions
+                        Toast.makeText(getApplicationContext(), "No application found to open the link.", Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
         });

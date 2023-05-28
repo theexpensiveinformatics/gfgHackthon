@@ -28,6 +28,9 @@ import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig;
 import com.google.firebase.remoteconfig.FirebaseRemoteConfigSettings;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 import error404.gfg.healthcare.databinding.ActivityHomeScreen2Binding;
 
 public class home_screen_2 extends AppCompatActivity {
@@ -65,6 +68,102 @@ public class home_screen_2 extends AppCompatActivity {
         View view = activityHomeScreen2Binding.getRoot();
         setContentView(view);
 
+        _Animator(activityHomeScreen2Binding.firstCon,"translationY",100,0);
+        _Animator(activityHomeScreen2Binding.fourCon,"translationY",100,0);
+        _Animator(activityHomeScreen2Binding.thirdCon,"translationY",100,0);
+        _Animator(activityHomeScreen2Binding.firstCon,"alpha",0,0);
+        _Animator(activityHomeScreen2Binding.fourCon,"alpha",0,0);
+        _Animator(activityHomeScreen2Binding.thirdCon,"alpha",0,0);
+
+//        /starting animation
+
+        Timer _timer = new Timer();
+        TimerTask timer = new TimerTask() {
+            @Override
+            public void run() {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        _Animator(activityHomeScreen2Binding.firstCon,"translationY",-50,400);
+                        _Animator(activityHomeScreen2Binding.firstCon,"alpha",1,400);
+                    }
+                });
+            }
+        };
+        _timer.schedule(timer, (int)(900));
+
+
+        timer = new TimerTask() {
+            @Override
+            public void run() {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        _Animator(activityHomeScreen2Binding.firstCon,"translationY",0,200);
+                        _Animator(activityHomeScreen2Binding.firstCon,"alpha",1,200);
+                    }
+                });
+            }
+        };
+        _timer.schedule(timer, (int)(1300));
+
+        timer = new TimerTask() {
+            @Override
+            public void run() {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        _Animator(activityHomeScreen2Binding.thirdCon,"translationY",-50,400);
+                        _Animator(activityHomeScreen2Binding.thirdCon,"alpha",1,400);
+                    }
+                });
+            }
+        };
+        _timer.schedule(timer, (int)(1400));
+
+
+        timer = new TimerTask() {
+            @Override
+            public void run() {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        _Animator(activityHomeScreen2Binding.thirdCon,"translationY",0,200);
+                        _Animator(activityHomeScreen2Binding.thirdCon,"alpha",1,200);
+                    }
+                });
+            }
+        };
+        _timer.schedule(timer, (int)(1800));
+
+        timer = new TimerTask() {
+            @Override
+            public void run() {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        _Animator(activityHomeScreen2Binding.fourCon,"translationY",-50,400);
+                        _Animator(activityHomeScreen2Binding.fourCon,"alpha",1,400);
+                    }
+                });
+            }
+        };
+        _timer.schedule(timer, (int)(1600));
+
+
+        timer = new TimerTask() {
+            @Override
+            public void run() {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        _Animator(activityHomeScreen2Binding.fourCon,"translationY",0,200);
+                        _Animator(activityHomeScreen2Binding.fourCon,"alpha",1,200);
+                    }
+                });
+            }
+        };
+        _timer.schedule(timer, (int)(1800));
 
         //animation Background
         LinearLayout constraintLayout = findViewById(R.id.bg);

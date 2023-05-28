@@ -1,6 +1,7 @@
 package error404.gfg.healthcare;
 
 import android.Manifest;
+import android.animation.ObjectAnimator;
 import android.app.ActivityOptions;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -10,6 +11,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
 import androidx.core.app.ActivityCompat;
 import androidx.core.app.ActivityOptionsCompat;
 import androidx.core.content.ContextCompat;
@@ -35,6 +37,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.ktx.Firebase;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 import error404.gfg.healthcare.Token.TokenManager;
 import error404.gfg.healthcare.databinding.ActivityHomeScreen2Binding;
 import error404.gfg.healthcare.model.UserModel;
@@ -54,6 +59,11 @@ public class HomeFragment extends Fragment {
     ImageView imageEme;
     ImageView imageQuiz;
     TextView textView13,user_Name;
+    CardView profileCard;
+    TextView t3,t4;
+    LinearLayout con_sym,con_ins,con_quiz,con_call,con_last;
+
+
     private static final int PERMISSION_REQUEST_CODE = 100;
     private static final String[] REQUIRED_PERMISSIONS = {
             Manifest.permission.ACCESS_FINE_LOCATION,
@@ -124,6 +134,149 @@ public class HomeFragment extends Fragment {
         quiz_con= v.findViewById(R.id.quiz_con);
         lastCon=v.findViewById(R.id.last_con);
         sym_con=v.findViewById(R.id.con_sym);
+        t3=v.findViewById(R.id.textView3);
+        profileCard=v.findViewById(R.id.profile_card);
+        instuctor_Con=v.findViewById(R.id.instractor_con);
+
+
+        _Animator(t3,"translationY",70,0);
+        _Animator(user_Name,"translationY",70,0);
+        _Animator(profileCard,"translationY",70,0);
+        _Animator(sym_con,"translationY",70,0);
+        _Animator(instuctor_Con,"translationY",70,0);
+        _Animator(quiz_con,"translationY",70,0);
+        _Animator(lastCon,"translationY",70,0);
+        _Animator(ECallCon,"translationY",70,0);
+        _Animator(instuctor_Con,"translationY",70,0);
+        _Animator(t3,"alpha",0,0);
+        _Animator(user_Name,"alpha",0,0);
+        _Animator(profileCard,"alpha",0,0);
+        _Animator(sym_con,"alpha",0,0);
+        _Animator(instuctor_Con,"alpha",0,0);
+        _Animator(quiz_con,"alpha",0,0);
+        _Animator(lastCon,"alpha",0,0);
+        _Animator(ECallCon,"alpha",0,0);
+        _Animator(instuctor_Con,"alpha",0,0);
+
+
+
+        Timer _timer = new Timer();
+        TimerTask timer = new TimerTask() {
+            @Override
+            public void run() {
+                requireActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        _Animator(t3, "translationY", 0, 200);
+                        _Animator(t3, "alpha", 1, 200);
+                    }
+                });
+            }
+        };
+        _timer.schedule(timer, 100);
+
+        timer = new TimerTask() {
+            @Override
+            public void run() {
+                requireActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        _Animator(user_Name, "translationY", 0, 150);
+                        _Animator(user_Name, "alpha", 1, 150);
+                    }
+                });
+            }
+        };
+        _timer.schedule(timer, 200);
+
+        timer = new TimerTask() {
+            @Override
+            public void run() {
+                requireActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        _Animator(profileCard, "translationY", 0, 150);
+                        _Animator(profileCard, "alpha", 1, 150);
+                    }
+                });
+            }
+        };
+        _timer.schedule(timer, 275);
+
+        timer = new TimerTask() {
+            @Override
+            public void run() {
+                requireActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        _Animator(sym_con, "translationY", 0, 200);
+                        _Animator(sym_con, "alpha", 1, 200);
+                    }
+                });
+            }
+        };
+        _timer.schedule(timer, 375);
+
+        timer = new TimerTask() {
+            @Override
+            public void run() {
+                requireActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        _Animator(instuctor_Con, "translationY", 0, 200);
+                        _Animator(instuctor_Con, "alpha", 1, 200);
+                    }
+                });
+            }
+        };
+        _timer.schedule(timer, 475);
+
+        timer = new TimerTask() {
+            @Override
+            public void run() {
+                requireActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        _Animator(quiz_con, "translationY", 0, 200);
+                        _Animator(quiz_con, "alpha", 1, 200);
+                    }
+                });
+            }
+        };
+        _timer.schedule(timer, 575);
+
+        timer = new TimerTask() {
+            @Override
+            public void run() {
+                requireActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        _Animator(ECallCon, "translationY", 0, 200);
+                        _Animator(ECallCon, "alpha", 1, 200);
+                    }
+                });
+            }
+        };
+        _timer.schedule(timer, 675);
+
+        timer = new TimerTask() {
+            @Override
+            public void run() {
+                requireActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        _Animator(lastCon, "translationY", 0, 200);
+                        _Animator(lastCon, "alpha", 1, 200);
+                    }
+                });
+            }
+        };
+        _timer.schedule(timer, 775);
+
+
+
+
+
         ECallCon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -212,6 +365,10 @@ public class HomeFragment extends Fragment {
 
 
 
+
+
+
+
         return v;
     }
 
@@ -258,6 +415,19 @@ public class HomeFragment extends Fragment {
     private void startNextActivity() {
         Intent nextIntent = new Intent(getActivity(), SosActivity.class);
         startActivity(nextIntent);
+    }
+
+
+    //Animator Block
+    public void _Animator(final View _view, final String _propertyName, final double _value, final double _duration) {
+        ObjectAnimator anim = new ObjectAnimator();
+        anim.setTarget(_view);
+        anim.setPropertyName(_propertyName);
+        anim.setFloatValues((float) _value);
+        anim.setDuration((long) _duration);
+        anim.setInterpolator(new android.view.animation.AccelerateDecelerateInterpolator());
+        anim.start();
+
     }
 
 }
