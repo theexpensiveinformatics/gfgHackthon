@@ -192,8 +192,8 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent quizIntent = new Intent(getActivity(), QuizGame.class);
-                ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(getActivity(),imageQuiz, ViewCompat.getTransitionName(imageQuiz));
-                startActivity(quizIntent,options.toBundle());
+//                ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(getActivity(),imageQuiz, ViewCompat.getTransitionName(imageQuiz));
+                startActivity(quizIntent);
 
             }
         });

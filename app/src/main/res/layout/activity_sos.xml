@@ -27,7 +27,7 @@
         android:layout_gravity="center"
         android:layout_marginRight="45dp"
         android:layout_marginLeft="45dp"
-        android:text="When your phone is shaken more than 3 times,\na message will be sent to people near you."
+        android:text="When your phone is shaken more than 3 times,\na message will be sent to your emergency contacts."
         android:gravity="center"
         android:fontFamily="@font/regular_e"
         android:layout_marginTop="5dp"/>

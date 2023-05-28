@@ -41,31 +41,33 @@
 
         </LinearLayout>
 
-        <ImageView
-            android:id="@+id/quizImg"
-            android:layout_width="300dp"
-            android:layout_height="190dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="30dp"
-            android:src="@drawable/ic_quiz"
-            android:transitionName="example2" />
-
         <TextView
             android:id="@+id/textView6"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/meduim"
-            android:gravity="center"
-            android:text="Let's Play Game,\nAnswer and get point."
-            android:textColor="@color/text_primary" />
+            android:fontFamily="@font/semibold"
+            android:gravity="left"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="30dp"
+            android:textSize="24dp"
+            android:text="Let's Start"
+            android:textColor="@color/Primary_box" />
+        <TextView
+            android:id="@+id/textView67"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/semibold"
+            android:gravity="left"
+            android:layout_marginLeft="30dp"
+            android:textSize="16dp"
+            android:text="Be the first" />
+
 
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/categoryList"
-        android:layout_marginLeft="28dp"
-        android:layout_marginTop="45dp"
-        android:layout_marginRight="28dp"
+        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 

@@ -2,11 +2,13 @@ package error404.gfg.healthcare;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.AnimationDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -39,7 +41,10 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
     public void onBindViewHolder(@NonNull CategoryViewHolder holder, int position) {
         final CategoryModel model = categoryModels.get(position);
 
-
+//        AnimationDrawable animationDrawable = (AnimationDrawable) holder.bg.getBackground();
+//        animationDrawable.setEnterFadeDuration(700);
+//        animationDrawable.setExitFadeDuration(3000);
+//        animationDrawable.start();
         // added for animation - by krushang
         holder.itemView.startAnimation(AnimationUtils.loadAnimation(holder.itemView.getContext(),R.anim.falldown));
         // animation code ended
@@ -68,11 +73,13 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
     public class CategoryViewHolder extends RecyclerView.ViewHolder {
         ImageView imageView;
         TextView textView;
+        LinearLayout bg;
 
         public CategoryViewHolder(@NonNull View itemView) {
             super(itemView);
             imageView = itemView.findViewById(R.id.image);
             textView = itemView.findViewById(R.id.category);
+            bg= itemView.findViewById(R.id.bgq);
         }
     }
 }

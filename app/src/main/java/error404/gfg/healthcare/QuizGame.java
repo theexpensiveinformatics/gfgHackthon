@@ -29,6 +29,8 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import error404.gfg.healthcare.databinding.ActivityQuizGameBinding;
 
@@ -101,10 +103,79 @@ public class QuizGame extends AppCompatActivity {
         binding.categoryList.setAdapter(adapter);
 
 
+        binding.textView15.setTranslationY(70);
+        binding.textView6.setTranslationY(70);
+        binding.textView67.setTranslationY(70);
+        binding.categoryList.setTranslationY(70);
+        binding.textView15.setAlpha(0);
+        binding.textView6.setAlpha(0);
+        binding.textView67.setAlpha(0);
+        binding.categoryList.setAlpha(0);
 
 
+        _Animator(binding.textView15,"alpha",1,200);
+        _Animator(binding.textView15,"translationY",0,200);
+
+
+        Timer _timer = new Timer();
+        TimerTask timer = new TimerTask() {
+            @Override
+            public void run() {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        _Animator(binding.textView6,"translationY",0,200);
+                        _Animator(binding.textView6,"alpha",1,200);
+                    }
+                });
+            }
+        };
+        _timer.schedule(timer, (int)(100));
+
+        timer = new TimerTask() {
+            @Override
+            public void run() {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        _Animator(binding.textView67,"translationY",0,200);
+                        _Animator(binding.textView67,"alpha",1,200);
+                    }
+                });
+            }
+        };
+        _timer.schedule(timer, (int)(200));
+
+        timer = new TimerTask() {
+            @Override
+            public void run() {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        _Animator(binding.categoryList,"translationY",0,200);
+                        _Animator(binding.categoryList,"alpha",1,200);
+                    }
+                });
+            }
+        };
+        _timer.schedule(timer, (int)(200));
 
 
 
     }
+
+
+    //Animator Block
+    public void _Animator(final View _view, final String _propertyName, final double _value, final double _duration) {
+        ObjectAnimator anim = new ObjectAnimator();
+        anim.setTarget(_view);
+        anim.setPropertyName(_propertyName);
+        anim.setFloatValues((float) _value);
+        anim.setDuration((long) _duration);
+        anim.setInterpolator(new android.view.animation.AccelerateDecelerateInterpolator());
+        anim.start();
+
+
+    }
+
 }

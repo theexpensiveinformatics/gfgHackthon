@@ -28,7 +28,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:fontFamily="@font/semibold"
-        android:text="Please verfiy your email"
+        android:text="Accout is Created Successfully"
         android:textColor="@android:color/black"
         android:textSize="16sp" />
 
@@ -39,10 +39,10 @@
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
         android:fontFamily="@font/regular"
-        android:textSize="14dp"
+        android:text="Login to Continue ResQMe"
+        android:textAlignment="center"
         android:textColor="@color/hintColor"
-        android:text="To confirm your email address,\nplease click on the link in \nthe email we sent you.\n\nThen do Login with your account."
-        android:textAlignment="center" />
+        android:textSize="14dp" />
 
     <LinearLayout
         android:id="@+id/btn_okay"
