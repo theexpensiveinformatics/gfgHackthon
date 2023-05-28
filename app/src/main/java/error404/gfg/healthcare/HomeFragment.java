@@ -17,6 +17,8 @@ import androidx.core.app.ActivityOptionsCompat;
 import androidx.core.content.ContextCompat;
 import androidx.core.view.ViewCompat;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.util.Pair;
 import android.view.LayoutInflater;
@@ -273,6 +275,16 @@ public class HomeFragment extends Fragment {
         };
         _timer.schedule(timer, 775);
 
+        profileCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+//                ((home_screen_2)getActivity()).activityHomeScreen2Binding.frameLayout.;
+
+
+            }
+        });
+
 
 
 
@@ -430,4 +442,14 @@ public class HomeFragment extends Fragment {
 
     }
 
-}
+    private  void replaceFragment(Fragment fragment)
+    {
+//        FragmentManager fragmentManager  = getSupportFragmentManager();
+//        fragmentManager.beginTransaction().setCustomAnimations(R.anim.fragment_anim,R.anim.fragment_anim_2);
+//        FragmentTransaction fragmentTransaction  = fragmentManager.beginTransaction();
+//        fragmentTransaction.replace(R.id.frameLayout, fragment);
+//        fragmentTransaction.commit();
+
+
+
+}}
