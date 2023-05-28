@@ -163,7 +163,7 @@ public class home_screen_2 extends AppCompatActivity {
                 });
             }
         };
-        _timer.schedule(timer, (int)(1800));
+        _timer.schedule(timer, (int)(2000));
 
         //animation Background
         LinearLayout constraintLayout = findViewById(R.id.bg);
