@@ -73,44 +73,87 @@ public class MainActivity extends AppCompatActivity {
 
         //if internet connected
         if ((wifi != null & datac != null) && (wifi.isConnected() | datac.isConnected())) {
+//            This Code Is for firebase
             //if userAuthenticated
-            TokenManager tokenManager = TokenManager.getInstance(getApplicationContext());
-            String accessToken = tokenManager.getAccessToken();
-            if (accessToken != null) {
+            if (fAuth.getCurrentUser() != null) {
 
-                Call<UserModel> call = userAPI.getUserProfile("Bearer " + accessToken);
-                call.enqueue(new Callback<UserModel>() {
+                uid = firebaseUser.getUid();
+                //here we have get to name
+
+
+                DatabaseReference DBref = FirebaseDatabase.getInstance().getReference();
+                DatabaseReference NameRef = DBref.child("users").child(uid);
+                NameRef.addValueEventListener(new ValueEventListener() {
                     @Override
-                    public void onResponse(Call<UserModel> call, Response<UserModel> response) {
-                        if (response.isSuccessful()) {
-                            UserModel userModel = response.body();
-                            String firstName = userModel.getFirstName();
-                            String lastName = userModel.getLastName();
-                            String name = firstName + " " + lastName;
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        String firstName = snapshot.child("FirstName").getValue(String.class);
+                        String lastName = snapshot.child("LastName").getValue(String.class);
+                        name = firstName + " " + lastName;
 
-                            if (!"x12".equals(name)) {
-                                startActivity(new Intent(getApplicationContext(), home_screen_2.class));
-                                finish();
-                            }
-                        } else {
-                            // Handle API error
-                            Intent i = new Intent(MainActivity.this, Authantication.class);
-                            startActivity(i);
+                        if(name!="x12")
+                        {
+                            startActivity(new Intent(getApplicationContext(), home_screen_2.class));
                             finish();
                         }
+
                     }
 
                     @Override
-                    public void onFailure(Call<UserModel> call, Throwable t) {
-                        // Handle API failure
-                        Toast.makeText(MainActivity.this, "Error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        Toast.makeText(MainActivity.this,""+error,Toast.LENGTH_SHORT).show();
                     }
                 });
+
+
+
+
+
             } else {
                 Intent i = new Intent(MainActivity.this, Authantication.class);
                 startActivity(i);
                 finish();
             }
+
+
+            //this code is for API
+            //if userAuthenticated
+//            TokenManager tokenManager = TokenManager.getInstance(getApplicationContext());
+//            String accessToken = tokenManager.getAccessToken();
+//            if (accessToken != null) {
+//
+//                Call<UserModel> call = userAPI.getUserProfile("Bearer " + accessToken);
+//                call.enqueue(new Callback<UserModel>() {
+//                    @Override
+//                    public void onResponse(Call<UserModel> call, Response<UserModel> response) {
+//                        if (response.isSuccessful()) {
+//                            UserModel userModel = response.body();
+//                            String firstName = userModel.getFirstName();
+//                            String lastName = userModel.getLastName();
+//                            String name = firstName + " " + lastName;
+//
+//                            if (!"x12".equals(name)) {
+//                                startActivity(new Intent(getApplicationContext(), home_screen_2.class));
+//                                finish();
+//                            }
+//                        } else {
+//                            // Handle API error
+//                            Intent i = new Intent(MainActivity.this, Authantication.class);
+//                            startActivity(i);
+//                            finish();
+//                        }
+//                    }
+//
+//                    @Override
+//                    public void onFailure(Call<UserModel> call, Throwable t) {
+//                        // Handle API failure
+//                        Toast.makeText(MainActivity.this, "Error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+//                    }
+//                });
+//            } else {
+//                Intent i = new Intent(MainActivity.this, Authantication.class);
+//                startActivity(i);
+//                finish();
+//            }
         }
         else {
             Intent i2 = new Intent(MainActivity.this, NoInternet.class);

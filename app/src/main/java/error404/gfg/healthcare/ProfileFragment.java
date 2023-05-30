@@ -98,38 +98,67 @@ public class ProfileFragment extends Fragment {
         Address = v.findViewById(R.id.AddressTxt);
         profileedit =v.findViewById(R.id.imageView2);
 
-        RetrofitService retrofitService = new RetrofitService();
-        userAPI userAPI = retrofitService.getRetrofit().create(error404.gfg.healthcare.reotrfit.userAPI.class);
+        //This is for firebase.
+        FirebaseAuth fAuth = FirebaseAuth.getInstance();
+        FirebaseUser firebaseUser = fAuth.getCurrentUser();
+        String uid = firebaseUser.getUid();
 
-        TokenManager tokenManager = TokenManager.getInstance(getActivity());
-        String accessToken = tokenManager.getAccessToken();
-
-        Call<UserModel> call = userAPI.getUserProfile("Bearer " + accessToken);
-
-        call.enqueue(new Callback<UserModel>() {
+        DatabaseReference DBref = FirebaseDatabase.getInstance().getReference();
+        DatabaseReference ProfileData = DBref.child("users").child(uid);
+        ProfileData.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onResponse(Call<UserModel> call, Response<UserModel> response) {
-                if (response.isSuccessful()){
-                    UserModel model = response.body();
-                    FristName.setText(model.getFirstName());
-                    LastName.setText(model.getLastName());
-                    Email.setText(model.getEmail());
-                    PhoneNumber.setText(model.getNumber());
-                    Gender.setText(model.getGender());
-                    BirthDate.setText(model.getBirthDate());
-                    BloodGroup.setText(model.getBloodGroup());
-                    Address.setText(model.getAddress());
-                }else {
-                    Toast.makeText(getActivity(), response.message(), Toast.LENGTH_SHORT).show();
-                }
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                FristName.setText(snapshot.child("FirstName").getValue(String.class));
+                LastName.setText(snapshot.child("LastName").getValue(String.class));
+                Email.setText(snapshot.child("Email").getValue(String.class));
+                PhoneNumber.setText(snapshot.child("Number").getValue(String.class));
+                Gender.setText(snapshot.child("Gender").getValue(String.class));
+                BirthDate.setText(snapshot.child("BirthDate").getValue(String.class));
+                BloodGroup.setText(snapshot.child("BloodGroup").getValue(String.class));
+                Address.setText(snapshot.child("Address").getValue(String.class));
             }
 
             @Override
-            public void onFailure(Call<UserModel> call, Throwable t) {
-                Toast.makeText(getActivity(), t.getMessage(), Toast.LENGTH_SHORT).show();
+            public void onCancelled(@NonNull DatabaseError error) {
+
             }
         });
-;
+
+
+
+//         This is API
+//        RetrofitService retrofitService = new RetrofitService();
+//        userAPI userAPI = retrofitService.getRetrofit().create(error404.gfg.healthcare.reotrfit.userAPI.class);
+//
+//        TokenManager tokenManager = TokenManager.getInstance(getActivity());
+//        String accessToken = tokenManager.getAccessToken();
+//
+//        Call<UserModel> call = userAPI.getUserProfile("Bearer " + accessToken);
+//
+//        call.enqueue(new Callback<UserModel>() {
+//            @Override
+//            public void onResponse(Call<UserModel> call, Response<UserModel> response) {
+//                if (response.isSuccessful()){
+//                    UserModel model = response.body();
+//                    FristName.setText(model.getFirstName());
+//                    LastName.setText(model.getLastName());
+//                    Email.setText(model.getEmail());
+//                    PhoneNumber.setText(model.getNumber());
+//                    Gender.setText(model.getGender());
+//                    BirthDate.setText(model.getBirthDate());
+//                    BloodGroup.setText(model.getBloodGroup());
+//                    Address.setText(model.getAddress());
+//                }else {
+//                    Toast.makeText(getActivity(), response.message(), Toast.LENGTH_SHORT).show();
+//                }
+//            }
+//
+//            @Override
+//            public void onFailure(Call<UserModel> call, Throwable t) {
+//                Toast.makeText(getActivity(), t.getMessage(), Toast.LENGTH_SHORT).show();
+//            }
+//        });
+//;
 
         profileedit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -150,11 +179,19 @@ public class ProfileFragment extends Fragment {
         logoutBg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                TokenManager tokenManager = TokenManager.getInstance(getActivity());
-                tokenManager.clearAccessToken();
 
+//                This is For FireBase
+
+                FirebaseAuth.getInstance().signOut();
                 startActivity(new Intent(getActivity(), MainActivity.class)); //Go back to home page
                 getActivity().finish();
+
+//                This is For API
+//                TokenManager tokenManager = TokenManager.getInstance(getActivity())
+//                tokenManager.clearAccessToken();
+//
+//                startActivity(new Intent(getActivity(), MainActivity.class)); //Go back to home page
+//                getActivity().finish();
             }
         });
         return  v;

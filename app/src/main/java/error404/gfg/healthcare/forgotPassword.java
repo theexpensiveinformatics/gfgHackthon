@@ -1,5 +1,6 @@
 package error404.gfg.healthcare;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
@@ -17,6 +18,13 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.ktx.Firebase;
+
+import java.util.concurrent.Executor;
+
 import error404.gfg.healthcare.databinding.ActivityFirstAidTipsTwoBinding;
 import error404.gfg.healthcare.databinding.ActivityForgotPasswordBinding;
 import error404.gfg.healthcare.model.UserModel;
@@ -30,9 +38,10 @@ public class forgotPassword extends AppCompatActivity {
     RetrofitService retrofitService = new RetrofitService();
     error404.gfg.healthcare.reotrfit.userAPI userAPI = retrofitService.getRetrofit().create(error404.gfg.healthcare.reotrfit.userAPI.class);
 
-    EditText editText1,editText2,editText3,editText4;
-    String OTP,PassWord,Email;
-ActivityForgotPasswordBinding activityForgotPasswordBinding;
+    EditText editText1, editText2, editText3, editText4;
+    String OTP, PassWord, Email;
+    ActivityForgotPasswordBinding activityForgotPasswordBinding;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,169 +84,186 @@ ActivityForgotPasswordBinding activityForgotPasswordBinding;
             @Override
             public void onClick(View v) {
 
-                UserModel email_send_model = new UserModel();
+//                This is for FireBase
                 Email = activityForgotPasswordBinding.editEmailForgot.getText().toString();
-                email_send_model.setEmail(Email);
-                userAPI.forgot_password(email_send_model)
-                        .enqueue(new Callback<UserModel>() {
+
+                FirebaseAuth.getInstance().sendPasswordResetEmail(Email)
+                        .addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
-                            public void onResponse(Call<UserModel> call, Response<UserModel> response) {
-                                if (response.isSuccessful()){
-                                    Toast.makeText(forgotPassword.this, "OTP sent to your email", Toast.LENGTH_SHORT).show();
-                                    activityForgotPasswordBinding.conEnterEmail.setVisibility(View.GONE);
-                                    activityForgotPasswordBinding.enterPassCon.setVisibility(View.GONE);
-                                    activityForgotPasswordBinding.EnterOtpCon.setVisibility(View.VISIBLE);
-                                } else if (response.code() == 404) {
-                                    Toast.makeText(forgotPassword.this, "Email Not found", Toast.LENGTH_SHORT).show();
-                                    activityForgotPasswordBinding.conEnterEmail.requestFocus();
-                                } else {
-                                    Toast.makeText(forgotPassword.this, response.message(), Toast.LENGTH_SHORT).show();
-                                }
-                            }
-
-                            @Override
-                            public void onFailure(Call<UserModel> call, Throwable t) {
-                                Toast.makeText(forgotPassword.this, t.getMessage(), Toast.LENGTH_SHORT).show();
-                            }
-                        });
-
-            }
-        });
-
-        editText1 = (EditText) findViewById(R.id.otp1);
-        editText2 = (EditText) findViewById(R.id.otp2);
-        editText3 = (EditText) findViewById(R.id.otp3);
-        editText4 = (EditText) findViewById(R.id.otp4);
-
-        editText1.addTextChangedListener(new GenericTextWatcher(editText1));
-        editText2.addTextChangedListener(new GenericTextWatcher(editText2));
-        editText3.addTextChangedListener(new GenericTextWatcher(editText3));
-        editText4.addTextChangedListener(new GenericTextWatcher(editText4));
-
-        activityForgotPasswordBinding.verifyEmailCon.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                OTP = editText1.getText().toString()+editText2.getText().toString()+editText3.getText().toString()+editText4.getText().toString();
-
-                UserModel verify_otp_model = new UserModel();
-
-                verify_otp_model.setResetToken(OTP);
-
-                userAPI.verify_otp(verify_otp_model)
-                        .enqueue(new Callback<UserModel>() {
-                            @Override
-                            public void onResponse(Call<UserModel> call, Response<UserModel> response) {
-                               if (response.isSuccessful()){
-                                   activityForgotPasswordBinding.conEnterEmail.setVisibility(View.GONE);
-                                   activityForgotPasswordBinding.EnterOtpCon.setVisibility(View.GONE);
-                                   activityForgotPasswordBinding.enterPassCon.setVisibility(View.VISIBLE);
-                               } else if (response.code() == 400) {
-                                   Toast.makeText(forgotPassword.this, "Invalid OTP", Toast.LENGTH_SHORT).show();
-                               }else {
-                                   Toast.makeText(forgotPassword.this, response.message(), Toast.LENGTH_SHORT).show();
-                               }
-                            }
-                            @Override
-                            public void onFailure(Call<UserModel> call, Throwable t) {
-                                Toast.makeText(forgotPassword.this, t.getMessage(), Toast.LENGTH_SHORT).show();
-                            }
-                        });
-            }
-        });
-        
-        activityForgotPasswordBinding.conSubmit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                UserModel model = new UserModel();
-
-                model.setEmail(Email);
-                model.setNewPassword(activityForgotPasswordBinding.passEdit.getText().toString());
-
-                userAPI.update_password(model)
-                        .enqueue(new Callback<UserModel>() {
-                            @Override
-                            public void onResponse(Call<UserModel> call, Response<UserModel> response) {
-                                if (response.isSuccessful()){
+                            public void onComplete(@NonNull Task<Void> task) {
+                                if (task.isSuccessful()) {
+                                    Toast.makeText(forgotPassword.this, "We Have E-mailed your Password reset Link!", Toast.LENGTH_SHORT).show();
                                     startActivity(new Intent(getApplicationContext(), Authantication.class));
-                                    Toast.makeText(forgotPassword.this, "Password Updated", Toast.LENGTH_SHORT).show();
-                                }else if(response.code() == 500){
-                                    Toast.makeText(forgotPassword.this, "Somthig want wrong"+response.message(), Toast.LENGTH_SHORT).show();
-                                }else {
-                                    Toast.makeText(forgotPassword.this, response.message(), Toast.LENGTH_SHORT).show();
                                 }
-                            }
-
-                            @Override
-                            public void onFailure(Call<UserModel> call, Throwable t) {
-                                Toast.makeText(forgotPassword.this, t.getMessage(), Toast.LENGTH_SHORT).show();
                             }
                         });
 
+//                This is for API
+//                UserModel email_send_model = new UserModel();
+//                Email = activityForgotPasswordBinding.editEmailForgot.getText().toString();
+//                email_send_model.setEmail(Email);
+//                userAPI.forgot_password(email_send_model)
+//                        .enqueue(new Callback<UserModel>() {
+//                            @Override
+//                            public void onResponse(Call<UserModel> call, Response<UserModel> response) {
+//                                if (response.isSuccessful()){
+//                                    Toast.makeText(forgotPassword.this, "OTP sent to your email", Toast.LENGTH_SHORT).show();
+//                                    activityForgotPasswordBinding.conEnterEmail.setVisibility(View.GONE);
+//                                    activityForgotPasswordBinding.enterPassCon.setVisibility(View.GONE);
+//                                    activityForgotPasswordBinding.EnterOtpCon.setVisibility(View.VISIBLE);
+//                                } else if (response.code() == 404) {
+//                                    Toast.makeText(forgotPassword.this, "Email Not found", Toast.LENGTH_SHORT).show();
+//                                    activityForgotPasswordBinding.conEnterEmail.requestFocus();
+//                                } else {
+//                                    Toast.makeText(forgotPassword.this, response.message(), Toast.LENGTH_SHORT).show();
+//                                }
+//                            }
+//
+//                            @Override
+//                            public void onFailure(Call<UserModel> call, Throwable t) {
+//                                Toast.makeText(forgotPassword.this, t.getMessage(), Toast.LENGTH_SHORT).show();
+//                            }
+//                        });
+
             }
         });
-        
+
+//        editText1 = (EditText) findViewById(R.id.otp1);
+//        editText2 = (EditText) findViewById(R.id.otp2);
+//        editText3 = (EditText) findViewById(R.id.otp3);
+//        editText4 = (EditText) findViewById(R.id.otp4);
+//
+//        editText1.addTextChangedListener(new GenericTextWatcher(editText1));
+//        editText2.addTextChangedListener(new GenericTextWatcher(editText2));
+//        editText3.addTextChangedListener(new GenericTextWatcher(editText3));
+//        editText4.addTextChangedListener(new GenericTextWatcher(editText4));
+//
+//        activityForgotPasswordBinding.verifyEmailCon.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                OTP = editText1.getText().toString()+editText2.getText().toString()+editText3.getText().toString()+editText4.getText().toString();
+//
+//                UserModel verify_otp_model = new UserModel();
+//
+//                verify_otp_model.setResetToken(OTP);
+//
+//                userAPI.verify_otp(verify_otp_model)
+//                        .enqueue(new Callback<UserModel>() {
+//                            @Override
+//                            public void onResponse(Call<UserModel> call, Response<UserModel> response) {
+//                               if (response.isSuccessful()){
+//                                   activityForgotPasswordBinding.conEnterEmail.setVisibility(View.GONE);
+//                                   activityForgotPasswordBinding.EnterOtpCon.setVisibility(View.GONE);
+//                                   activityForgotPasswordBinding.enterPassCon.setVisibility(View.VISIBLE);
+//                               } else if (response.code() == 400) {
+//                                   Toast.makeText(forgotPassword.this, "Invalid OTP", Toast.LENGTH_SHORT).show();
+//                               }else {
+//                                   Toast.makeText(forgotPassword.this, response.message(), Toast.LENGTH_SHORT).show();
+//                               }
+//                            }
+//                            @Override
+//                            public void onFailure(Call<UserModel> call, Throwable t) {
+//                                Toast.makeText(forgotPassword.this, t.getMessage(), Toast.LENGTH_SHORT).show();
+//                            }
+//                        });
+//            }
+//        });
+//
+//        activityForgotPasswordBinding.conSubmit.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                UserModel model = new UserModel();
+//
+//                model.setEmail(Email);
+//                model.setNewPassword(activityForgotPasswordBinding.passEdit.getText().toString());
+//
+//                userAPI.update_password(model)
+//                        .enqueue(new Callback<UserModel>() {
+//                            @Override
+//                            public void onResponse(Call<UserModel> call, Response<UserModel> response) {
+//                                if (response.isSuccessful()){
+//                                    startActivity(new Intent(getApplicationContext(), Authantication.class));
+//                                    Toast.makeText(forgotPassword.this, "Password Updated", Toast.LENGTH_SHORT).show();
+//                                }else if(response.code() == 500){
+//                                    Toast.makeText(forgotPassword.this, "Somthig want wrong"+response.message(), Toast.LENGTH_SHORT).show();
+//                                }else {
+//                                    Toast.makeText(forgotPassword.this, response.message(), Toast.LENGTH_SHORT).show();
+//                                }
+//                            }
+//
+//                            @Override
+//                            public void onFailure(Call<UserModel> call, Throwable t) {
+//                                Toast.makeText(forgotPassword.this, t.getMessage(), Toast.LENGTH_SHORT).show();
+//                            }
+//                        });
+//
+//            }
+//        });
+//
+//    }
+
+//    This is For OTP
+//    class GenericTextWatcher implements TextWatcher
+//    {
+//        private View view;
+//        private GenericTextWatcher(View view)
+//        {
+//            this.view = view;
+//        }
+//
+//        @Override
+//        public void afterTextChanged(Editable editable) {
+//            // TODO Auto-generated method stub
+//            String text = editable.toString();
+//            switch(view.getId())
+//            {
+//
+//                case R.id.otp1:
+//                    if(text.length()==0)
+//                        editText1.requestFocus();
+//                    else
+//                        editText2.requestFocus();
+//                    break;
+//                case R.id.otp2:
+//                    if(text.length()==1)
+//                        editText3.requestFocus();
+//                    else if(text.length()==0)
+//                        editText1.requestFocus();
+//                    break;
+//                case R.id.otp3:
+//                    if(text.length()==1)
+//                        editText4.requestFocus();
+//                    else if(text.length()==0)
+//                        editText2.requestFocus();
+//                    break;
+//                case R.id.otp4:
+//                    if(text.length()==0)
+//                        editText3.requestFocus();
+//                    else if(text.length() == 1)
+//                        hideKeybaord(view);
+//                    break;
+//            }
+//        }
+//
+//        @Override
+//        public void beforeTextChanged(CharSequence arg0, int arg1, int arg2, int arg3) {
+//            // TODO Auto-generated method stub
+//        }
+//
+//        @Override
+//        public void onTextChanged(CharSequence arg0, int arg1, int arg2, int arg3) {
+//            // TODO Auto-generated method stub
+//        }
+//    }
+//
+//    private void hideKeybaord(View v) {
+//        InputMethodManager inputMethodManager = (InputMethodManager)getSystemService(INPUT_METHOD_SERVICE);
+//        inputMethodManager.hideSoftInputFromWindow(v.getApplicationWindowToken(),0);
+//    }
+//
+//
+//
     }
-
-    class GenericTextWatcher implements TextWatcher
-    {
-        private View view;
-        private GenericTextWatcher(View view)
-        {
-            this.view = view;
-        }
-
-        @Override
-        public void afterTextChanged(Editable editable) {
-            // TODO Auto-generated method stub
-            String text = editable.toString();
-            switch(view.getId())
-            {
-
-                case R.id.otp1:
-                    if(text.length()==0)
-                        editText1.requestFocus();
-                    else
-                        editText2.requestFocus();
-                    break;
-                case R.id.otp2:
-                    if(text.length()==1)
-                        editText3.requestFocus();
-                    else if(text.length()==0)
-                        editText1.requestFocus();
-                    break;
-                case R.id.otp3:
-                    if(text.length()==1)
-                        editText4.requestFocus();
-                    else if(text.length()==0)
-                        editText2.requestFocus();
-                    break;
-                case R.id.otp4:
-                    if(text.length()==0)
-                        editText3.requestFocus();
-                    else if(text.length() == 1)
-                        hideKeybaord(view);
-                    break;
-            }
-        }
-
-        @Override
-        public void beforeTextChanged(CharSequence arg0, int arg1, int arg2, int arg3) {
-            // TODO Auto-generated method stub
-        }
-
-        @Override
-        public void onTextChanged(CharSequence arg0, int arg1, int arg2, int arg3) {
-            // TODO Auto-generated method stub
-        }
-    }
-
-    private void hideKeybaord(View v) {
-        InputMethodManager inputMethodManager = (InputMethodManager)getSystemService(INPUT_METHOD_SERVICE);
-        inputMethodManager.hideSoftInputFromWindow(v.getApplicationWindowToken(),0);
-    }
-
-
-
 
 }
