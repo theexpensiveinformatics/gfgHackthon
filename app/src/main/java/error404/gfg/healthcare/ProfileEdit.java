@@ -1,5 +1,6 @@
 package error404.gfg.healthcare;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
@@ -16,10 +17,20 @@ import android.widget.DatePicker;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.Calendar;
+import java.util.HashMap;
 
 import error404.gfg.healthcare.Token.TokenManager;
 import error404.gfg.healthcare.databinding.ActivityProfileEditBinding;
@@ -36,12 +47,14 @@ public class ProfileEdit extends AppCompatActivity {
 
 
     ActivityProfileEditBinding activityProfileEditBinding;
-    FirebaseAuth fAuth;
+    FirebaseAuth fAuth = FirebaseAuth.getInstance();
+    FirebaseUser firebaseUser = fAuth.getCurrentUser();
+    String uid = firebaseUser.getUid();
     Dialog dialog,loadingDailog;
 
     private DatabaseReference reference;
     private DatabaseReference dbRef;
-    String FirstName,LastName,Email,BloodGroup,Gender,MobileNumber,Address,BirthDate;
+    String firstName,lastName,email,bloodGroup,gender,mobileNumber,address,birthDate,confirmPassword, password, key;
     String Str_BloodGroup=null;
     String Str_Gender=null;
     String Str_BirthDate=null;
@@ -174,82 +187,193 @@ public class ProfileEdit extends AppCompatActivity {
                 Str_Gender = "PreferNotSay";
             }
         });
+        
+//        This is For FireBase
 
-        TokenManager tokenManager = TokenManager.getInstance(getApplicationContext());
-        String accessToken = tokenManager.getAccessToken();
+        DatabaseReference DBref = FirebaseDatabase.getInstance().getReference();
+        DatabaseReference ProfileData = DBref.child("users").child(uid);
 
-        Call<UserModel> call = userAPI.getUserProfile("Bearer " + accessToken);
-        call.enqueue(new Callback<UserModel>() {
+        ProfileData.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onResponse(Call<UserModel> call, Response<UserModel> response) {
-                if (response.isSuccessful()){
-                    UserModel model = response.body();
-                    Email = model.getEmail();
-                    BirthDate = model.getBirthDate();
-                    BloodGroup = model.getBloodGroup();
-                    Gender = model.getGender();
-                    activityProfileEditBinding.emailSignupEdit.setText(model.getEmail());
-                    activityProfileEditBinding.FirstNameEdit.setText(model.getFirstName());
-                    activityProfileEditBinding.LastnameEditText.setText(model.getLastName());
-                    activityProfileEditBinding.BirthDateText.setText(model.getBirthDate());
-                    activityProfileEditBinding.NumberEdit.setText(model.getNumber());
-                    activityProfileEditBinding.addressEdit.setText(model.getAddress());
-                }else {
-                    Toast.makeText(ProfileEdit.this, response.message(), Toast.LENGTH_SHORT).show();
-                }
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                // Retrieve the values from the snapshot and set them on EditText fields
+                firstName = snapshot.child("FirstName").getValue(String.class);
+                lastName = snapshot.child("LastName").getValue(String.class);
+                email = snapshot.child("Email").getValue(String.class);
+                mobileNumber = snapshot.child("Number").getValue(String.class);
+                gender = snapshot.child("Gender").getValue(String.class);
+                birthDate = snapshot.child("BirthDate").getValue(String.class);
+                bloodGroup = snapshot.child("BloodGroup").getValue(String.class);
+                address = snapshot.child("Address").getValue(String.class);
+                key = snapshot.child("key").getValue(String.class);
+
+
+                // Set the retrieved values on EditText fields
+                activityProfileEditBinding.FirstNameEdit.setText(firstName);
+                activityProfileEditBinding.LastnameEditText.setText(lastName);
+                activityProfileEditBinding.BirthDateText.setText(birthDate);
+                activityProfileEditBinding.emailSignupEdit.setText(email);
+                activityProfileEditBinding.NumberEdit.setText(mobileNumber);
+                activityProfileEditBinding.addressEdit.setText(address);
             }
 
             @Override
-            public void onFailure(Call<UserModel> call, Throwable t) {
-                Toast.makeText(ProfileEdit.this, t.getMessage(), Toast.LENGTH_SHORT).show();
+            public void onCancelled(@NonNull DatabaseError error) {
+                // Handle the error if needed
             }
         });
+
+        
+        
+        
+        
+//        This is For API
+//        TokenManager tokenManager = TokenManager.getInstance(getApplicationContext());
+//        String accessToken = tokenManager.getAccessToken();
+//
+//        Call<UserModel> call = userAPI.getUserProfile("Bearer " + accessToken);
+//        call.enqueue(new Callback<UserModel>() {
+//            @Override
+//            public void onResponse(Call<UserModel> call, Response<UserModel> response) {
+//                if (response.isSuccessful()){
+//                    UserModel model = response.body();
+//                    Email = model.getEmail();
+//                    BirthDate = model.getBirthDate();
+//                    BloodGroup = model.getBloodGroup();
+//                    Gender = model.getGender();
+//                    activityProfileEditBinding.emailSignupEdit.setText(model.getEmail());
+//                    activityProfileEditBinding.FirstNameEdit.setText(model.getFirstName());
+//                    activityProfileEditBinding.LastnameEditText.setText(model.getLastName());
+//                    activityProfileEditBinding.BirthDateText.setText(model.getBirthDate());
+//                    activityProfileEditBinding.NumberEdit.setText(model.getNumber());
+//                    activityProfileEditBinding.addressEdit.setText(model.getAddress());
+//                }else {
+//                    Toast.makeText(ProfileEdit.this, response.message(), Toast.LENGTH_SHORT).show();
+//                }
+//            }
+//
+//            @Override
+//            public void onFailure(Call<UserModel> call, Throwable t) {
+//                Toast.makeText(ProfileEdit.this, t.getMessage(), Toast.LENGTH_SHORT).show();
+//            }
+//        });
 
         activityProfileEditBinding.signUpBtn.setOnClickListener(View -> {
             updateUser();
         });
 
     }
-    private void updateUser() {
 
+//    This is for FireBase
+
+    private void updateUser(){
         Str_BirthDate = activityProfileEditBinding.BirthDateText.getText().toString().trim();
+        DatabaseReference DBref = FirebaseDatabase.getInstance().getReference();
+        DatabaseReference ProfileData = DBref.child("users").child(uid);
 
-        UserModel model = new UserModel();
+        HashMap<String, String> user = new HashMap<>();
+        user.put("FirstName",activityProfileEditBinding.FirstNameEdit.getText().toString());
+        user.put("LastName",activityProfileEditBinding.LastnameEditText.getText().toString());
 
-        model.setFirstName(String.valueOf(activityProfileEditBinding.FirstNameEdit.getText()));
-        model.setLastName(String.valueOf(activityProfileEditBinding.LastnameEditText.getText()));
-        model.setBirthDate(Str_BirthDate);
+        user.put("Email",activityProfileEditBinding.emailSignupEdit.getText().toString());
+        user.put("Number",activityProfileEditBinding.NumberEdit.getText().toString());
+        user.put("Address",activityProfileEditBinding.addressEdit.getText().toString());
         if (Str_BloodGroup == null){
-            model.setBloodGroup(BloodGroup);
+            user.put("BloodGroup", bloodGroup);
         }else {
-            model.setBloodGroup(Str_BloodGroup);
+            user.put("BloodGroup", Str_BloodGroup);
         }
-        if (Str_Gender == null){
-            model.setGender(Gender);
+        if(Str_BirthDate == null){
+            user.put("BirthDate", birthDate);
         }else {
-            model.setGender(Str_Gender);
+            user.put("BirthDate", activityProfileEditBinding.BirthDateText.getText().toString());
         }
-        model.setNumber(String.valueOf(activityProfileEditBinding.NumberEdit.getText()));
-        model.setAddress(String.valueOf(activityProfileEditBinding.addressEdit.getText()));
 
-        userAPI.editUser(Email, model)
-                .enqueue(new Callback<Void>() {
+        if (Str_Gender == null){
+            user.put("Gender", gender);
+        }else{
+            user.put("Gender",Str_Gender);
+        }
+        user.put("key",key);
+        ProfileData.setValue(user)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
-                    public void onResponse(Call<Void> call, Response<Void> response) {
-                        if (response.isSuccessful()){
-                            Toast.makeText(ProfileEdit.this, "Profile Update", Toast.LENGTH_SHORT).show();
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful())
+                        {
+                            Toast.makeText(getApplicationContext(),"profile updated",Toast.LENGTH_LONG).show();
+
                         }else {
-                            Toast.makeText(ProfileEdit.this, response.message(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(),task.getException().getMessage(),Toast.LENGTH_LONG).show();
                         }
                     }
-
+                }).addOnFailureListener(new OnFailureListener() {
                     @Override
-                    public void onFailure(Call<Void> call, Throwable t) {
-                        Toast.makeText(ProfileEdit.this, t.getMessage(), Toast.LENGTH_SHORT).show();
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(getApplicationContext(),e.getMessage(),Toast.LENGTH_LONG).show();
                     }
                 });
+
+        FirebaseFirestore.getInstance().collection("users").document(uid).set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                //data updated successfully in FirebaseFirestore
+                //Toast.makeText(Auth_signup.this, "yeee lol !", Toast.LENGTH_SHORT).show();
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(getApplicationContext(), "Error !!" + e, Toast.LENGTH_SHORT).show();
+            }
+        });
         startActivity(new Intent(getApplicationContext(), home_screen_2.class));
     }
+
+
+
+
+//    This is For API
+
+//    private void updateUser() {
+//
+//        Str_BirthDate = activityProfileEditBinding.BirthDateText.getText().toString().trim();
+//
+//        UserModel model = new UserModel();
+//
+//        model.setFirstName(String.valueOf(activityProfileEditBinding.FirstNameEdit.getText()));
+//        model.setLastName(String.valueOf(activityProfileEditBinding.LastnameEditText.getText()));
+//        model.setBirthDate(Str_BirthDate);
+//        if (Str_BloodGroup == null){
+//            model.setBloodGroup(BloodGroup);
+//        }else {
+//            model.setBloodGroup(Str_BloodGroup);
+//        }
+//        if (Str_Gender == null){
+//            model.setGender(Gender);
+//        }else {
+//            model.setGender(Str_Gender);
+//        }
+//        model.setNumber(String.valueOf(activityProfileEditBinding.NumberEdit.getText()));
+//        model.setAddress(String.valueOf(activityProfileEditBinding.addressEdit.getText()));
+//
+//        userAPI.editUser(Email, model)
+//                .enqueue(new Callback<Void>() {
+//                    @Override
+//                    public void onResponse(Call<Void> call, Response<Void> response) {
+//                        if (response.isSuccessful()){
+//                            Toast.makeText(ProfileEdit.this, "Profile Update", Toast.LENGTH_SHORT).show();
+//                        }else {
+//                            Toast.makeText(ProfileEdit.this, response.message(), Toast.LENGTH_SHORT).show();
+//                        }
+//                    }
+//
+//                    @Override
+//                    public void onFailure(Call<Void> call, Throwable t) {
+//                        Toast.makeText(ProfileEdit.this, t.getMessage(), Toast.LENGTH_SHORT).show();
+//                    }
+//                });
+//        startActivity(new Intent(getApplicationContext(), home_screen_2.class));
+//    }
 
     private void selectDate() {
         Calendar calendar = Calendar.getInstance();
